@@ -2,17 +2,27 @@
 
 ### Demonstration Repository of Audit-Ready of ART TREES TMR Submission
 
+Winrock Intl 2025-08-07
+
 Welcome to the **ART-TREES-Verification-Repository-Demo-2025**, a training resource for preparing and submitting a
 complete data package for an ART TREES verification audit.
 
-This repository is structured to mirror a real-world submission. By exploring its contents, you will learn how to
-organize your documents and data to meet the rigorous standards of GHG verification. The goal is to help you "think like
-an auditor" and create a submission that is transparent, complete, and easy to verify, thereby reducing the likelihood
-of audit findings and delays.
+This repository demonstrates several best practices for gold-standard data submission to the ART TREES carbon registry.
+By exploring its contents, you will learn how to organize your documents and data to meet the rigorous standards of GHG
+verification. The goal is to help you "think like an auditor", or a "replicator" attempting to verify the enclosed
+calcualtions, prioritizing transparent and complete design that is easy to verify and ultimately reduces likelihood of
+audit findings and delays in replciation.
 
-------------------------------------------------------------------------------------------------------------------------
+-   [Data Repository Guide](#data-repository-guide)
+-   [Data Repository Best Practices](#data-repository-best-pracrtices)
+ -   [Data Integrity & Traceability](#data-integrity-&-traceability)
+-   [Data Repository Guide](#data-repository-guide)
+-   [Data Repository Guide](#data-repository-guide)
+-   [Data Repository Guide](#data-repository-guide)
+-   [Data Repository Guide](#data-repository-guide)
+-   [Including Plots](#including-plots)
 
-### How to Use this Repository for Training
+### Data Repository Guide
 
 This repository is designed as a practical learning tool. We recommend you explore the folder structure and examine the
 contents of each sample document. This will help you understand:
@@ -31,7 +41,7 @@ We encourage you to use this repository as a checklist and a reference for your 
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Core Concepts from GHG Auditing
+### Data Repository Best Practices
 
 As you navigate this repository, keep the following key principles in mind. These are the fundamental concepts that
 auditors use to evaluate your submission.
