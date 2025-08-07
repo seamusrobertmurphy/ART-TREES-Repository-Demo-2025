@@ -1,7 +1,12 @@
-Untitled
+ART-TREES Audit Repository Demo
 ================
 Winrock Intl
 2025-08-07
+
+[![LinkedIn
+Badge](https://img.shields.io/badge/Project-Profile-blue)](https://www.linkedin.com/in/seamusrobertmurphy/)
+[![Pubs
+Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://scholar.google.com/citations?hl=en&user=jDGq9I4AAAAJ)
 
 - [Data Repository Guide](#data-repository-guide)
 - [Data Repository Best Practices](#data-repository-best-practices)
@@ -10,8 +15,9 @@ Winrock Intl
   - [3. Data Packaging & Organization](#3-data-packaging--organization)
 - [Practice Exercise: A Mock Audit](#practice-exercise-a-mock-audit)
 
-Welcome to the **ART-TREES-Verification-Repository-Demo-2025**, a
-training resource for preparing and submitting a complete data package
+Welcome to the
+[`ART-TREES-Verification-Repository-Demo-2025.git`](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025),
+a training resource for preparing and submitting a complete data package
 for an ART TREES verification audit.
 
 This repository demonstrates several best practices for gold-standard
@@ -19,9 +25,9 @@ data submission to the ART TREES carbon registry. By exploring its
 contents, you will learn how to organize your documents and data to meet
 the rigorous standards of GHG verification. The goal is to help you
 “think like an auditor”, or a “replicator” attempting to verify the
-enclosed calcualtions, prioritizing transparent and complete design that
+enclosed calculations, prioritizing transparent and complete design that
 is easy to verify and ultimately reduces likelihood of audit findings
-and delays in replciation.
+and delays in replication.
 
 ### Data Repository Guide
 
