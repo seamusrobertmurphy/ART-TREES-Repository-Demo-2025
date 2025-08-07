@@ -1,7 +1,9 @@
-[![LinkedIn Badge](https://img.shields.io/badge/My-LinkedIn-blue)](https://www.linkedin.com/in/seamusrobertmurphy/)
-[![Pubs Badge](https://img.shields.io/badge/My-Pubs-critical)](https://scholar.google.com/citations?hl=en&user=jDGq9I4AAAAJ)
+[![LinkedIn Badge](https://img.shields.io/badge/Project-Profile-blue)](https://www.linkedin.com/in/seamusrobertmurphy/)
+[![Pubs
+Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://scholar.google.com/citations?hl=en&user=jDGq9I4AAAAJ)
 
 # ART TREES Verification Repository Demonstration
+
 ####### Winrock Intl 2025-08-07
 
 -   [Data Repository Guide](#data-repository-guide)
