@@ -1,4 +1,4 @@
-# ART-TREES-Verification-Repository-Demo-2025
+# ART TREES Verification Repository Demonstration
 
 ### Demonstration Repository of Audit-Ready of ART TREES TMR Submission
 
