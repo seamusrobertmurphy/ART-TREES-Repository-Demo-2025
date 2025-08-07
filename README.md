@@ -35,7 +35,7 @@ Today, we hope to
 This exercise will test your ability to use version-controlled data to achieve an exact result, demonstrating a key
 skill required for audit readiness. Specifically, we will replicate calculations of change in forest cover for the
 crediting period from 2017 to 2021 using the example script and markdown runtime named `TREES-TMR-Replication-Demo.Rmd`.
-Your final calculated values must match the figures reported in **Table 16** of the Ecuador TMR (April 09, 2025).
+Your final calculated values must match the figures reported in **Table 16** of the previous TMR submission.
 
 ### Requirements Check {#requirements-check}
 
@@ -76,7 +76,7 @@ raster-based calculation to determine the change in forest area and will output 
 #### **Step 4. Compare Results**
 
 The script's output will display a final calculated value (in hectares). Compare this result to the figure reported in
-**Table 16 (page 129)** of the Ecuador TMR. They should match exactly.
+**Table 16** of the TMR. They should match exactly.
 
 If the script's output does not match, this is a critical learning opportunity. It demonstrates how even small
 discrepancies in data or code can lead to different results, which is a common audit finding. It highlights the need for
