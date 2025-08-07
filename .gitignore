@@ -17,3 +17,25 @@ _site/
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
 .Rproj.user
+
+
+.DS_Store
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.vscode/settings.json
+rspb-gola-redd-review.docx
+/data
+/data/
+/data/LULC
+/data/RGBs
+/data/STACK
+/data/.DS_Store
+/data/training_samples
+/rspb-gola-redd-review.docx
+/rspb-gola-redd-review.html
+/rspb-gola-redd-risk.docx
+/rspb-gola-redd-risk.html
+/rspb-gola-redd-risk.Rproj
+*.html
