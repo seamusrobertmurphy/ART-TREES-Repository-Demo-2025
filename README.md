@@ -1,60 +1,3 @@
-# ART-TREES Audit Repository Demo
-
-Winrock Intl 2025-08-08
-
--   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
--   [Repository Guidelines](#repository-guidelines)
--   [Step 2. Execute the Script &
-    Compare](#step-2-execute-the-script--compare-1)
-
-``` r
-# install package compiler
-install.packages("easypackages")
-```
-
-```         
-The downloaded binary packages are in
-    /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpNLv267/downloaded_packages
-```
-
-``` r
-# let compiler do the work...
-easypackages::packages(
-  "bslib",
-  "caret", "cols4all", "covr", "cowplot",
-  "e1071", "exactextractr", "elevatr",
-  "gdalcubes", "gdalUtilities", "geojsonsf", "geos", "ggplot2", "ggstats",
-  "ggspatial", "ggmap", "ggplotify", "ggpubr", "ggrepel", "giscoR",
-  "hdf5r", "httr", "httr2", "htmltools",
-  "jsonlite",
-  "knitr",
-  "leafem", "libgeos", "luz", "lwgeom", "leaflet", "leafgl",
-  "mapedit", "mapview", "maptiles", "methods", "mgcv",
-  "ncdf4", "nnet",
-  "openxlsx",
-  "parallel", "plotly",
-  "randomForest", "rasterVis", "raster", "Rcpp", "RcppArmadillo",
-  "RcppCensSpatial", "rayshader", "RcppEigen", "RcppParallel", "renv",
-  "RColorBrewer", "rgl", "RStoolbox", "rts", "rmarkdown",
-  "s2", "sf", "scales", "spdep", "stars", "stringr",
-  "terra", "testthat", "tidyverse", "tidyterra",
-  "tmap", "tmaptools", "terrainr",
-  "xgboost", prompt=FALSE)
-  
-# setup default chunk settings
-knitr::opts_chunk$set(
-  echo = TRUE, 
-  message = FALSE, 
-  warning = FALSE,
-  error = FALSE, 
-  comment = NA, 
-  tidy.opts = list(width.cutoff = 6),
-  htmltools.dir.version = FALSE, 
-  htmltools.preserve.raw = FALSE)
-```
-
---------------------------------------------------------------------------------
-
 [<img src="https://winrock.org/wp-content/uploads/2021/12/Winrock-logo-R.png" width="500"/>](#section)
 
 [![LinkedIn
@@ -118,9 +61,9 @@ curriculum. Simply open the `markdown.Rmd` file in your R environment and run
 it. The script will automatically perform the raster-based calculation to
 determine the change in forest area and output the final result.
 
--   **Open the Script**: Launch RStudio and open the
+-   Open the Script: Launch RStudio and open the
     `03_Spatial_Data/TREES-TMR-Replication-Demo.Rmd` file.
--   **Inspect the Code**: Before running, review the code. You’ll see that it’s
+-   Inspect the Code: Before running, review the code. You’ll see that it’s
     broken down into logical chunks:
     -   Loading required R packages (`library(raster)`, `library(sf)`, etc.).
 
@@ -131,22 +74,22 @@ determine the change in forest area and output the final result.
     -   Performing the raster calculations to identify forest change.
 
     -   Outputting the final calculated area in hectares.
--   **Run the Script**: Execute the entire R Markdown file. You can do this by
+-   Run the Script: Execute the entire R Markdown file. You can do this by
     clicking the “Run All Chunks” button in RStudio or by using the `knitr`
     function. The script will process the spatial data and display the final
     result in the console.
 
 The script’s output will display a single, final calculated value in hectares.
-Compare this result to the figure reported in **Table 16 of the TMR**. They
-should match exactly.
+Compare this result to the figure reported in Table 16 of the TMR. They should
+match exactly.
 
--   **If the results match**: You have successfully demonstrated **data
-    reproducibility**. The combination of the version-controlled data and script
+-   If the results match: You have successfully demonstrated data
+    reproducibility. The combination of the version-controlled data and script
     in this repository has produced the same result as the official submission.
     This is a critical success for any audit.
 
--   **If the results do not match**: This is a key learning opportunity. It
-    shows how even small discrepancies, a different software version, a missing
+-   If the results do not match: This is a key learning opportunity. It shows
+    how even small discrepancies, a different software version, a missing
     package, or an altered data file, can lead to different results. This is a
     common and serious finding in a verification audit, and it underscores the
     need for rigorous version control and a robust QA/QC process.
