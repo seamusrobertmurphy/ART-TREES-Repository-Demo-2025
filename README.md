@@ -1,4 +1,4 @@
-# <img src="https://winrock.org/wp-content/uploads/2021/12/Winrock-logo-R.png" width="500">
+# <img src="https://winrock.org/wp-content/uploads/2021/12/Winrock-logo-R.png" width="500"/>
 
 2025-08-07
 
@@ -7,16 +7,20 @@
 Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://scholar.google.com/citations?hl=en&user=jDGq9I4AAAAJ)
 [![Twitter Badge](https://img.shields.io/badge/Project-Tweets-critical?color=blue)](https://x.com/) [![Program
 Badge](https://img.shields.io/badge/Project-Developer-critical)](https://www.ambiente.gob.ec/) [![Annexes
-Badge](https://img.shields.io/badge/Project-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec/index.php/s/EoQjtDP8Lp5SqjS)
+Badge](https://img.shields.io/badge/Project-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
 
--   [Installation Guide](#installation-guide)
+-   [Installation](#installation)
+
 -   [Repository Layout](#repository-layout)
--   [Repository Practices](#repository-practices)
+
+-   [Repository Protocols](#repository-practices)
+
     -   [1. Data Traceability](#1-data-traceability)
     -   [2. Data Completeness](#2-data-completeness)
     -   [3. Data Curation](#3-data-curation)
-    -   [4. Community Protocols](#4-community-protocols)
--   [Practice Exercise: A Mock Audit](#practice-exercise-a-mock-audit)
+    -   [4. Community Health](#4-community-health)
+
+-   [Practice Exercise: A Mock Audit](#practice-exercise)
 
 Welcome to the
 [`ART-TREES-Verification-Repository-Demo-2025.git`](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025),
@@ -37,16 +41,16 @@ skill required for audit readiness. Specifically, we will replicate calculations
 crediting period from 2017 to 2021 using the example script and markdown runtime named `TREES-TMR-Replication-Demo.Rmd`.
 Your final calculated values must match the figures reported in **Table 16** of the previous TMR submission.
 
-### Requirements Check {#requirements-check}
+### Prerequisites {#pre-requis}
 
-Before starting, ensure you have:
+Before starting, ensure you have the following. See Appendix I for installation resources.
 
 -   Git installed on your computer
 -   R, RStudio, & Git-CLI installed
 -   Basic familiarity with R Markdown
 -   Internet connection for cloning
 
-### Installation Guide {#installation-guide}
+### Installation {#installation}
 
 **Instructions:**
 
@@ -88,7 +92,7 @@ We offer the following example as a tentative layout. Please explore the folder 
 each sample document, and provide feedback on improved structure more appropriate to your project design. Repository
 Layout
 
--   01_Program_Documents/
+-   01_Program_Data/
 
 -   02_Carbon_Data/
 
@@ -102,15 +106,18 @@ Layout
 
 -   06_QAQC_SOPs/
 
+![Example repository layout derived for illustrative purposes in this training series of August
+2025](01_Program_Data/Communications/assets/repo-layout-wide.png)
+
 ------------------------------------------------------------------------------------------------------------------------
 
-### Repository Practices {#repository-practices}
+### Repository Protocol {#repository-protocol}
 
 As you navigate this repository, keep the following key principles in mind. These are the fundamental concepts that
 auditors use to evaluate your submission. We also encourage you to use this repository as a checklist or reference for
 your own submissions.
 
-#### 1. Data Traceability
+#### 1. Data Traceability {#data-traceaility}
 
 Auditors must be able to trust that your data is authentic, accurate, and has not been altered without record. Our demo
 repository demonstrates this through:
@@ -123,7 +130,7 @@ repository demonstrates this through:
     data source and the methodology used to derive it. Our file structure helps link report claims to specific evidence
     files.
 
-#### 2. Data Completeness
+#### 2. Data Completeness {#data-completeness}
 
 Completeness is a core principle of verification, meaning that all information needed to justify your GHG assertion must
 be included. Nothing significant can be missing.
@@ -136,7 +143,7 @@ be included. Nothing significant can be missing.
 -   **Curation & Change-Logs:** The repository includes a place to document any methodological changes made over time.
     This ensures that the context for your data is complete, so auditors can fully understand your approach.
 
-#### 3. Data Curation
+#### 3. Data Curation {#data-curation}
 
 A well-organized data package allows auditors to quickly find what they need, making the verification process more
 efficient and painless.
@@ -154,7 +161,14 @@ efficient and painless.
     system (`.prj` file) is present and correct. Our demo repository includes a section dedicated to this to ensure you
     don’t miss any components.
 
-#### 4. Community Protocols
+#### 4. Data Replication {#data-replication}
+
+A well-organized ..... 
+
+
+-   **Data Replication:** We recommend using .
+
+#### 4. Community Health {#community-health}
 
 We offer a shortlist of default community health files that may be adapted to include SOPs and documentation of workbook
 updates, always aiming to build trust in the auditor:
@@ -178,7 +192,7 @@ updates, always aiming to build trust in the auditor:
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Practice Exercise: A Mock Audit {#practice-exercise-a-mock-audit}
+### Practice Exercise: A Mock Audit {#practice-exercise}
 
 To test your understanding, imagine you are the auditee for this repository. An auditor asks you the following question:
 
@@ -191,3 +205,10 @@ To test your understanding, imagine you are the auditee for this repository. An 
 2.  Explain what you would present to the auditor and why it demonstrates completeness and integrity.
 3.  Consider the risks: What would the auditor be concerned about here (e.g., Inherent , Control, Detection Risk)? Your
     response should demonstrate an understanding of why the auditor is asking this question.
+
+#### Runtime Log {#runtime-log}
+
+```{r, class.source = c("numCode", "r", "numberLines")}
+devtools::session_info()
+#Sys.getenv()
+```
