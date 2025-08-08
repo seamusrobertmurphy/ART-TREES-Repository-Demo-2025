@@ -1,3 +1,60 @@
+# ART-TREES Audit Repository Demo
+
+Winrock Intl 2025-08-08
+
+-   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
+-   [Repository Guidelines](#repository-guidelines)
+-   [Step 2. Execute the Script &
+    Compare](#step-2-execute-the-script--compare-1)
+
+``` r
+# install package compiler
+install.packages("easypackages")
+```
+
+```         
+The downloaded binary packages are in
+    /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpNLv267/downloaded_packages
+```
+
+``` r
+# let compiler do the work...
+easypackages::packages(
+  "bslib",
+  "caret", "cols4all", "covr", "cowplot",
+  "e1071", "exactextractr", "elevatr",
+  "gdalcubes", "gdalUtilities", "geojsonsf", "geos", "ggplot2", "ggstats",
+  "ggspatial", "ggmap", "ggplotify", "ggpubr", "ggrepel", "giscoR",
+  "hdf5r", "httr", "httr2", "htmltools",
+  "jsonlite",
+  "knitr",
+  "leafem", "libgeos", "luz", "lwgeom", "leaflet", "leafgl",
+  "mapedit", "mapview", "maptiles", "methods", "mgcv",
+  "ncdf4", "nnet",
+  "openxlsx",
+  "parallel", "plotly",
+  "randomForest", "rasterVis", "raster", "Rcpp", "RcppArmadillo",
+  "RcppCensSpatial", "rayshader", "RcppEigen", "RcppParallel", "renv",
+  "RColorBrewer", "rgl", "RStoolbox", "rts", "rmarkdown",
+  "s2", "sf", "scales", "spdep", "stars", "stringr",
+  "terra", "testthat", "tidyverse", "tidyterra",
+  "tmap", "tmaptools", "terrainr",
+  "xgboost", prompt=FALSE)
+  
+# setup default chunk settings
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  message = FALSE, 
+  warning = FALSE,
+  error = FALSE, 
+  comment = NA, 
+  tidy.opts = list(width.cutoff = 6),
+  htmltools.dir.version = FALSE, 
+  htmltools.preserve.raw = FALSE)
+```
+
+--------------------------------------------------------------------------------
+
 [<img src="https://winrock.org/wp-content/uploads/2021/12/Winrock-logo-R.png" width="500"/>](#section)
 
 [![LinkedIn
@@ -35,7 +92,7 @@ section below.
 
 --------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit
+### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
 
 #### Step 1. Clone the Repository
 
@@ -63,7 +120,7 @@ determine the change in forest area and output the final result.
 
 -   **Open the Script**: Launch RStudio and open the
     `03_Spatial_Data/TREES-TMR-Replication-Demo.Rmd` file.
--   **Inspect the Code**: Before running, review the code. You'll see that it's
+-   **Inspect the Code**: Before running, review the code. You’ll see that it’s
     broken down into logical chunks:
     -   Loading required R packages (`library(raster)`, `library(sf)`, etc.).
 
@@ -75,7 +132,7 @@ determine the change in forest area and output the final result.
 
     -   Outputting the final calculated area in hectares.
 -   **Run the Script**: Execute the entire R Markdown file. You can do this by
-    clicking the "Run All Chunks" button in RStudio or by using the `knitr`
+    clicking the “Run All Chunks” button in RStudio or by using the `knitr`
     function. The script will process the spatial data and display the final
     result in the console.
 
@@ -123,7 +180,7 @@ software dependencies at that precise moment in time,
 
 --------------------------------------------------------------------------------
 
-### Repository Guidelines
+### Repository Guidelines {#repository-guidelines}
 
 We offer the following example as a tentative layout. Please explore the folder
 structure and examine the contents of each sample document, and provide feedback
@@ -148,7 +205,7 @@ on improved structure more appropriate to your project design.
 -   `06_QAQC_SOPs/`
 :::
 
-::: {.column width="5%"}
+::: {.column width="10%"}
 :::
 
 ::: {.column width="65%"}
@@ -171,7 +228,7 @@ Fig,1 Illustrative example of wider repository layout
 #### Repository Principles
 
 These are the fundamental concepts that auditors use to evaluate your
-submission, which are embedded throughout this repository's structure.
+submission, which are embedded throughout this repository’s structure.
 
 -   Data Traceability: We demonstrate this through clear file naming
     conventions, a folder for QA/QC procedures, and a structure that links
@@ -243,7 +300,7 @@ in the auditor:
 Step 3. Document and Share Runtime Log
 
 In any rigorous GHG accounting project, especially for a verification audit like
-ART TREES, it's not enough to simply produce a final number. You must prove how
+ART TREES, it’s not enough to simply produce a final number. You must prove how
 you arrived at that number and that the process is perfectly reproducible. This
 is the core of data integrity.
 
@@ -253,15 +310,15 @@ The runtime log is a snapshot of your computing system and all the software
 dependencies at a precise moment in time, providing auditors with a verifiable
 record of your work.
 
-After you've successfully completed Step 2 and replicated the forest cover
+After you’ve successfully completed Step 2 and replicated the forest cover
 calculation, you will generate and save a runtime log. This log is a crucial
 piece of evidence that will be included in your submission package.
 
 1.  **Generate the Session Information Log**: Open the R console and run the
     command `devtools::session_info()`. The output is a comprehensive list of
     every package loaded in your R session, including its version number, the
-    date it was built, and its source. This detailed snapshot is the "runtime
-    log."
+    date it was built, and its source. This detailed snapshot is the “runtime
+    log.”
 
 2.  **Save the Log**: Copy the entire output from the R console and save it in a
     file named `runtime_log_YYYYMMDD.txt` within the `/06_QAQC_SOPs/` directory.
@@ -271,9 +328,9 @@ piece of evidence that will be included in your submission package.
 
 3.  **Commit the Changes to Git**: Using the command line, stage and commit the
     new log file to the repository. This action permanently ties the runtime log
-    to the exact state of the project's code and data at that moment.
+    to the exact state of the project’s code and data at that moment.
 
-```{r, eval=F}
+``` r
 git add 06_QAQC_SOPs/runtime_log_YYYYMMDD.txt
 git commit -m "Added runtime log for forest cover calculation."
 ```
@@ -297,7 +354,7 @@ they will be looking at these key sections:
     package used in the analysis, along with its **exact version number**
     (`sf: 1.0-21`, `raster: 3.6-32`, etc.) and the date it was built. This level
     of detail is essential because even a minor package update can sometimes
-    change a calculation's result.
+    change a calculation’s result.
 
 -   **Library Paths**: The log also shows where the packages are stored on your
     system. This highlights the use of `renv`, a package management tool that
@@ -343,7 +400,7 @@ Surfaces, and Geometry Collections `sfc`.
 
 +--------------+--------------------------------------------------------------+
 | ISO Standard | Components relevant to ART-TREES GHG audit verifications     |
-+==============+==============================================================+
++:=============+:=============================================================+
 | ISO 27001,   | Two widely discussed ISO standards for data governance are   |
 |              | ISO 27001 and ISO 8000. ISO 27001 is a standard for          |
 | ISO 8000     | Information Security Management Systems (ISMS), while ISO    |
