@@ -14,12 +14,82 @@ editor_options:
     wrap: 100
 ---
 
-```{r, echo=F, message=F, warning=F, error=F, comment=NA}
+
+```{r, echo=F, eval=T, message=F, warning=F, error=F, comment=NA}
 ## INTERNAL COPY - TRIM PRIOR SEMINAR
+
+install.packages("easypackages")
+easypackages::packages(
+  "bslib",
+  "caret", "cli", "cols4all", "covr", "cowplot",
+  "e1071", "exactextractr", "elevatr",
+  "gdalcubes", "gdalUtilities", "geojsonsf", "geos", "ggplot2", "ggstats",
+  "ggspatial", "ggmap", "ggplotify", "ggpubr", "ggrepel", "giscoR",
+  "hdf5r", "httr", "httr2", "htmltools",
+  "jsonlite",
+  "leafem", "libgeos", "luz", "lwgeom", "leaflet", "leafgl",
+  "mapedit", "mapview", "maptiles", "methods", "mgcv",
+  "ncdf4", "nnet",
+  "openxlsx",
+  "parallel", "plotly",
+  "randomForest", "rasterVis", "raster", "Rcpp", "RcppArmadillo",
+  "RcppCensSpatial", "rayshader", "RcppEigen", "RcppParallel", "renv",
+  "RColorBrewer", "rgl", "RStoolbox", "rts",
+  "s2", "sf", "scales", "spdep", "stars", "stringr",
+  "terra", "testthat", "tidyverse", "tidyterra",
+  "tmap", "tmaptools", "terrainr",
+  "xgboost", prompt=FALSE)
+  
+knitr::opts_chunk$set(
+  echo = TRUE, message = FALSE, warning = FALSE,
+  error = FALSE, comment = NA, tidy.opts = list(width.cutoff = 6)
+)
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+mapviewOptions(fgb = FALSE)
+sf::sf_use_s2(use_s2 = FALSE)
+```
+
+## Replication via Renv Snapshots
+
+`renv` profiles allow for managing different sets of package dependencies for various project contexts, such as separate environments for development, production, or demonstrations.
+
+## Activating a Renv Profile
+
+To activate a specific `renv` profile, you have two primary options:
+
+-  Step 1. Set a project profile: To make a profile the default for future R sessions, run `renv::activate()` function. Upon restarting R, you will find `lockfile` path assigned to new project `renv` folder ( `renv/profiles/demo-repo/`).
+-  Step 2. Activate a temporary profile: To activate a profile for the current R session without making it the default, you can set the `RENV_PROFILE` environment variable.
+
+## Managing Renv Dependencies
+
+Dependencies for a specific profile can be declared within the project's top-level DESCRIPTION file. `renv` also allows you to specify custom package remotes separately from the dependencies.
+
+-  Dependencies: Use the `Config/renv/profiles/<profile_name>/dependencies` field to list required packages.
+-  Remotes: Use the` Config/renv/profiles/<profile_name>/remotes` field to define custom remotes for those packages.
+
+You can also opt-in to `explicit` snapshots, which uses only the packages enumerated in this field and ignores the standard Imports, Depends, and Suggests fields.
+
+
+```{r, eval=F}
+# Activate 'demo-repo' profile and set as default for the project
+renv::activate(profile = "demo-repo")
+
+# To activate a 'dev' profile for a single session only
+Sys.setenv(RENV_PROFILE = "dev")
+
+# Example of defining profile-specific dependencies in DESCRIPTION
+Config/renv/profiles/shiny/dependencies: shiny, tidyverse
+Config/renv/profiles/shiny/remotes: rstudio/shiny, tidyverse/tidyverse
+
+# Enable 'explicit' snapshots for the project
+renv::settings$snapshot.type("explicit")
+```
+
+#options(repos = c(CRAN = "https://cloud.r-project.org"))
 #readRenviron("~/.Renviron")
 #readRenviron("~/.Rprofile")
 #{bash}: "source  ~/.zshrc"
-#options(repos = c(CRAN = "https://cloud.r-project.org"))
+#chooseCRANmirror()
 
 libs = c("devtools", 
          "ggmap", 
@@ -31,8 +101,8 @@ libs = c("devtools",
          "magrittr", "maptiles", "MASS", "methods", 
          "osmdata", 
          "pak", "pander", "psych", 
-         "raster", "rasterVis", "RColorBrewer", "Rcpp", 
-         "readxl", "rmarkdown", "rnaturalearth", "rnaturalearthdata", "RStoolbox", 
+         "raster", "rasterVis", "RColorBrewer", "Rcpp", "readxl", "remotes",
+         "rmarkdown", "rnaturalearth", "rnaturalearthdata", "RStoolbox", 
          "s2", "sf", "sp", "stars", "stringr", 
          "terra", "terrainr", "tibble", "tidyr", "tidyverse",  "tinytex", "tmap", "tmaptools", 
          "units")
@@ -41,69 +111,6 @@ installed_libs = libs %in% rownames(installed.packages())
 if(any(installed_libs==F)){install.packages(libs[!installed_libs],repos="https://cloud.r-project.org")}
 invisible(lapply(libs, library, character.only = T))
 lapply(libs, require, character.only = T)
-
-#libs = c("basemaps", "c2z", "cpp11", "cpp11armadillo", "cpp11eigen", "cols4all", "earthdatalogin", "elevatr", "geodata", "ggmap", "htmltools", "janitor", "jsonlite", "kableExtra", "knitr", "latex2exp", "leaflet", "leaflet.providers", "lwgeom", "magrittr", "maptiles", "MASS", "methods", "osmdata", "pander", "psych", "raster", "rasterVis", "RColorBrewer", "Rcpp", "Rcpp11", "raster", "readxl", "rmarkdown", "rnaturalearth", "rnaturalearthdata", "RStoolbox", "s2", "sf", "sits", "sp", "stars", "stringr", "terra", "terrainr", "tibble", "tidyr", "tidyverse",  "tinytex", "tmap", "tmaptools", "torch", "units")
-
-#devtools::install_github("r-spatial/sf", configure.args = c(
-#  "--with-gdal-config=/opt/local/bin/gdal-config", 
-#  "--with-proj-include=/opt/local/lib/proj9/include", 
-#  "--with-proj-lib=/opt/local/lib/proj9/lib", 
-#  "--with-geos-config=/opt/local/bin/geos-config"))
-
-#install.packages('terra', type="source", configure.args = c(
-#  "--with-gdal-config=/opt/local/bin/gdal-config", 
-#  "--with-proj-include=/opt/local/lib/proj9/include", 
-#  "--with-proj-lib=/opt/local/lib/proj9/lib", 
-#  "--with-geos-config=/opt/local/bin/geos-config"))
-
-#linux installation paths
-#install.packages("sf",type = "source",configure.args = c(
-#    "--with-gdal-config=/usr/bin/gdal-config",
-#    "--with-geos-config=/usr/bin/geos-config",
-#    "--with-proj-include=/usr/include",
-#    "--with-proj-lib=/usr/lib64"))
-
-#install.packages("terra",type = "source",configure.args = c(
-#    "--with-gdal-config=/usr/bin/gdal-config",
-#    "--with-proj-data=/usr/share/proj"))
-
-library(caret)
-library(cols4all)
-library(dplyr)
-#library(ForestTools)
-library(e1071)
-library(flextable)
-library(ggplot2)
-library(ggplotify)
-library(janitor)
-library(pkgconfig)
-library(knitr)
-library(latex2exp)
-library(leaflet)
-library(leaflet.extras)
-library(leaflet.providers)
-library(leafgl)
-library(leafem)
-library(latticeExtra)
-library(lwgeom)
-library(MASS)
-library(maptiles)
-library(ModelMetrics)
-library(performanceEstimation)
-library(pkgconfig)
-library(raster)
-library(Rcpp)
-library(RcppThread)
-library(randomForest)
-library(rmarkdown)
-library(sf)
-library(sp)
-library(terra)
-library(tidyterra)
-library(tinytex)
-library(tmap)
-library(tmaptools)
-
 
 base::options(
   htmltools.dir.version = F, 
@@ -121,10 +128,12 @@ knitr::opts_chunk$set(
   fig.height = 10
   ) 
 
-sf::sf_use_s2(use_s2 = FALSE) # non-spherical geometries
+# non-spherical geometries
+sf::sf_use_s2(use_s2 = FALSE) 
+
+# purge cache
 terraOptions(memfrac=0.9, tempdir = "./temp")
-#renv::restore() # reload packages if someone previously ran 'renv::init()' 
-#renv::init() # save new package list after editing script 
+
 ```
 
 # <img src="https://winrock.org/wp-content/uploads/2021/12/Winrock-logo-R.png" width="500"/>
@@ -352,12 +361,11 @@ following question:
 
 ### Appendix I: ISO Data Governance
 
-The data management principles of traceability, integrity, and reproducibility are critical for GHG
-accounting and auditing. These principles are supported by a range of international standards,
-including those from the ISO. This appendix provides an overview of several ISO standards relevant
-to data governance and quality.
+The data management principles of traceability, integrity, and reproducibility are key to GHG
+audits. These principles are supported by a range of ISO standards. This appendix provides an
+overview of those ISO standards relevant to data governance and quality.
 
-ISO 27001 and ISO 8000
+##### ISO 27001 and ISO 8000
 
 Two widely discussed ISO standards for data governance are ISO 27001 and ISO 8000. ISO 27001 is a
 standard for Information Security Management Systems (ISMS), while ISO 8000 focuses on data quality
@@ -369,7 +377,7 @@ data used in various contexts, such as business processes, analytics, and decisi
 certain quality standards. It covers all the key elements of data—Syntax, Provenance, Completion,
 Accuracy, and Certification—providing a standard to measure and certify data quality.
 
-ISO/IEC 38505–1:2017
+##### ISO/IEC 38505–1:2017
 
 This is a standard for data governance that provides a set of guidelines for the governance of data
 within an organization. It considers data governance as a subset of IT governance, which in turn is
@@ -379,23 +387,52 @@ handling and usage of data in an organization.
 
 Other Relevant ISO Standards
 
-ISO 22745: This standard focuses on master data exchange between organizations. It specifies data
-requirements for messages containing master data, including syntax, semantic encoding, and
-portability. It is often used in conjunction with ISO 8000 to realize the benefits of assessing and
-improving data quality.
+##### ISO 22745
 
-ISO 3166: This standard defines codes for country names, which can be utilized for consistent
-external reference data in business applications to reduce time and effort in data integration and
-analytical tasks.
+This standard focuses on master data exchange between organizations. It specifies data requirements
+for messages containing master data, including syntax, semantic encoding, and portability. It is
+often used in conjunction with ISO 8000 to realize the benefits of assessing and improving data
+quality.
 
-ISO/IEC 11179: This metadata registry (MDR) standard provides a framework for representing metadata
-for an organization to make data understandable and shareable. It provides guidance to software
-developers building metadata repositories.
+##### ISO 3166
 
-ISO/IEC 27701:2019: This standard serves as a data privacy extension to ISO 27001, providing a
-framework for organizations to establish systems that facilitate compliance with data privacy
-regulations like GDPR.
+This standard defines codes for country names, which can be utilized for consistent external
+reference data in business applications to reduce time and effort in data integration and analytical
+tasks.
 
+##### ISO/IEC 11179
+
+This metadata registry (MDR) standard provides a framework for representing metadata for an
+organization to make data understandable and shareable. It provides guidance to software developers
+building metadata repositories.
+
+##### ISO/IEC 27701:2019
+
+This standard serves as a data privacy extension to ISO 27001, providing a framework for
+organizations to establish systems that facilitate compliance with data privacy regulations like
+GDPR.
+
+### Appendix: ISO Geodata Standards & Performance Testing
+
+This appendix provides resources and context for trainees interested in debugging and validating
+geospatial operations using the liblwgeom library.
+
+#### ISO Data Governance and Standards
+
+-   The `liblwgeom` library was derived according to the OpenGIS Simple Features Access (SFA)
+    geometry rules (ISO 19125). This TopGeometry model is derived using open-source platform-neutral
+    architecture for simple feature geometry functions. The base class includes specific subclasses
+    for handling spatial data objects of Points, Curves, Surfaces, and a GeometryCollection `sfc`.
+-   This part of the SFA implements a profile of the spatial schema in ISO 19107:2003. The library's
+    topology support is based on the ISO SQL/MM (ISO 13249) standard. These standards help ensure
+    that data used in business processes meets specific quality standards for syntax, provenance,
+    completeness, and accuracy, aligning with principles of ISO 8000 (Data Quality Management).
+-   The liblwgeom library uses the CUnit test framework for unit testing, which provides a
+    gold-standard and lightweight method to calibrate and debug spatial operations.
+-   The make check command runs a set of regression tests for the entire PostGIS system, which helps
+    verify the integrity of the installation and its dependencies, such as PROJ4 (for cartographic
+    projections) and GEOS (for topological tests).
+    
 ##### Runtime Log {#runtime-log}
 
 ```{r, class.source = c("numCode", "r", "numberLines")}
