@@ -35,7 +35,7 @@ section below.
 
 --------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit
+### The Practical Group Exercise
 
 #### Step 1. Clone the Repository
 
@@ -51,58 +51,52 @@ version-controlled data.
 git clone [https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git)
 ```
 
+Welcome to the
+[`ART-TREES-Verification-Repository-Demo-2025.git`](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025),
+a training resource for preparing and submitting a complete data package for an
+ART TREES verification audit. Here, we document some best practices for using
+version control to ensure perfect reproducibility of your calculations. You will
+be complete this exercise following the four steps below:
+
+1.  Clone this repository to your local compute
+2.  Run the script to derive matching forest cover calculations,
+3.  Demonstrate version-control and data integrity with runtime log.
+
+#### Step 1. Clone the Repository
+
+Before starting, please ensure Git CLI (or Git Desktop), R & RStudio are
+installed, and internet connection is possible for cloning (see Appendix III)
+
+Open your command-line tool (or GitHub Desktop) and clone this repository to
+your local computer. This step is crucial for working with precise,
+version-controlled data.
+
+``` r
+git clone https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git
+```
+
 --------------------------------------------------------------------------------
 
-#### Step 2. Execute the Script & Compare
+#### Step 2. Execute the Script
 
 All the necessary data and the analysis script are located in the
-`/03_Spatial_Data/` directory following the layout provided in your training
-curriculum. Simply open the `markdown.Rmd` file in your R environment and run
-it. The script will automatically perform the raster-based calculation to
-determine the change in forest area and output the final result.
+`/03_Spatial_Data/` directory, following the layout provided in your training
+curriculum. Simply, open the `/03_Spatial_Data/` in your R environment and run
+it. The script is designed to automatically perform the raster-based calculation
+to determine the change in forest area and will output the final result.
 
--   **Open the Script**: Launch RStudio and open the
-    `03_Spatial_Data/TREES-TMR-Replication-Demo.Rmd` file.
--   **Inspect the Code**: Before running, review the code. You'll see that it's
-    broken down into logical chunks:
-    -   Loading required R packages (`library(raster)`, `library(sf)`, etc.).
+-   `03_Spatial_Data/TREES-TMR-Replication-Demo.Rmd`
 
-    -   Defining key variables, such as file paths and the reporting period.
-
-    -   Reading in the raw spatial data (e.g., land cover rasters).
-
-    -   Performing the raster calculations to identify forest change.
-
-    -   Outputting the final calculated area in hectares.
--   **Run the Script**: Execute the entire R Markdown file. You can do this by
-    clicking the "Run All Chunks" button in RStudio or by using the `knitr`
-    function. The script will process the spatial data and display the final
-    result in the console.
-
-The script’s output will display a single, final calculated value in hectares.
-Compare this result to the figure reported in **Table 16 of the TMR**. They
-should match exactly.
-
--   **If the results match**: You have successfully demonstrated **data
-    reproducibility**. The combination of the version-controlled data and script
-    in this repository has produced the same result as the official submission.
-    This is a critical success for any audit.
-
--   **If the results do not match**: This is a key learning opportunity. It
-    shows how even small discrepancies, a different software version, a missing
-    package, or an altered data file, can lead to different results. This is a
-    common and serious finding in a verification audit, and it underscores the
-    need for rigorous version control and a robust QA/QC process.
+The script’s output will display a final calculated value in hectares. Compare
+this result to the figure reported in Table 16 of the TMR. They should match
+exactly. If the script’s output does not match, this is a critical learning
+opportunity. It demonstrates how even small discrepancies in data or code can
+lead to different results, which is a common audit finding. It highlights the
+need for rigorous version control and a robust QA/QC process.
 
 --------------------------------------------------------------------------------
 
-<div>
-
-</div>
-
---------------------------------------------------------------------------------
-
-#### Step 3. Document Runtime Log
+#### Step 3. Document and submit runtime log
 
 To demonstrate **data integrity** and **reproducibility**, you must document the
 exact software environment used for your calculations. An **auditor will require
@@ -120,8 +114,6 @@ repository.
 
 The resulting log serves as a snapshot of your computing system and all the
 software dependencies at that precise moment in time,
-
---------------------------------------------------------------------------------
 
 ### Repository Guidelines
 
@@ -168,31 +160,74 @@ Fig,1 Illustrative example of wider repository layout
 
 --------------------------------------------------------------------------------
 
-#### Repository Principles
-
+As you navigate this repository, keep the following key principles in mind.
 These are the fundamental concepts that auditors use to evaluate your
-submission, which are embedded throughout this repository's structure.
+submission. We also encourage you to use this repository as a checklist or
+reference for your own submissions.
 
--   Data Traceability: We demonstrate this through clear file naming
-    conventions, a folder for QA/QC procedures, and a structure that links
-    report claims to specific evidence files. Every key figure in a report, such
-    as X hectares deforested, must be traceable back to its raw data source and
-    the methodology used to derive it.
--   Data Completeness: This repository is organized to align directly with the
-    ART TREES requirements. This provides a clear framework for you to check if
-    you have all the necessary data for every required category, such as
-    deforestation areas, emission factors, and safeguards information. The
-    repository also includes a place to document any methodological changes made
-    over time.
--   Data Curation: A well-organized data package allows auditors to quickly find
-    what they need. Our layout, for example, separates Calculations & Analysis
-    from Spatial Data and SOPs & Procedures. This logical grouping helps
-    auditors instinctively navigate your submission. A top-level README and
-    descriptive filenames are also key curation practices.
--   Data Replication: The use of a package management tool like renv (see
-    Appendix II) allows for locking in all dependencies. This ensures that
-    anyone can replicate your analysis in the exact same computational
-    environment, which is a key part of the verification process.
+#### Data Traceability
+
+Auditors must be able to trust that your data is authentic, accurate, and has
+not been altered without record. Our demo repository demonstrates this through:
+
+-   Version Control: Files are named with clear, descriptive conventions to
+    track changes. For example, you should have a final version of a map, not
+    just a series of ambiguous draft files.
+-   QA/QC Procedures: We’ve included a folder for `Quality Control` to show
+    where you would document internal checks, ensuring that manual data entry
+    and calculations are double-checked to catch errors.
+-   Traceability: Every key figure in a report, such as `X hectares deforested`,
+    must be traceable back to its raw data source and the methodology used to
+    derive it. Our file structure helps link report claims to specific evidence
+    files.
+
+#### Data Completeness
+
+Completeness is a core principle of verification, meaning that all information
+needed to justify your GHG assertion must be included. Nothing significant can
+be missing.
+
+-   Mapping Requirements: The repository structure is organized to align
+    directly with the ART TREES requirements. This provides a clear framework
+    for you to check if you have all the necessary data for every required
+    category, such as deforestation areas, emission factors, and safeguards
+    information.
+-   Completeness Checklist: You can create and use a checklist to confirm that
+    data for all reporting periods, geographic areas, and carbon pools are
+    present and documented before submission.
+-   Curation & Change-Logs: The repository includes a place to document any
+    methodological changes made over time. This ensures that the context for
+    your data is complete, so auditors can fully understand your approach.
+
+#### Data Curation
+
+A well-organized data package allows auditors to quickly find what they need,
+making the verification process more efficient and painless.
+
+-   Logical Folder Structure: We recommend using a clear folder structure like
+    the one in this demo.
+-   Our layout, for example, separates `Calculations & Analysis` from
+    `Spatial Data` and `SOPs & Procedures`. This logical grouping helps auditors
+    instinctively navigate your submission.
+-   `README` Files: A top-level `README` file acts as a quick guide to the
+    entire repository. You can also add smaller `README` files to individual
+    folders to describe their contents, like explaining which GIS files are
+    included and what their purpose is.
+-   Descriptive Filenaming: File names should be clear and descriptive, avoiding
+    jargon. For example, `Deforestation_Map_2020.shp` is better than
+    `map_v7_final.shp`.
+-   Spatial Data Checklist: A critical part of any REDD+ submission is the
+    spatial data. Auditors will check that all related files for a shapefile
+    (e.g., `.shp`, `.shx`, `.dbf`) are included and that the coordinate
+    reference system (`.prj` file) is present and correct. Our demo repository
+    includes a section dedicated to this to ensure you don’t miss any
+    components.
+
+#### ~~Data Replication~~
+
+~~A well-organized …..~~
+
+-   ~~Data Replication: We recommend using .~~
 
 #### Community of Practice
 
@@ -221,6 +256,29 @@ in the auditor:
 -   SUPPORT.md: A SUPPORT file lets people know about ways to get help with your
     project. For more information, see [Adding support resources to your
     project](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-support-resources-to-your-project).
+
+--------------------------------------------------------------------------------
+
+### Practice Exercise: Mock Audit
+
+#### Step 1. Clone the Repository
+
+To test your understanding, imagine you are the auditee for this repository. An
+auditor asks you the following question:
+
+> *“Please show me the raw data source for the emission factor of 75 tC/ha.
+> Where is that documented, and what is the evidence that it was used
+> correctly?”*
+
+**Task:**
+
+1.  Navigate the repository folders to locate the file(s) that would answer this
+    question.
+2.  Explain what you would present to the auditor and why it demonstrates
+    completeness and integrity.
+3.  Consider the risks: What would the auditor be concerned about here (e.g.,
+    Inherent , Control, Detection Risk)? Your response must demonstrate
+    understanding of finding.
 
 --------------------------------------------------------------------------------
 
