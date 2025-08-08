@@ -13,8 +13,26 @@ Badge](https://img.shields.io/badge/Project-Annexes-critical?color=blue)](https:
 
 --------------------------------------------------------------------------------
 
+-   [Practical Exercise](#practical-exercise)
+
+-   [Repository Guidelines](#repository-guidelines)
+
+-   [Repository Principles](#repository-principles)
+
+-   [Repository Community](#repository-community)
+
+-   [Runtime Log Explained](#runtime-log-explained)
+
+-   [Appendix I](#appendix-i)
+
+-   [Appendix II](#appendix-ii)
+
+-   [Appendix III](#appendix-iii)
+
+-   [Runtime Log](#runtime-log)
+
 Welcome to the
-[`ART-TREES-Verification-Repository-Demo-2025.git`](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025),
+[`ART-TREES Demo Reepository`](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025),
 a training resource for preparing and submitting a complete data package for an
 ART TREES verification audit. Here, we document some best practices for using
 **version control** to ensure **perfect reproducibility** of your calculations.
@@ -35,7 +53,7 @@ section below.
 
 --------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
+### Practical Exercise: Mock Audit {#practical-exercise}
 
 #### Step 1. Clone the Repository
 
@@ -48,7 +66,7 @@ your local computer. This step is crucial for working with precise,
 version-controlled data.
 
 ``` r
-git clone [https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git)
+git clone https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git
 ```
 
 --------------------------------------------------------------------------------
@@ -129,10 +147,6 @@ We offer the following example as a tentative layout. Please explore the folder
 structure and examine the contents of each sample document, and provide feedback
 on improved structure more appropriate to your project design.
 
-:::::: columns
-::: {.column width="25%"}
-. . ,
-
 -   `01_Program_Data/`
 
 -   `02_Carbon_Data/`
@@ -146,12 +160,7 @@ on improved structure more appropriate to your project design.
 -   `05_Safeguards/`
 
 -   `06_QAQC_SOPs/`
-:::
 
-::: {.column width="10%"}
-:::
-
-::: {.column width="65%"}
 <figure>
 
 <img src="01_Program_Data/Communications/assets/repo-layout-wide.png" alt="Fig,1 Illustrative example of wider repository layout" width="1000"/>
@@ -163,12 +172,10 @@ Fig,1 Illustrative example of wider repository layout
 </figcaption>
 
 </figure>
-:::
-::::::
 
 --------------------------------------------------------------------------------
 
-#### Repository Principles
+#### Repository Principles {#repository-principles}
 
 These are the fundamental concepts that auditors use to evaluate your
 submission, which are embedded throughout this repository’s structure.
@@ -194,7 +201,7 @@ submission, which are embedded throughout this repository’s structure.
     anyone can replicate your analysis in the exact same computational
     environment, which is a key part of the verification process.
 
-#### Community of Practice
+#### Repository Community {#repository-community}
 
 We offer a shortlist of default community health files that may be adapted to
 include SOPs and documentation of workbook updates, always aiming to build trust
@@ -282,7 +289,7 @@ This commit record, visible to the auditor, provides a verifiable link between
 your reported values, your code, and the computational environment in which they
 were produced.
 
-##### Runtime Log Explained
+##### Runtime Log Explained {#runtime-log-explained}
 
 The `devtools::session_info()` output provides detailed evidence of your
 computational environment, which an auditor will examine closely. Specifically,
@@ -318,7 +325,7 @@ ART TREES verification.
 
 --------------------------------------------------------------------------------
 
-#### Appendix I: ISO Data Governance & Geometry Testing
+#### Appendix I: ISO Data Governance & Geometry Testing {#appendix-1}
 
 The data management principles of traceability, integrity, and reproducibility
 are key to GHG audits. These principles are supported by a range of ISO
@@ -395,7 +402,7 @@ Surfaces, and Geometry Collections `sfc`.
 
 --------------------------------------------------------------------------------
 
-#### Appendix II: Replication in `renv`
+#### Appendix II: Replication in `renv` {#appendix-II}
 
 `renv` profiles allow for managing different sets of package dependencies for
 various project contexts, such as separate environments for development,
@@ -462,11 +469,11 @@ renv::deactivate()
 
 --------------------------------------------------------------------------------
 
-#### Appendix IV: `Git` & `R` Installation
+#### Appendix III: `Git` & `R` Installation {#appendix-III}
 
 --------------------------------------------------------------------------------
 
-##### Runtime Log
+##### Runtime Log {#runtime-log}
 
 ``` r
 devtools::session_info()
@@ -743,5 +750,3 @@ devtools::session_info()
 ``` r
 #Sys.getenv()
 ```
-
-::::
