@@ -82,29 +82,27 @@ on improved structure more appropriate to your project design.
 
 :::::: columns
 ::: {.column width="25%"}
-. . , . .
+. . ,
 
--   01_Program_Data/
+-   `01_Program_Data/`
 
--   02_Carbon_Data/
+-   `02_Carbon_Data/`
 
--   03_Spatial_Data/
+-   `03_Spatial_Data/`
 
     -   `TREES-TMR-Demo.Rmd`
 
--   04_Uncertainty/
+-   `04_Uncertainty/`
 
--   05_Safeguards/
+-   `05_Safeguards/`
 
--   06_QAQC_SOPs/
+-   `06_QAQC_SOPs/`
 :::
 
 ::: {.column width="10%"}
 :::
 
 ::: {.column width="65%"}
-....
-
 ![Fig,1 Illustrative example of wider repository
 layout](01_Program_Data/Communications/assets/repo-layout-wide.png){width="1000"}
 :::
@@ -663,3 +661,5 @@ devtools::session_info()
 ``` {.r .numCode .r .numberLines}
 #Sys.getenv()
 ```
+
+::::
