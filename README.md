@@ -402,7 +402,7 @@ Surfaces, and Geometry Collections `sfc`.
 
 --------------------------------------------------------------------------------
 
-#### Appendix II: Replication in `renv` {#appendix-II}
+#### Appendix II: Replication in `renv` {#appendix-ii}
 
 `renv` profiles allow for managing different sets of package dependencies for
 various project contexts, such as separate environments for development,
@@ -469,7 +469,7 @@ renv::deactivate()
 
 --------------------------------------------------------------------------------
 
-#### Appendix III: `Git` & `R` Installation {#appendix-III}
+#### Appendix III: `Git` & `R` Installation {#appendix-iii}
 
 --------------------------------------------------------------------------------
 
