@@ -13,30 +13,12 @@ Badge](https://img.shields.io/badge/Project-Annexes-critical?color=blue)](https:
 
 --------------------------------------------------------------------------------
 
--   [Practical Exercise](#practical-exercise)
-
--   [Repository Guidelines](#repository-guidelines)
-
--   [Repository Principles](#repository-principles)
-
--   [Repository Community](#repository-community)
-
--   [Runtime Log Explained](#runtime-log-explained)
-
--   [Appendix I](#appendix-i)
-
--   [Appendix II](#appendix-ii)
-
--   [Appendix III](#appendix-iii)
-
--   [Runtime Log](#runtime-log)
-
 Welcome to the
-[`ART-TREES Demo Reepository`](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025),
+[`ART-TREES-Repository-Demo-2025.git`](https://github.com/seamusrobertmurphy/ART-TREES-Repository-Demo-2025),
 a training resource for preparing and submitting a complete data package for an
 ART TREES verification audit. Here, we document some best practices for using
-**version control** to ensure **perfect reproducibility** of your calculations.
-You will complete this exercise following the three steps below.
+version control to ensure perfect reproducibility of your calculations. You will
+complete this exercise following the three steps below.
 
 As you navigate this repository, keep the following core concepts in mind. These
 are the fundamental principles auditors use to evaluate your submission:
@@ -53,7 +35,7 @@ section below.
 
 --------------------------------------------------------------------------------
 
-### Practical Exercise: Mock Audit {#practical-exercise}
+### The Practical Exercise: Mock Audit
 
 #### Step 1. Clone the Repository
 
@@ -66,12 +48,12 @@ your local computer. This step is crucial for working with precise,
 version-controlled data.
 
 ``` r
-git clone https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git
+git clone [https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git)
 ```
 
 --------------------------------------------------------------------------------
 
-#### Step 2. Execute the Script & Compare
+#### Step 2. Replicate the Script
 
 All the necessary data and the analysis script are located in the
 `/03_Spatial_Data/` directory following the layout provided in your training
@@ -79,9 +61,9 @@ curriculum. Simply open the `markdown.Rmd` file in your R environment and run
 it. The script will automatically perform the raster-based calculation to
 determine the change in forest area and output the final result.
 
--   Open the Script: Launch RStudio and open the
+-   **Open the Script**: Launch RStudio and open the
     `03_Spatial_Data/TREES-TMR-Replication-Demo.Rmd` file.
--   Inspect the Code: Before running, review the code. You’ll see that it’s
+-   **Inspect the Code**: Before running, review the code. You'll see that it's
     broken down into logical chunks:
     -   Loading required R packages (`library(raster)`, `library(sf)`, etc.).
 
@@ -92,22 +74,22 @@ determine the change in forest area and output the final result.
     -   Performing the raster calculations to identify forest change.
 
     -   Outputting the final calculated area in hectares.
--   Run the Script: Execute the entire R Markdown file. You can do this by
-    clicking the “Run All Chunks” button in RStudio or by using the `knitr`
+-   **Run the Script**: Execute the entire R Markdown file. You can do this by
+    clicking the "Run All Chunks" button in RStudio or by using the `knitr`
     function. The script will process the spatial data and display the final
     result in the console.
 
 The script’s output will display a single, final calculated value in hectares.
-Compare this result to the figure reported in Table 16 of the TMR. They should
-match exactly.
+Compare this result to the figure reported in **Table 16 of the TMR**. They
+should match exactly.
 
--   If the results match: You have successfully demonstrated data
-    reproducibility. The combination of the version-controlled data and script
+-   **If the results match**: You have successfully demonstrated **data
+    reproducibility**. The combination of the version-controlled data and script
     in this repository has produced the same result as the official submission.
     This is a critical success for any audit.
 
--   If the results do not match: This is a key learning opportunity. It shows
-    how even small discrepancies, a different software version, a missing
+-   **If the results do not match**: This is a key learning opportunity. It
+    shows how even small discrepancies, a different software version, a missing
     package, or an altered data file, can lead to different results. This is a
     common and serious finding in a verification audit, and it underscores the
     need for rigorous version control and a robust QA/QC process.
@@ -141,11 +123,15 @@ software dependencies at that precise moment in time,
 
 --------------------------------------------------------------------------------
 
-### Repository Guidelines {#repository-guidelines}
+### Repository Guidelines
 
 We offer the following example as a tentative layout. Please explore the folder
 structure and examine the contents of each sample document, and provide feedback
 on improved structure more appropriate to your project design.
+
+:::::: columns
+::: {.column width="25%"}
+. . ,
 
 -   `01_Program_Data/`
 
@@ -160,7 +146,12 @@ on improved structure more appropriate to your project design.
 -   `05_Safeguards/`
 
 -   `06_QAQC_SOPs/`
+:::
 
+::: {.column width="10%"}
+:::
+
+::: {.column width="65%"}
 <figure>
 
 <img src="01_Program_Data/Communications/assets/repo-layout-wide.png" alt="Fig,1 Illustrative example of wider repository layout" width="1000"/>
@@ -172,13 +163,13 @@ Fig,1 Illustrative example of wider repository layout
 </figcaption>
 
 </figure>
+:::
+::::::
 
 --------------------------------------------------------------------------------
 
-#### Repository Principles {#repository-principles}
-
 These are the fundamental concepts that auditors use to evaluate your
-submission, which are embedded throughout this repository’s structure.
+submission, which are embedded throughout this repository's structure.
 
 -   Data Traceability: We demonstrate this through clear file naming
     conventions, a folder for QA/QC procedures, and a structure that links
@@ -201,7 +192,7 @@ submission, which are embedded throughout this repository’s structure.
     anyone can replicate your analysis in the exact same computational
     environment, which is a key part of the verification process.
 
-#### Repository Community {#repository-community}
+#### Community of Practice
 
 We offer a shortlist of default community health files that may be adapted to
 include SOPs and documentation of workbook updates, always aiming to build trust
@@ -250,7 +241,7 @@ in the auditor:
 Step 3. Document and Share Runtime Log
 
 In any rigorous GHG accounting project, especially for a verification audit like
-ART TREES, it’s not enough to simply produce a final number. You must prove how
+ART TREES, it's not enough to simply produce a final number. You must prove how
 you arrived at that number and that the process is perfectly reproducible. This
 is the core of data integrity.
 
@@ -260,15 +251,15 @@ The runtime log is a snapshot of your computing system and all the software
 dependencies at a precise moment in time, providing auditors with a verifiable
 record of your work.
 
-After you’ve successfully completed Step 2 and replicated the forest cover
+After you've successfully completed Step 2 and replicated the forest cover
 calculation, you will generate and save a runtime log. This log is a crucial
 piece of evidence that will be included in your submission package.
 
 1.  **Generate the Session Information Log**: Open the R console and run the
     command `devtools::session_info()`. The output is a comprehensive list of
     every package loaded in your R session, including its version number, the
-    date it was built, and its source. This detailed snapshot is the “runtime
-    log.”
+    date it was built, and its source. This detailed snapshot is the "runtime
+    log."
 
 2.  **Save the Log**: Copy the entire output from the R console and save it in a
     file named `runtime_log_YYYYMMDD.txt` within the `/06_QAQC_SOPs/` directory.
@@ -278,7 +269,7 @@ piece of evidence that will be included in your submission package.
 
 3.  **Commit the Changes to Git**: Using the command line, stage and commit the
     new log file to the repository. This action permanently ties the runtime log
-    to the exact state of the project’s code and data at that moment.
+    to the exact state of the project's code and data at that moment.
 
 ``` r
 git add 06_QAQC_SOPs/runtime_log_YYYYMMDD.txt
@@ -289,7 +280,7 @@ This commit record, visible to the auditor, provides a verifiable link between
 your reported values, your code, and the computational environment in which they
 were produced.
 
-##### Runtime Log Explained {#runtime-log-explained}
+##### Runtime Log Explained
 
 The `devtools::session_info()` output provides detailed evidence of your
 computational environment, which an auditor will examine closely. Specifically,
@@ -304,7 +295,7 @@ they will be looking at these key sections:
     package used in the analysis, along with its **exact version number**
     (`sf: 1.0-21`, `raster: 3.6-32`, etc.) and the date it was built. This level
     of detail is essential because even a minor package update can sometimes
-    change a calculation’s result.
+    change a calculation's result.
 
 -   **Library Paths**: The log also shows where the packages are stored on your
     system. This highlights the use of `renv`, a package management tool that
@@ -325,7 +316,7 @@ ART TREES verification.
 
 --------------------------------------------------------------------------------
 
-#### Appendix I: ISO Data Governance & Geometry Testing {#appendix-1}
+#### Appendix I: ISO Data Governance & Geometry Testing
 
 The data management principles of traceability, integrity, and reproducibility
 are key to GHG audits. These principles are supported by a range of ISO
@@ -350,7 +341,7 @@ Surfaces, and Geometry Collections `sfc`.
 
 +--------------+--------------------------------------------------------------+
 | ISO Standard | Components relevant to ART-TREES GHG audit verifications     |
-+:=============+:=============================================================+
++==============+==============================================================+
 | ISO 27001,   | Two widely discussed ISO standards for data governance are   |
 |              | ISO 27001 and ISO 8000. ISO 27001 is a standard for          |
 | ISO 8000     | Information Security Management Systems (ISMS), while ISO    |
@@ -402,7 +393,7 @@ Surfaces, and Geometry Collections `sfc`.
 
 --------------------------------------------------------------------------------
 
-#### Appendix II: Replication in `renv` {#appendix-ii}
+#### Appendix II: Replication in `renv`
 
 `renv` profiles allow for managing different sets of package dependencies for
 various project contexts, such as separate environments for development,
@@ -469,11 +460,11 @@ renv::deactivate()
 
 --------------------------------------------------------------------------------
 
-#### Appendix III: `Git` & `R` Installation {#appendix-iii}
+#### Appendix IV: `Git` & `R` Installation
 
 --------------------------------------------------------------------------------
 
-##### Runtime Log {#runtime-log}
+##### Runtime Log
 
 ``` r
 devtools::session_info()
@@ -750,3 +741,5 @@ devtools::session_info()
 ``` r
 #Sys.getenv()
 ```
+
+::::

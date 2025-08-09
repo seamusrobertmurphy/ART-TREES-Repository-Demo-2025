@@ -1,0 +1,120 @@
+---
+title: "ART TREES - TMR Replication Demonstration"
+author: "GHG Program Team"
+date: "2025-08-08"
+output:
+  html_document:
+    toc: yes
+    theme: united
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### **1. Introduction: The Goal of This Script**
+
+This R Markdown file is a practical exercise for the ART TREES Verification
+Audit Training. Its purpose is to demonstrate **perfect reproducibility**, a
+core principle of a successful audit submission.
+
+An auditor must be able to take your data and your code, run it in a documented
+environment, and get the exact same result you reported. This script performs a
+simple calculation of total carbon stock from a set of hypothetical forest
+plots.
+
+**Your task**: Run this script and compare the final output to the value
+reported in the training's mock TREES Monitoring Report (TMR), Table 16:
+**`1,550`** tCO₂e.
+
+-   **As per ISO 14064-3**, conclusions must be based on verifiable evidence.
+    This script and the data within it constitute that evidence.
+-   **Data Traceability**: The origin of the final number is transparently
+    documented in the code below.
+
+--------------------------------------------------------------------------------
+
+### **2. Loading Required Packages**
+
+This first code step loads the `dplyr` package, which provides tools for data
+manipulation. In a real audit, the auditor would ensure this package version
+matches the one listed in your `runtime_log.txt` file to ensure a consistent
+computational environment.
+
+```{r packages, message=FALSE, warning=FALSE}
+# The 'dplyr' package is used for its straightforward data handling functions.
+library(dplyr)
+```
+
+--------------------------------------------------------------------------------
+
+### **3. Defining the Dataset**
+
+For this demonstration, the data is entered directly into the script. This
+ensures that the analysis is self-contained and perfectly reproducible without
+relying on external files, which could be misplaced or altered. This represents
+our "raw data" for the audit.
+
+Each row represents a forest plot with a unique ID and its measured carbon
+stock.
+
+```{r data}
+# Create a data frame with hypothetical forest inventory data.
+# In a real-world scenario, this data would be loaded from a controlled, versioned file.
+# Evidence Source: Corresponds to "Data-Inventory/Field_Plot_Data_2024.csv" in the data repository.
+plot_data <- data.frame(
+  plot_id = c("A-01", "A-02", "B-01", "B-02", "C-01"),
+  carbon_stock_tCO2e = c(300, 350, 250, 400, 250)
+)
+
+# Display the data to ensure it has been loaded correctly.
+print("Input Data: Hypothetical Forest Plot Carbon Stock")
+print(plot_data)
+```
+
+--------------------------------------------------------------------------------
+
+### **4. Performing the Calculation**
+
+This is the core of the analysis. We perform a simple sum of the
+`carbon_stock_tCO2e` column. The process is intentionally simple to be
+transparent. An auditor can easily review this code and confirm that the
+methodology is sound and has been implemented correctly.
+
+-   **Accuracy Principle**: The calculation must be free from bias and error. A
+    simple sum is the most accurate way to aggregate this data.
+-   **Completeness Principle**: All records from the defined dataset are
+    included in the calculation.
+
+```{r calculation}
+# Calculate the total carbon stock by summing the values in the 'carbon_stock_tCO2e' column.
+# This directly replicates the procedure described in the TMR's methodology section.
+total_carbon_stock <- plot_data %>%
+  summarise(total_stock = sum(carbon_stock_tCO2e))
+
+# Extract the final numerical value for clear reporting.
+final_result_tCO2e <- total_carbon_stock$total_stock
+```
+
+--------------------------------------------------------------------------------
+
+### **5. Final Result for Audit Verification**
+
+This final chunk displays the single, definitive result of the analysis. This is
+the number an auditor would compare against your official TMR submission. A
+perfect match demonstrates reproducibility and data integrity.
+
+```{r results}
+# Print the final result in a clear, unambiguous format.
+cat("--------------------------------------------------\n")
+cat("          AUDIT VERIFICATION RESULT\n")
+cat("--------------------------------------------------\n")
+cat("Total Carbon Stock from All Plots (tCO2e):", final_result_tCO2e, "\n")
+cat("--------------------------------------------------\n")
+cat("\nThis value should exactly match Table 16 of the TMR.\n")
+```
+
+**Conclusion**: If the value `1550` is displayed above, you have successfully
+replicated the analysis. This confirms that the data, methods, and environment
+are consistent and verifiable, meeting a key requirement for a successful ART
+TREES audit.
