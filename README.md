@@ -55,41 +55,35 @@ git clone [https://github.com/seamusrobertmurphy/ART-TREES-Verification-Reposito
 
 #### Step 2. Replicate the Script
 
-All the necessary data and the analysis script are located in the
-`/03_Spatial_Data/` directory following the layout provided in your training
-curriculum. Simply open the `markdown.Rmd` file in your R environment and run
-it. The script will automatically perform the raster-based calculation to
-determine the change in forest area and output the final result.
+The analysis script and its data are located in the /02_Carbon_Data/ directory.
+Simply open the ART-TREES-TMR-Replication-Demo.Rmd file in your R environment
+and run it. The script will automatically perform a simple carbon stock
+calculation and output the final result.
 
--   **Open the Script**: Launch RStudio and open the
-    `03_Spatial_Data/TREES-TMR-Replication-Demo.Rmd` file.
--   **Inspect the Code**: Before running, review the code. You'll see that it's
+-   Open the Script: Launch RStudio and open the
+    `02_Carbon_Data/ART-TREES-TMR-Replication-Demo.Rmd` file.
+-   Inspect the Code: Before running, review the code. You'll see that it's
     broken down into logical chunks:
-    -   Loading required R packages (`library(raster)`, `library(sf)`, etc.).
+    -   Loading the required R package (`library(dplyr)`).
+    -   Defining the dataset directly within the script (hypothetical forest
+        plot data).
+    -   Performing a simple calculation to sum the total carbon stock.
+    -   Outputting the final calculated value in tCO₂e.
+-   Run the Script: Execute the entire R Markdown file. You can do this by
+    clicking the "Run All Chunks" button in RStudio or by using the knitr
+    function. The script will process the data and display the final result in
+    the console.
 
-    -   Defining key variables, such as file paths and the reporting period.
+The script’s output will display a single, final calculated value in tCO₂e.
+Compare this result to the figure reported in Table 16 of the TMR. They should
+match exactly.
 
-    -   Reading in the raw spatial data (e.g., land cover rasters).
-
-    -   Performing the raster calculations to identify forest change.
-
-    -   Outputting the final calculated area in hectares.
--   **Run the Script**: Execute the entire R Markdown file. You can do this by
-    clicking the "Run All Chunks" button in RStudio or by using the `knitr`
-    function. The script will process the spatial data and display the final
-    result in the console.
-
-The script’s output will display a single, final calculated value in hectares.
-Compare this result to the figure reported in **Table 16 of the TMR**. They
-should match exactly.
-
--   **If the results match**: You have successfully demonstrated **data
-    reproducibility**. The combination of the version-controlled data and script
+-   If the results match: You have successfully demonstrated data
+    reproducibility. The combination of the version-controlled data and script
     in this repository has produced the same result as the official submission.
     This is a critical success for any audit.
-
--   **If the results do not match**: This is a key learning opportunity. It
-    shows how even small discrepancies, a different software version, a missing
+-   If the results do not match: This is a key learning opportunity. It shows
+    how even small discrepancies, a different software version, a missing
     package, or an altered data file, can lead to different results. This is a
     common and serious finding in a verification audit, and it underscores the
     need for rigorous version control and a robust QA/QC process.
@@ -227,86 +221,6 @@ in the auditor:
 </div>
 
 --------------------------------------------------------------------------------
-
-### Step 2. Execute the Script & Compare
-
---------------------------------------------------------------------------------
-
-<div>
-
-</div>
-
---------------------------------------------------------------------------------
-
-Step 3. Document and Share Runtime Log
-
-In any rigorous GHG accounting project, especially for a verification audit like
-ART TREES, it's not enough to simply produce a final number. You must prove how
-you arrived at that number and that the process is perfectly reproducible. This
-is the core of data integrity.
-
-This step of the exercise focuses on a critical aspect of that proof:
-documenting the exact computational environment used to generate your results.
-The runtime log is a snapshot of your computing system and all the software
-dependencies at a precise moment in time, providing auditors with a verifiable
-record of your work.
-
-After you've successfully completed Step 2 and replicated the forest cover
-calculation, you will generate and save a runtime log. This log is a crucial
-piece of evidence that will be included in your submission package.
-
-1.  **Generate the Session Information Log**: Open the R console and run the
-    command `devtools::session_info()`. The output is a comprehensive list of
-    every package loaded in your R session, including its version number, the
-    date it was built, and its source. This detailed snapshot is the "runtime
-    log."
-
-2.  **Save the Log**: Copy the entire output from the R console and save it in a
-    file named `runtime_log_YYYYMMDD.txt` within the `/06_QAQC_SOPs/` directory.
-    By including the date in the filename, you are already practicing a key
-    version-control best practice. This is the document you will present to an
-    auditor.
-
-3.  **Commit the Changes to Git**: Using the command line, stage and commit the
-    new log file to the repository. This action permanently ties the runtime log
-    to the exact state of the project's code and data at that moment.
-
-``` r
-git add 06_QAQC_SOPs/runtime_log_YYYYMMDD.txt
-git commit -m "Added runtime log for forest cover calculation."
-```
-
-This commit record, visible to the auditor, provides a verifiable link between
-your reported values, your code, and the computational environment in which they
-were produced.
-
-##### Runtime Log Explained
-
-The `devtools::session_info()` output provides detailed evidence of your
-computational environment, which an auditor will examine closely. Specifically,
-they will be looking at these key sections:
-
--   **Session Info**: This section, at the top of the log, details the core
-    components of your system, including the **R version** (`4.3.0`), your
-    operating system (`macOS 15.6`), and other key software like `pandoc`. This
-    ensures that your base environment is consistent and up-to-date.
-
--   **Packages**: This is the most critical section. It lists every single R
-    package used in the analysis, along with its **exact version number**
-    (`sf: 1.0-21`, `raster: 3.6-32`, etc.) and the date it was built. This level
-    of detail is essential because even a minor package update can sometimes
-    change a calculation's result.
-
--   **Library Paths**: The log also shows where the packages are stored on your
-    system. This highlights the use of `renv`, a package management tool that
-    creates an isolated, reproducible library for this specific project. An
-    auditor will see that your dependencies are not from a general system
-    library, but are specifically curated for this repository, further
-    demonstrating excellent data curation and integrity.
-
-By documenting this information, you move beyond a simple claim of
-reproducibility and provide the verifiable evidence required for a successful
-ART TREES verification.
 
 --------------------------------------------------------------------------------
 

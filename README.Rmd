@@ -39,7 +39,7 @@ easypackages::packages(
   "s2", "sf", "scales", "spdep", "stars", "stringr",
   "terra", "testthat", "tidyverse", "tidyterra",
   "tmap", "tmaptools", "terrainr",
-  "xgboost", prompt=FALSE)
+  "xgboost", prompt = FALSE)
   
 # setup default chunk settings
 knitr::opts_chunk$set(
@@ -259,77 +259,6 @@ documentation of workbook updates, always aiming to build trust in the auditor:
 
 ----------------------------------------------------------------------------------------------------
 
-### Step 2. Execute the Script & Compare
-
-----------------------------------------------------------------------------------------------------
-
-<div>
-
-</div>
-
-----------------------------------------------------------------------------------------------------
-
-Step 3. Document and Share Runtime Log
-
-In any rigorous GHG accounting project, especially for a verification audit like ART TREES, it's not
-enough to simply produce a final number. You must prove how you arrived at that number and that the
-process is perfectly reproducible. This is the core of data integrity.
-
-This step of the exercise focuses on a critical aspect of that proof: documenting the exact
-computational environment used to generate your results. The runtime log is a snapshot of your
-computing system and all the software dependencies at a precise moment in time, providing auditors
-with a verifiable record of your work.
-
-After you've successfully completed Step 2 and replicated the forest cover calculation, you will
-generate and save a runtime log. This log is a crucial piece of evidence that will be included in
-your submission package.
-
-1.  **Generate the Session Information Log**: Open the R console and run the command
-    `devtools::session_info()`. The output is a comprehensive list of every package loaded in your R
-    session, including its version number, the date it was built, and its source. This detailed
-    snapshot is the "runtime log."
-
-2.  **Save the Log**: Copy the entire output from the R console and save it in a file named
-    `runtime_log_YYYYMMDD.txt` within the `/06_QAQC_SOPs/` directory. By including the date in the
-    filename, you are already practicing a key version-control best practice. This is the document
-    you will present to an auditor.
-
-3.  **Commit the Changes to Git**: Using the command line, stage and commit the new log file to the
-    repository. This action permanently ties the runtime log to the exact state of the project's
-    code and data at that moment.
-
-```{r, eval=F}
-git add 06_QAQC_SOPs/runtime_log_YYYYMMDD.txt
-git commit -m "Added runtime log for forest cover calculation."
-```
-
-This commit record, visible to the auditor, provides a verifiable link between your reported values,
-your code, and the computational environment in which they were produced.
-
-##### Runtime Log Explained
-
-The `devtools::session_info()` output provides detailed evidence of your computational environment,
-which an auditor will examine closely. Specifically, they will be looking at these key sections:
-
--   **Session Info**: This section, at the top of the log, details the core components of your
-    system, including the **R version** (`4.3.0`), your operating system (`macOS 15.6`), and other
-    key software like `pandoc`. This ensures that your base environment is consistent and
-    up-to-date.
-
--   **Packages**: This is the most critical section. It lists every single R package used in the
-    analysis, along with its **exact version number** (`sf: 1.0-21`, `raster: 3.6-32`, etc.) and the
-    date it was built. This level of detail is essential because even a minor package update can
-    sometimes change a calculation's result.
-
--   **Library Paths**: The log also shows where the packages are stored on your system. This
-    highlights the use of `renv`, a package management tool that creates an isolated, reproducible
-    library for this specific project. An auditor will see that your dependencies are not from a
-    general system library, but are specifically curated for this repository, further demonstrating
-    excellent data curation and integrity.
-
-By documenting this information, you move beyond a simple claim of reproducibility and provide the
-verifiable evidence required for a successful ART TREES verification.
-
 ----------------------------------------------------------------------------------------------------
 
 <div>
@@ -359,47 +288,45 @@ Points, Curves, Surfaces, and Geometry Collections `sfc`.
 
 ----------------------------------------------------------------------------------------------------
 
-+-------------------+------------------------------------------------------------------------------+
-| ISO Standard      | Components relevant to ART-TREES GHG audit verifications                     |
-+===================+==============================================================================+
-| ISO 27001,        | Two widely discussed ISO standards for data governance are ISO 27001 and ISO |
-|                   | 8000. ISO 27001 is a standard for Information Security Management Systems    |
-| ISO 8000          | (ISMS), while ISO 8000 focuses on data quality management. Implementing the  |
-|                   | ISO 27001 standard is a deliverable of information security management under |
-|                   | the IT governance program and not solely a data governance deliverable.      |
-|                   | However, data governance maturity is crucial for complying with ISO 27001    |
-|                   | and ensuring data security, confidentiality, and integrity in information    |
-|                   | management practices. ISO 8000 aims to ensure that data used in various      |
-|                   | contexts, such as business processes, analytics, and decision-making, meets  |
-|                   | certain quality standards. It covers all the key elements of data—Syntax,    |
-|                   | Provenance, Completion, Accuracy, and Certification—providing a standard to  |
-|                   | measure and certify data quality.                                            |
-+-------------------+------------------------------------------------------------------------------+
-| ISO 38505-1       | This is a standard for data governance that provides a set of guidelines for |
-|                   | the governance of data within an organization. It considers data governance  |
-|                   | as a subset of IT governance, which in turn is a subset of organizational    |
-|                   | governance, and defines clear responsibilities for the governing body and    |
-|                   | oversight mechanisms. At its core, it provides a model for evaluating,       |
-|                   | directing, and monitoring the handling and usage of data in an organization. |
-+-------------------+------------------------------------------------------------------------------+
-| ISO 22745         | This standard focuses on master data exchange between organizations. It      |
-|                   | specifies data requirements for messages containing master data, including   |
-|                   | syntax, semantic encoding, and portability. It is often used in conjunction  |
-|                   | with ISO 8000 to realize the benefits of assessing and improving data        |
-|                   | quality.                                                                     |
-+-------------------+------------------------------------------------------------------------------+
-| ISO 3166          | This standard defines codes for country names, which can be utilized for     |
-|                   | consistent external reference data in business applications to reduce time   |
-|                   | and effort in data integration and analytic tasks.                           |
-+-------------------+------------------------------------------------------------------------------+
-| ISO 11179         | This metadata registry (MDR) standard provides a framework for representing  |
-|                   | metadata for an organization to make data understandable and transferable.   |
-|                   | It provides guidance to software developers building metadata repositories.  |
-+-------------------+------------------------------------------------------------------------------+
-| ISO 27701         | This standard serves as a data privacy extension to ISO 27001, providing a   |
-|                   | framework for organizations to establish systems that facilitate compliance  |
-|                   | with data privacy regulations like GDPR.                                     |
-+-------------------+------------------------------------------------------------------------------+
++--------------+----------------------------------------------------------------------------------+
+| ISO Standard | Components relevant to ART-TREES GHG audit verifications                         |
++==============+==================================================================================+
+| ISO 27001,   | Two widely discussed ISO standards for data governance are ISO 27001 and ISO     |
+|              | 8000. ISO 27001 is a standard for Information Security Management Systems        |
+| ISO 8000     | (ISMS), while ISO 8000 focuses on data quality management. Implementing the ISO  |
+|              | 27001 standard is a deliverable of information security management under the IT  |
+|              | governance program and not solely a data governance deliverable. However, data   |
+|              | governance maturity is crucial for complying with ISO 27001 and ensuring data    |
+|              | security, confidentiality, and integrity in information management practices.    |
+|              | ISO 8000 aims to ensure that data used in various contexts, such as business     |
+|              | processes, analytics, and decision-making, meets certain quality standards. It   |
+|              | covers all the key elements of data—Syntax, Provenance, Completion, Accuracy,    |
+|              | and Certification—providing a standard to measure and certify data quality.      |
++--------------+----------------------------------------------------------------------------------+
+| ISO 38505-1  | This is a standard for data governance that provides a set of guidelines for the |
+|              | governance of data within an organization. It considers data governance as a     |
+|              | subset of IT governance, which in turn is a subset of organizational governance, |
+|              | and defines clear responsibilities for the governing body and oversight          |
+|              | mechanisms. At its core, it provides a model for evaluating, directing, and      |
+|              | monitoring the handling and usage of data in an organization.                    |
++--------------+----------------------------------------------------------------------------------+
+| ISO 22745    | This standard focuses on master data exchange between organizations. It          |
+|              | specifies data requirements for messages containing master data, including       |
+|              | syntax, semantic encoding, and portability. It is often used in conjunction with |
+|              | ISO 8000 to realize the benefits of assessing and improving data quality.        |
++--------------+----------------------------------------------------------------------------------+
+| ISO 3166     | This standard defines codes for country names, which can be utilized for         |
+|              | consistent external reference data in business applications to reduce time and   |
+|              | effort in data integration and analytic tasks.                                   |
++--------------+----------------------------------------------------------------------------------+
+| ISO 11179    | This metadata registry (MDR) standard provides a framework for representing      |
+|              | metadata for an organization to make data understandable and transferable. It    |
+|              | provides guidance to software developers building metadata repositories.         |
++--------------+----------------------------------------------------------------------------------+
+| ISO 27701    | This standard serves as a data privacy extension to ISO 27001, providing a       |
+|              | framework for organizations to establish systems that facilitate compliance with |
+|              | data privacy regulations like GDPR.                                              |
++--------------+----------------------------------------------------------------------------------+
 
 ----------------------------------------------------------------------------------------------------
 
