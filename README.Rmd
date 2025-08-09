@@ -55,26 +55,26 @@ knitr::opts_chunk$set(
 
 ----------------------------------------------------------------------------------------------------
 
-[<img src="https://winrock.org/wp-content/uploads/2021/12/Winrock-logo-R.png" width="500"/>](#section)
+[![](https://art.apx.com/images/ART.png){width="500"}](#section)
 
 [![LinkedIn
-Badge](https://img.shields.io/badge/Project-Profile-blue)](https://www.linkedin.com/in/seamusrobertmurphy/)
+Badge](https://img.shields.io/badge/Project-Profile-blue)](https://art.apx.com/mymodule/reg/TabDocuments.asp?r=111&ad=Prpt&act=update&type=PRO&aProj=pub&tablename=doc&id1=109)
 [![Pubs
-Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://scholar.google.com/citations?hl=en&user=jDGq9I4AAAAJ)
+Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://orcid.org/my-orcid?orcid=0000-0002-1792-0351)
 [![Twitter Badge](https://img.shields.io/badge/Project-Tweets-critical?color=blue)](https://x.com/)
 [![Program
-Badge](https://img.shields.io/badge/Project-Stewards-critical)](https://www.ambiente.gob.ec/)
+Badge](https://img.shields.io/badge/Project-Steward-critical)](https://www.ambiente.gob.ec/)
 [![Annexes
-Badge](https://img.shields.io/badge/Project-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
+Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
 
 ----------------------------------------------------------------------------------------------------
 
 Welcome to the
-[`ART-TREES-Repository-Demo-2025.git`](https://github.com/seamusrobertmurphy/ART-TREES-Repository-Demo-2025),
-a training resource for preparing and submitting a complete data package for an ART TREES
-verification audit. Here, we document some best practices for using version control to ensure
-perfect reproducibility of your calculations. You will complete this exercise following the three
-steps below.
+[ART-TREES-demo-repository.git](https://github.com/seamusrobertmurphy/TREES-demo-repository), a
+training resource for preparing and submitting a complete data package for an ART TREES verification
+audit. Here, we document some best practices for using version control to ensure perfect
+reproducibility of your calculations. You will complete this exercise following the three steps
+below.
 
 As you navigate this repository, keep the following core concepts in mind. These are the fundamental
 principles auditors use to evaluate your submission:
@@ -288,45 +288,47 @@ Points, Curves, Surfaces, and Geometry Collections `sfc`.
 
 ----------------------------------------------------------------------------------------------------
 
-+--------------+----------------------------------------------------------------------------------+
-| ISO Standard | Components relevant to ART-TREES GHG audit verifications                         |
-+==============+==================================================================================+
-| ISO 27001,   | Two widely discussed ISO standards for data governance are ISO 27001 and ISO     |
-|              | 8000. ISO 27001 is a standard for Information Security Management Systems        |
-| ISO 8000     | (ISMS), while ISO 8000 focuses on data quality management. Implementing the ISO  |
-|              | 27001 standard is a deliverable of information security management under the IT  |
-|              | governance program and not solely a data governance deliverable. However, data   |
-|              | governance maturity is crucial for complying with ISO 27001 and ensuring data    |
-|              | security, confidentiality, and integrity in information management practices.    |
-|              | ISO 8000 aims to ensure that data used in various contexts, such as business     |
-|              | processes, analytics, and decision-making, meets certain quality standards. It   |
-|              | covers all the key elements of data—Syntax, Provenance, Completion, Accuracy,    |
-|              | and Certification—providing a standard to measure and certify data quality.      |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 38505-1  | This is a standard for data governance that provides a set of guidelines for the |
-|              | governance of data within an organization. It considers data governance as a     |
-|              | subset of IT governance, which in turn is a subset of organizational governance, |
-|              | and defines clear responsibilities for the governing body and oversight          |
-|              | mechanisms. At its core, it provides a model for evaluating, directing, and      |
-|              | monitoring the handling and usage of data in an organization.                    |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 22745    | This standard focuses on master data exchange between organizations. It          |
-|              | specifies data requirements for messages containing master data, including       |
-|              | syntax, semantic encoding, and portability. It is often used in conjunction with |
-|              | ISO 8000 to realize the benefits of assessing and improving data quality.        |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 3166     | This standard defines codes for country names, which can be utilized for         |
-|              | consistent external reference data in business applications to reduce time and   |
-|              | effort in data integration and analytic tasks.                                   |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 11179    | This metadata registry (MDR) standard provides a framework for representing      |
-|              | metadata for an organization to make data understandable and transferable. It    |
-|              | provides guidance to software developers building metadata repositories.         |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 27701    | This standard serves as a data privacy extension to ISO 27001, providing a       |
-|              | framework for organizations to establish systems that facilitate compliance with |
-|              | data privacy regulations like GDPR.                                              |
-+--------------+----------------------------------------------------------------------------------+
++-------------------+------------------------------------------------------------------------------+
+| ISO Standard      | Components relevant to ART-TREES GHG audit verifications                     |
++===================+==============================================================================+
+| ISO 27001,        | Two widely discussed ISO standards for data governance are ISO 27001 and ISO |
+|                   | 8000. ISO 27001 is a standard for Information Security Management Systems    |
+| ISO 8000          | (ISMS), while ISO 8000 focuses on data quality management. Implementing the  |
+|                   | ISO 27001 standard is a deliverable of information security management under |
+|                   | the IT governance program and not solely a data governance deliverable.      |
+|                   | However, data governance maturity is crucial for complying with ISO 27001    |
+|                   | and ensuring data security, confidentiality, and integrity in information    |
+|                   | management practices. ISO 8000 aims to ensure that data used in various      |
+|                   | contexts, such as business processes, analytics, and decision-making, meets  |
+|                   | certain quality standards. It covers all the key elements of data—Syntax,    |
+|                   | Provenance, Completion, Accuracy, and Certification—providing a standard to  |
+|                   | measure and certify data quality.                                            |
++-------------------+------------------------------------------------------------------------------+
+| ISO 38505-1       | This is a standard for data governance that provides a set of guidelines for |
+|                   | the governance of data within an organization. It considers data governance  |
+|                   | as a subset of IT governance, which in turn is a subset of organizational    |
+|                   | governance, and defines clear responsibilities for the governing body and    |
+|                   | oversight mechanisms. At its core, it provides a model for evaluating,       |
+|                   | directing, and monitoring the handling and usage of data in an organization. |
++-------------------+------------------------------------------------------------------------------+
+| ISO 22745         | This standard focuses on master data exchange between organizations. It      |
+|                   | specifies data requirements for messages containing master data, including   |
+|                   | syntax, semantic encoding, and portability. It is often used in conjunction  |
+|                   | with ISO 8000 to realize the benefits of assessing and improving data        |
+|                   | quality.                                                                     |
++-------------------+------------------------------------------------------------------------------+
+| ISO 3166          | This standard defines codes for country names, which can be utilized for     |
+|                   | consistent external reference data in business applications to reduce time   |
+|                   | and effort in data integration and analytic tasks.                           |
++-------------------+------------------------------------------------------------------------------+
+| ISO 11179         | This metadata registry (MDR) standard provides a framework for representing  |
+|                   | metadata for an organization to make data understandable and transferable.   |
+|                   | It provides guidance to software developers building metadata repositories.  |
++-------------------+------------------------------------------------------------------------------+
+| ISO 27701         | This standard serves as a data privacy extension to ISO 27001, providing a   |
+|                   | framework for organizations to establish systems that facilitate compliance  |
+|                   | with data privacy regulations like GDPR.                                     |
++-------------------+------------------------------------------------------------------------------+
 
 ----------------------------------------------------------------------------------------------------
 
