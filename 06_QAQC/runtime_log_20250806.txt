@@ -1,5 +1,5 @@
 ─ Session info ──────────────────────────────────────────────────────────────────────────────────────────
- setting  value
+ setting  values
  version  R version 4.4.3 (2025-02-28)
  os       Fedora Linux 40 (Workstation Edition)
  system   x86_64, linux-gnu
