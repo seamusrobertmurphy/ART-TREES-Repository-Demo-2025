@@ -1,21 +1,4 @@
-# ART-TREES Audit Repository Demo
-
 Winrock Intl 2025-08-10
-
--   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
-
-    -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
-    -   [Step 2. Replicate the Script](#step-2-replicate-the-script)
-    -   [Step 3. Document Runtime Log](#step-3-document-runtime-log)
-
--   [Appendix I: Repository Guidelines](#appendix-i-repository-guidelines)
-
--   [Appendix II: ISO Guidelines](#appendix-ii-iso-guidelines)
-
--   [Appendix III: Replication in `renv`](#appendix-iii-replication-in-renv)
-
-    The downloaded binary packages are in
-    /var/folders/\_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpbzcrsE/downloaded_packages
 
 --------------------------------------------------------------------------------
 
@@ -32,6 +15,32 @@ Badge](https://img.shields.io/badge/Project-Steward-critical)](https://www.ambie
 [![Annexes
 Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
 
+-   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
+
+    -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
+    -   [Step 2. Replicate the Script](#step-2-replicate-the-script1)
+    -   [Step 3. Document Runtime Log](#step-3-document-runtime-log)
+
+-   [Appendix I: Repository Guidelines](#appendix-i-repository-guidelines)
+
+-   [Appendix II: ISO Guidelines](#appendix-ii-iso-guidelines)
+
+-   [Appendix III: Replication in `renv`](#appendix-iii-replication-in-renv)
+
+--------------------------------------------------------------------------------
+
+-   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
+
+    -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
+    -   [Step 2. Replicate the Script](#step-2-replicate-the-script1)
+    -   [Step 3. Document Runtime Log](#step-3-document-runtime-log)
+
+-   [Appendix I: Repository Guidelines](#appendix-i-repository-guidelines)
+
+-   [Appendix II: ISO Guidelines](#appendix-ii-iso-guidelines)
+
+-   [Appendix III: Replication in `renv`](#appendix-iii-replication-in-renv)
+
 --------------------------------------------------------------------------------
 
 Welcome to the
@@ -41,7 +50,8 @@ verification audit. Here, we document some best practices for using version
 control to ensure perfect reproducibility of your calculations.
 
 As you navigate this repository, keep the following core concepts in mind, as
-these are fundamental to how auditors evaluate your submission:
+these are fundamental to how auditors evaluate your submission. For a deeper
+dive into these principles, see **Repository Guidelines** section below.
 
 -   **Data Traceability**: Every key figure must be traceable back to its
     original source data and the methodology used to derive it.
@@ -49,17 +59,6 @@ these are fundamental to how auditors evaluate your submission:
     assertion must be included, with nothing significant missing.
 -   **Data Curation**: A logical folder structure, descriptive file names, and
     clear documentation allow auditors to quickly find what they need.
-
-For a deeper dive into these principles, see the **Repository Guidelines**
-section below.
-
--   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
-    -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
-    -   [Step 2. Replicate the Script](#step-2-replicate-the-script)
-    -   [Step 3. Document Runtime Log](#step-3-document-runtime-log)
--   [Appendix I: Repository Guidelines](#appendix-i-repository-guidelines)
--   [Appendix II: ISO Guidelines](#appendix-ii-iso-guidelines)
--   [Appendix III: Replication in `renv`](#appendix-iii-replication-in-renv)
 
 --------------------------------------------------------------------------------
 
@@ -81,7 +80,13 @@ git clone https://github.com/seamusrobertmurphy/TREES-demo-repository.git`
 
 --------------------------------------------------------------------------------
 
-#### Step 2. Replicate the Script
+#### Step 2. Replicate the Script[^readme-1]
+
+[^readme-1]: Please note thatb this public repository is for demonstration
+    purposes. To review Winrock’s active audit repository used to replicate
+    previous submissions of your program’s GHG assertions and emissions
+    calculations, you may request access through the following link:
+    <https://github.com/seamusrobertmurphy/TREES-ecuador-repository.git>
 
 The analysis script and its data are located in the /02_Carbon_Data/ directory.
 Simply open the ART-TREES-TMR-Replication-Demo.Rmd file in your R environment
@@ -247,57 +252,57 @@ Surfaces, and Geometry Collections `sfc`.
 
 --------------------------------------------------------------------------------
 
-+--------------+--------------------------------------------------------------+
-| ISO Standard | Components relevant to ART-TREES GHG audit verifications     |
-+==============+==============================================================+
-| ISO 27001,   | Two widely discussed ISO standards for data governance are   |
-|              | ISO 27001 and ISO 8000. ISO 27001 is a standard for          |
-| ISO 8000     | Information Security Management Systems (ISMS), while ISO    |
-|              | 8000 focuses on data quality management. Implementing the    |
-|              | ISO 27001 standard is a deliverable of information security  |
-|              | management under the IT governance program and not solely a  |
-|              | data governance deliverable. However, data governance        |
-|              | maturity is crucial for complying with ISO 27001 and         |
-|              | ensuring data security, confidentiality, and integrity in    |
-|              | information management practices. ISO 8000 aims to ensure    |
-|              | that data used in various contexts, such as business         |
-|              | processes, analytics, and decision-making, meets certain     |
-|              | quality standards. It covers all the key elements of         |
-|              | data—Syntax, Provenance, Completion, Accuracy, and           |
-|              | Certification—providing a standard to measure and certify    |
-|              | data quality.                                                |
-+--------------+--------------------------------------------------------------+
-| ISO 38505-1  | This is a standard for data governance that provides a set   |
-|              | of guidelines for the governance of data within an           |
-|              | organization. It considers data governance as a subset of IT |
-|              | governance, which in turn is a subset of organizational      |
-|              | governance, and defines clear responsibilities for the       |
-|              | governing body and oversight mechanisms. At its core, it     |
-|              | provides a model for evaluating, directing, and monitoring   |
-|              | the handling and usage of data in an organization.           |
-+--------------+--------------------------------------------------------------+
-| ISO 22745    | This standard focuses on master data exchange between        |
-|              | organizations. It specifies data requirements for messages   |
-|              | containing master data, including syntax, semantic encoding, |
-|              | and portability. It is often used in conjunction with ISO    |
-|              | 8000 to realize the benefits of assessing and improving data |
-|              | quality.                                                     |
-+--------------+--------------------------------------------------------------+
-| ISO 3166     | This standard defines codes for country names, which can be  |
-|              | utilized for consistent external reference data in business  |
-|              | applications to reduce time and effort in data integration   |
-|              | and analytic tasks.                                          |
-+--------------+--------------------------------------------------------------+
-| ISO 11179    | This metadata registry (MDR) standard provides a framework   |
-|              | for representing metadata for an organization to make data   |
-|              | understandable and transferable. It provides guidance to     |
-|              | software developers building metadata repositories.          |
-+--------------+--------------------------------------------------------------+
-| ISO 27701    | This standard serves as a data privacy extension to ISO      |
-|              | 27001, providing a framework for organizations to establish  |
-|              | systems that facilitate compliance with data privacy         |
-|              | regulations like GDPR.                                       |
-+--------------+--------------------------------------------------------------+
++----------------+------------------------------------------------------------+
+| ISO Standard   | Components relevant to ART-TREES GHG audit verifications   |
++================+============================================================+
+| ISO 27001,     | Two widely discussed ISO standards for data governance are |
+|                | ISO 27001 and ISO 8000. ISO 27001 is a standard for        |
+| ISO 8000       | Information Security Management Systems (ISMS), while ISO  |
+|                | 8000 focuses on data quality management. Implementing the  |
+|                | ISO 27001 standard is a deliverable of information         |
+|                | security management under the IT governance program and    |
+|                | not solely a data governance deliverable. However, data    |
+|                | governance maturity is crucial for complying with ISO      |
+|                | 27001 and ensuring data security, confidentiality, and     |
+|                | integrity in information management practices. ISO 8000    |
+|                | aims to ensure that data used in various contexts, such as |
+|                | business processes, analytics, and decision-making, meets  |
+|                | certain quality standards. It covers all the key elements  |
+|                | of data—Syntax, Provenance, Completion, Accuracy, and      |
+|                | Certification—providing a standard to measure and certify  |
+|                | data quality.                                              |
++----------------+------------------------------------------------------------+
+| ISO 38505-1    | This is a standard for data governance that provides a set |
+|                | of guidelines for the governance of data within an         |
+|                | organization. It considers data governance as a subset of  |
+|                | IT governance, which in turn is a subset of organizational |
+|                | governance, and defines clear responsibilities for the     |
+|                | governing body and oversight mechanisms. At its core, it   |
+|                | provides a model for evaluating, directing, and monitoring |
+|                | the handling and usage of data in an organization.         |
++----------------+------------------------------------------------------------+
+| ISO 22745      | This standard focuses on master data exchange between      |
+|                | organizations. It specifies data requirements for messages |
+|                | containing master data, including syntax, semantic         |
+|                | encoding, and portability. It is often used in conjunction |
+|                | with ISO 8000 to realize the benefits of assessing and     |
+|                | improving data quality.                                    |
++----------------+------------------------------------------------------------+
+| ISO 3166       | This standard defines codes for country names, which can   |
+|                | be utilized for consistent external reference data in      |
+|                | business applications to reduce time and effort in data    |
+|                | integration and analytic tasks.                            |
++----------------+------------------------------------------------------------+
+| ISO 11179      | This metadata registry (MDR) standard provides a framework |
+|                | for representing metadata for an organization to make data |
+|                | understandable and transferable. It provides guidance to   |
+|                | software developers building metadata repositories.        |
++----------------+------------------------------------------------------------+
+| ISO 27701      | This standard serves as a data privacy extension to ISO    |
+|                | 27001, providing a framework for organizations to          |
+|                | establish systems that facilitate compliance with data     |
+|                | privacy regulations like GDPR.                             |
++----------------+------------------------------------------------------------+
 
 --------------------------------------------------------------------------------
 
