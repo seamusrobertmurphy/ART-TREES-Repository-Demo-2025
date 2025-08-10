@@ -178,9 +178,39 @@ We offer the following example as a tentative layout. Please explore the folder 
 examine the contents of each sample document, and provide feedback on improved structure more
 appropriate to your project design.
 
+Of course. Here is the corrected code formatted within a Markdown code block. You can copy this
+directly and paste it into your `README.md` file.
+
+``` markdown
+<table>
+  <tr>
+    <td width="30%" valign="top">
+      <p><strong>Repository Structure:</strong></p>
+      <ul>
+        <li><code>01_Program_Data/</code></li>
+        <li><code>02_Carbon_Data/</code></li>
+        <li><code>03_Spatial_Data/</code>
+          <ul>
+            <li><code>TREES-TMR-Demo.Rmd</code></li>
+          </ul>
+        </li>
+        <li><code>04_Uncertainty/</code></li>
+        <li><code>05_Safeguards/</code></li>
+        <li><code>06_QAQC_SOPs/</code></li>
+      </ul>
+    </td>
+    <td width="70%" valign="top">
+      <img src="01_Program_Data/Communications/assets/repo-layout-wide.png" alt="Fig,1 Illustrative example of wider repository layout" width="100%"/>
+      <br>
+      <em>Fig, 1: Illustrative example of wider repository layout</em>
+    </td>
+  </tr>
+</table>
+```
+
 +---------------------------+---------------------------------------------------------------------+
 | **Repository Structure:** | ![Fig,1 Illustrative example of wider repository                    |
-|                           | layout](01_Program_Data/repo-layout-wid%20e                         |
+|                           | layout](01_Program_Data/repo-layout-wid%20e%20                      |
 | -   `01_Program_Data/`    | .png){alt="Fig,1 Illustrative example of wider repository layout"}\ |
 |                           | *Fig, 1: Illustrative example of wider repository layout*           |
 | -   `02_Carbon_Data/`     |                                                                     |

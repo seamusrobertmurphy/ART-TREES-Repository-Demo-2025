@@ -16,7 +16,7 @@ Winrock Intl
 
 
     The downloaded binary packages are in
-        /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpxfSkBp/downloaded_packages
+        /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpaBPS4J/downloaded_packages
 
 ------------------------------------------------------------------------
 
@@ -159,6 +159,37 @@ folder structure and examine the contents of each sample document, and
 provide feedback on improved structure more appropriate to your project
 design.
 
+Of course. Here is the corrected code formatted within a Markdown code
+block. You can copy this directly and paste it into your `README.md`
+file.
+
+``` markdown
+<table>
+  <tr>
+    <td width="30%" valign="top">
+      <p><strong>Repository Structure:</strong></p>
+      <ul>
+        <li><code>01_Program_Data/</code></li>
+        <li><code>02_Carbon_Data/</code></li>
+        <li><code>03_Spatial_Data/</code>
+          <ul>
+            <li><code>TREES-TMR-Demo.Rmd</code></li>
+          </ul>
+        </li>
+        <li><code>04_Uncertainty/</code></li>
+        <li><code>05_Safeguards/</code></li>
+        <li><code>06_QAQC_SOPs/</code></li>
+      </ul>
+    </td>
+    <td width="70%" valign="top">
+      <img src="01_Program_Data/Communications/assets/repo-layout-wide.png" alt="Fig,1 Illustrative example of wider repository layout" width="100%"/>
+      <br>
+      <em>Fig, 1: Illustrative example of wider repository layout</em>
+    </td>
+  </tr>
+</table>
+```
+
 <table>
 <colgroup>
 <col style="width: 28%" />
@@ -175,7 +206,7 @@ design.
 <li><p><code>05_Safeguards/</code></p></li>
 <li><p><code>06_QAQC_SOPs/</code></p></li>
 </ul></td>
-<td><img src="01_Program_Data/repo-layout-wid%20e%20.png"
+<td><img src="01_Program_Data/repo-layout-wid%20e%20%20.png"
 alt="Fig,1 Illustrative example of wider repository layout" /><br />
 <em>Fig, 1: Illustrative example of wider repository layout</em></td>
 </tr>
