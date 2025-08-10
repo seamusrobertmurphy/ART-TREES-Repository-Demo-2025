@@ -124,7 +124,7 @@ software dependencies at that precise moment in time,
 
 --------------------------------------------------------------------------------
 
-### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
+### Appendix I: Repository Guidelines
 
 We provided a simplified layout in this github repository, as listed in the
 trunk folders below. However, note that this architecture can become highly
