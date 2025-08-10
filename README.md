@@ -1,6 +1,19 @@
-# ART-TREES Audit Repository Demo
-
 Winrock Intl 2025-08-10
+
+<img src="https://art.apx.com/images/ART.png" width="500"/>
+
+[![LinkedIn
+Badge](https://img.shields.io/badge/Project-Profile-blue)](https://art.apx.com/mymodule/reg/TabDocuments.asp?r=111&ad=Prpt&act=update&type=PRO&aProj=pub&tablename=doc&id1=109)
+[![Pubs
+Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://orcid.org/my-orcid?orcid=0000-0002-1792-0351)
+[![Twitter
+Badge](https://img.shields.io/badge/Project-Tweets-critical?color=blue)](https://x.com/)
+[![Program
+Badge](https://img.shields.io/badge/Project-Steward-critical)](https://www.ambiente.gob.ec/)
+[![Annexes
+Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
+
+--------------------------------------------------------------------------------
 
 -   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
 
@@ -16,21 +29,6 @@ Winrock Intl 2025-08-10
 
     The downloaded binary packages are in
     /var/folders/\_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpSLMFhP/downloaded_packages
-
---------------------------------------------------------------------------------
-
-<img src="https://art.apx.com/images/ART.png" width="500"/>
-
-[![LinkedIn
-Badge](https://img.shields.io/badge/Project-Profile-blue)](https://art.apx.com/mymodule/reg/TabDocuments.asp?r=111&ad=Prpt&act=update&type=PRO&aProj=pub&tablename=doc&id1=109)
-[![Pubs
-Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://orcid.org/my-orcid?orcid=0000-0002-1792-0351)
-[![Twitter
-Badge](https://img.shields.io/badge/Project-Tweets-critical?color=blue)](https://x.com/)
-[![Program
-Badge](https://img.shields.io/badge/Project-Steward-critical)](https://www.ambiente.gob.ec/)
-[![Annexes
-Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
 
 --------------------------------------------------------------------------------
 
