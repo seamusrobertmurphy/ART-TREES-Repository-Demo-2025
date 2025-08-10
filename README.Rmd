@@ -3,10 +3,10 @@ title: "ART-TREES Audit Repository Demo"
 author: "Winrock Intl"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  github_document:
     toc: true
-    toc_depth: 3
-    keep_md: true
+    toc_depth: 4
+#    keep_md: true
 
 always_allow_html: TRUE
 editor_options: 
@@ -93,17 +93,9 @@ For a deeper dive into these principles, see the **Repository Guidelines** secti
     -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
     -   [Step 2. Replicate the Script](#step-2-replicate-the-script)
     -   [Step 3. Document Runtime Log](#step-3-document-runtime-log)
--   [Repository Guidelines](#repository-guidelines)
-    -   [Community of Practice](#community-of-practice)
--   [Appendix I: ISO Data Governance & Geometry
-    Testing](#appendix-i-iso-data-governance--geometry-testing)
--   [Appendix II: Replication in `renv`](#appendix-ii-replication-in-renv)
-    -   [Step 1. Set a project profile](#step-1-set-a-project-profile)
-    -   [Step 2. Activate a temporary profile:](#step-2-activate-a-temporary-profile)
-    -   [Step 3. Check package dependencies](#step-3-check-package-dependencies)
-    -   [Step 4. Manage package dependencies](#step-4-manage-package-dependencies)
--   [Appendix IV: `Git` & `R` Installation](#appendix-iv-git--r-installation)
-    -   [Runtime Log](#runtime-log)
+-   [Appendix I: Repository Guidelines](#appendix-i-repository-guidelines)
+-   [Appendix II: ISO Guidelines](#appendix-ii-iso-guidelines)
+-   [Appendix III: Replication in `renv`](#appendix-iii-replication-in-renv)
 
 ----------------------------------------------------------------------------------------------------
 
@@ -117,8 +109,8 @@ internet connection is possible (see Appendix III for installation details).
 Open your command-line tool (or GitHub Desktop) and clone this repository to your local computer.
 This step is crucial for working with precise, version-controlled data.
 
-``` r
-git clone [https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git](https://github.com/seamusrobertmurphy/ART-TREES-Verification-Repository-Demo-2025.git)
+```{r, eval=F}
+git clone https://github.com/seamusrobertmurphy/TREES-demo-repository.git`
 ```
 
 ----------------------------------------------------------------------------------------------------
@@ -180,7 +172,7 @@ that precise moment in time,
 
 ----------------------------------------------------------------------------------------------------
 
-### Repository Guidelines {#repository-guidelines}
+### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
 
 We offer the following example as a tentative layout. Please explore the folder structure and
 examine the contents of each sample document, and provide feedback on improved structure more
@@ -245,7 +237,7 @@ throughout this repository's structure.
     locking in all dependencies. This ensures that anyone can replicate your analysis in the exact
     same computational environment, which is a key part of the verification process.
 
-#### Community of Practice {#community-of-practice}
+##### Community of Practice
 
 We offer a shortlist of default community health files that may be adapted to include SOPs and
 documentation of workbook updates, always aiming to build trust in the auditor:
@@ -284,7 +276,7 @@ documentation of workbook updates, always aiming to build trust in the auditor:
 
 ----------------------------------------------------------------------------------------------------
 
-#### Appendix I: ISO Data Governance & Geometry Testing
+### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
 
 The data management principles of traceability, integrity, and reproducibility are key to GHG
 audits. These principles are supported by a range of ISO standards. This appendix provides an
@@ -347,7 +339,7 @@ Points, Curves, Surfaces, and Geometry Collections `sfc`.
 
 ----------------------------------------------------------------------------------------------------
 
-#### Appendix II: Replication in `renv` {#appendix-ii-replication-in-renv}
+### Appendix III: Replication in `renv` {#appendix-iii-replication-in-renv}
 
 `renv` profiles allow for managing different sets of package dependencies for various project
 contexts, such as separate environments for development, production, or demonstrations. To activate
@@ -408,13 +400,7 @@ renv::settings$ignored.packages("lwgeom")
 renv::deactivate()
 ```
 
-----------------------------------------------------------------------------------------------------
-
-#### Appendix IV: `Git` & `R` Installation
-
-----------------------------------------------------------------------------------------------------
-
-##### Runtime Log {#runtime-log}
+##### Runtime Log
 
 ``` r
 devtools::session_info()
