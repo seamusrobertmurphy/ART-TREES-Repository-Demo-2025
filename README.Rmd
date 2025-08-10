@@ -180,6 +180,24 @@ Of course. Here is the corrected code formatted within a Markdown code block. Yo
 directly and paste it into your `README.md` file.
 
 +------------------------------+--------------------------------------------------------+
+| **Repository Structure:**    | Example Structure                                      |
++==============================+========================================================+
+| -   `01_Program_Data/`       | ![](01_Program_Data/repo-layout-wide.png){width="350"} |
+|                              |                                                        |
+| -   `02_Carbon_Data/`        |                                                        |
+|                              |                                                        |
+| -   `03_Spatial_Data/`       |                                                        |
+|                              |                                                        |
+|     -   `TREES-TMR-Demo.Rmd` |                                                        |
+|                              |                                                        |
+| -   `04_Uncertainty/`        |                                                        |
+|                              |                                                        |
+| -   `05_Safeguards/`         |                                                        |
+|                              |                                                        |
+| -   `06_QAQC_SOPs/`          |                                                        |
++------------------------------+--------------------------------------------------------+
+
++------------------------------+--------------------------------------------------------+
 | **Repository Structure:**    | ![](01_Program_Data/repo-layout-wide.png){width="350"} |
 |                              |                                                        |
 | -   `01_Program_Data/`       |                                                        |

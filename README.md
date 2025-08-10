@@ -18,7 +18,7 @@ editor_options:
 ```
 
 The downloaded binary packages are in
-	/var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpwrNvhM/downloaded_packages
+	/var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpjthB7D/downloaded_packages
 ```
 
 ----------------------------------------------------------------------------------------------------
@@ -147,6 +147,24 @@ appropriate to your project design.
 
 Of course. Here is the corrected code formatted within a Markdown code block. You can copy this
 directly and paste it into your `README.md` file.
+
++------------------------------+--------------------------------------------------------+
+| **Repository Structure:**    | Example Structure                                      |
++==============================+========================================================+
+| -   `01_Program_Data/`       | ![](01_Program_Data/repo-layout-wide.png){width="350"} |
+|                              |                                                        |
+| -   `02_Carbon_Data/`        |                                                        |
+|                              |                                                        |
+| -   `03_Spatial_Data/`       |                                                        |
+|                              |                                                        |
+|     -   `TREES-TMR-Demo.Rmd` |                                                        |
+|                              |                                                        |
+| -   `04_Uncertainty/`        |                                                        |
+|                              |                                                        |
+| -   `05_Safeguards/`         |                                                        |
+|                              |                                                        |
+| -   `06_QAQC_SOPs/`          |                                                        |
++------------------------------+--------------------------------------------------------+
 
 +------------------------------+--------------------------------------------------------+
 | **Repository Structure:**    | ![](01_Program_Data/repo-layout-wide.png){width="350"} |
