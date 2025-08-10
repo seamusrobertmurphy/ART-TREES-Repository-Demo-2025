@@ -55,7 +55,7 @@ knitr::opts_chunk$set(
 
 ----------------------------------------------------------------------------------------------------
 
-[![](https://art.apx.com/images/ART.png){width="500"}](#section)
+![](https://art.apx.com/images/ART.png){width="500"}
 
 [![LinkedIn
 Badge](https://img.shields.io/badge/Project-Profile-blue)](https://art.apx.com/mymodule/reg/TabDocuments.asp?r=111&ad=Prpt&act=update&type=PRO&aProj=pub&tablename=doc&id1=109)
@@ -71,13 +71,12 @@ Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](htt
 
 Welcome to the
 [ART-TREES-demo-repository.git](https://github.com/seamusrobertmurphy/TREES-demo-repository), a
-training resource for preparing and submitting a complete data package for an ART TREES verification
-audit. Here, we document some best practices for using version control to ensure perfect
-reproducibility of your calculations. You will complete this exercise following the three steps
-below.
+training resource for submitting a complete data package for an ART TREES verification audit. Here,
+we document some best practices for using version control to ensure perfect reproducibility of your
+calculations.
 
-As you navigate this repository, keep the following core concepts in mind. These are the fundamental
-principles auditors use to evaluate your submission:
+As you navigate this repository, keep the following core concepts in mind, as these are fundamental
+to how auditors evaluate your submission:
 
 -   **Data Traceability**: Every key figure must be traceable back to its original source data and
     the methodology used to derive it.
@@ -88,9 +87,27 @@ principles auditors use to evaluate your submission:
 
 For a deeper dive into these principles, see the **Repository Guidelines** section below.
 
+### Table of Contents
+
+-   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
+    -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
+    -   [Step 2. Replicate the Script](#step-2-replicate-the-script)
+    -   [Step 3. Document Runtime Log](#step-3-document-runtime-log)
+-   [Repository Guidelines](#repository-guidelines)
+    -   [Community of Practice](#community-of-practice)
+-   [Appendix I: ISO Data Governance & Geometry
+    Testing](#appendix-i-iso-data-governance--geometry-testing)
+-   [Appendix II: Replication in `renv`](#appendix-ii-replication-in-renv)
+    -   [Step 1. Set a project profile](#step-1-set-a-project-profile)
+    -   [Step 2. Activate a temporary profile:](#step-2-activate-a-temporary-profile)
+    -   [Step 3. Check package dependencies](#step-3-check-package-dependencies)
+    -   [Step 4. Manage package dependencies](#step-4-manage-package-dependencies)
+-   [Appendix IV: `Git` & `R` Installation](#appendix-iv-git--r-installation)
+    -   [Runtime Log](#runtime-log)
+
 ----------------------------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit
+### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
 
 #### Step 1. Clone the Repository
 
@@ -163,7 +180,7 @@ that precise moment in time,
 
 ----------------------------------------------------------------------------------------------------
 
-### Repository Guidelines
+### Repository Guidelines {#repository-guidelines}
 
 We offer the following example as a tentative layout. Please explore the folder structure and
 examine the contents of each sample document, and provide feedback on improved structure more
@@ -228,7 +245,7 @@ throughout this repository's structure.
     locking in all dependencies. This ensures that anyone can replicate your analysis in the exact
     same computational environment, which is a key part of the verification process.
 
-#### Community of Practice
+#### Community of Practice {#community-of-practice}
 
 We offer a shortlist of default community health files that may be adapted to include SOPs and
 documentation of workbook updates, always aiming to build trust in the auditor:
@@ -330,7 +347,7 @@ Points, Curves, Surfaces, and Geometry Collections `sfc`.
 
 ----------------------------------------------------------------------------------------------------
 
-#### Appendix II: Replication in `renv`
+#### Appendix II: Replication in `renv` {#appendix-ii-replication-in-renv}
 
 `renv` profiles allow for managing different sets of package dependencies for various project
 contexts, such as separate environments for development, production, or demonstrations. To activate
@@ -397,7 +414,7 @@ renv::deactivate()
 
 ----------------------------------------------------------------------------------------------------
 
-##### Runtime Log
+##### Runtime Log {#runtime-log}
 
 ``` r
 devtools::session_info()
@@ -674,5 +691,3 @@ devtools::session_info()
 ``` r
 #Sys.getenv()
 ```
-
-::::
