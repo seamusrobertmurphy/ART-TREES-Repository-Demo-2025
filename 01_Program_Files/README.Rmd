@@ -76,7 +76,8 @@ we document some best practices for using version control to ensure perfect repr
 calculations.
 
 As you navigate this repository, keep the following core concepts in mind, as these are fundamental
-to how auditors evaluate your submission:
+to how auditors evaluate your submission. For a deeper dive into these principles, see **Repository
+Guidelines** section below.
 
 -   **Data Traceability**: Every key figure must be traceable back to its original source data and
     the methodology used to derive it.
@@ -84,16 +85,6 @@ to how auditors evaluate your submission:
     with nothing significant missing.
 -   **Data Curation**: A logical folder structure, descriptive file names, and clear documentation
     allow auditors to quickly find what they need.
-
-For a deeper dive into these principles, see the **Repository Guidelines** section below.
-
--   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
-    -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
-    -   [Step 2. Replicate the Script](#step-2-replicate-the-script)
-    -   [Step 3. Document Runtime Log](#step-3-document-runtime-log)
--   [Appendix I: Repository Guidelines](#appendix-i-repository-guidelines)
--   [Appendix II: ISO Guidelines](#appendix-ii-iso-guidelines)
--   [Appendix III: Replication in `renv`](#appendix-iii-replication-in-renv)
 
 ----------------------------------------------------------------------------------------------------
 
@@ -113,7 +104,12 @@ git clone https://github.com/seamusrobertmurphy/TREES-demo-repository.git`
 
 ----------------------------------------------------------------------------------------------------
 
-#### Step 2. Replicate the Script
+#### Step 2. Replicate the Script[^1]
+
+[^1]: Please note thatb this public repository is for demonstration purposes. To review Winrock's
+    active audit repository used to replicate previous submissions of your program's GHG assertions
+    and emissions calculations, you may request access through the following link:
+    <https://github.com/seamusrobertmurphy/TREES-ecuador-repository.git>
 
 The analysis script and its data are located in the /02_Carbon_Data/ directory. Simply open the
 ART-TREES-TMR-Replication-Demo.Rmd file in your R environment and run it. The script will
