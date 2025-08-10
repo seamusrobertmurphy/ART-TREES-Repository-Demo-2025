@@ -1,0 +1,178 @@
+---
+title: "ART-TREES Data Replication Demo"
+subtitle: "Training exercise in version control and reproducible analyses"
+author: "Murphy, S"
+date: "2025-08-08"
+output:
+  html_document:
+    toc: yes
+    theme: united
+    df_print: kable
+    highlight: pygments
+    latex_engine: xelatex
+    keep_md: true
+    
+always_allow_html: TRUE
+editor_options: 
+  markdown: 
+    wrap: 70
+---
+
+```{r setup-1}
+#| warning: false
+#| message: false
+#| error: false
+#| include: false
+#| echo: false
+easypackages::packages(
+  "animation", "allodb", "BIOMASS", "c2z", "caret", "dataMaid", "DescTools","dplyr",
+  "flextable", "FawR", "ForestToolsRS", "ggplot2",
+  "janitor", "lattice", "kableExtra", "kernlab", "knitr", 
+  "RColorBrewer", "rmarkdown", "readxl", "tibble", "tidymodels", 
+  "tidyverse","tinytex", "tune", "useful", "webshot", "webshot2",
+  prompt = F
+  )
+  
+knitr::opts_chunk$set(
+  echo    = TRUE, 
+  message = FALSE, 
+  warning = FALSE,
+  error   = FALSE, 
+  cache   = FALSE,
+  comment = NA, 
+  tidy.opts = list(width.cutoff = 70)
+)
+
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+sf::sf_use_s2(use_s2 = FALSE)
+```
+
+### **1. Introduction: The Goal of This Exercise**
+
+This R Markdown file demonstrates **perfect reproducibility** in
+environmental data analysis, a fundamental principle for any credible
+scientific or audit process.
+
+**The Challenge**: An independent reviewer must be able to take your
+data and your code, run it in a documented environment, and get the
+exact same result you reported.
+
+This script performs a straightforward calculation of total carbon
+stock from forest inventory data using publicly available
+methodologies.
+
+**Your task**: Run this script and verify that you get the expected
+result of **1,550 tCO₂e**. This demonstrates that:
+
+-   Your computational environment is properly configured
+-   The analysis is transparent and reproducible\
+-   The methodology can be independently verified
+
+**Key Principles Demonstrated**:
+
+-   **Data Traceability**: Every calculation step is documented
+-   **Reproducibility**: Results are identical across different users
+    and systems
+-   **Transparency**: Methods are open and verifiable
+
+----------------------------------------------------------------------
+
+### **2. Loading Required Packages**
+
+This step loads the `dplyr` package for data manipulation. In
+practice, all package versions should be documented (see runtime log
+at the end of this script) to ensure computational reproducibility.
+
+```{r, class.source = c("numCode", "r", "numberLines"), message=FALSE, warning=FALSE}
+# Load required packages for data manipulation
+install.packages("easypackages")
+
+easypackages::packages(
+  "animation", "allodb", "BIOMASS", "dataMaid", "DescTools","dplyr", "flextble",
+  "FawR", "ForestToolsRS", "ggplot2", "janitor", "lattice", "kableExtra", 
+  "kernlab", "knitr", "psych", "RColorBrewer", "rmarkdown", "readxl", 
+  "tibble", "tidymodels", "tidyverse", "tune", "useful", "webshot", "webshot2",
+  prompt = F
+  )
+  
+# Verify package is loaded
+cat("All packages loaded successfully")
+```
+
+----------------------------------------------------------------------
+
+### **3. Creating the Dataset**
+
+We use a standardized dataset that represents typical forest inventory
+measurements. This approach ensures the exercise works consistently
+across different environments without requiring external file
+dependencies.
+
+**Data Source**: Simulated forest plot measurements following standard
+forestry protocols.
+
+```{r, class.source = c("numCode", "r", "numberLines")}
+# Create standardized forest inventory dataset
+# Each row represents one forest measurement plot
+carbon_data <- data.frame(
+  plot_id = c("PLOT_001", "PLOT_002", "PLOT_003", "PLOT_004", "PLOT_005"),
+  carbon_stock_tCO2e = c(310, 290, 350, 275, 325),
+  forest_type = c("Primary", "Secondary", "Primary", "Secondary", "Primary"),
+  measurement_year = c(2024, 2024, 2024, 2024, 2024)
+)
+
+# Display the input data
+cat("Forest Inventory Data:\n")
+carbon_data_flex = flextable(head(carbon_data[, 1:4])) |>
+  set_header_labels(carbon_data_flex,
+  values = list(
+    plot_id                 = "Plot ID",
+    carbon_stock_tCO2e      = "Carbon Stock (tCO2-e)",
+    forest_type             = "Forest Type",
+    measurement_year        = "Inventory Date (YYYY)"
+  )) |> width(width = 1) |> fit_to_width(max_width = 6.5) |>
+  colformat_double(digits = 1, na_str = "N/A")
+  #colformat_double(carbon_data_flex, j = "carbon_stock_tCO2e", digits = 1, na_str = "N/A")
+
+carbon_data_flex |> fontsize(size=8,part="all")
+cat("\nDataset contains", nrow(carbon_data), "measurement plots\n")
+```
+
+```{r, class.source = c("numCode", "r", "numberLines")}
+
+# Create standardized forest inventory dataset
+# Each row represents one forest measurement plot
+carbon_data <- data.frame(
+  plot_id = c("PLOT_001", "PLOT_002", "PLOT_003", "PLOT_004", "PLOT_005"),
+  carbon_stock_tCO2e = c(310, 290, 350, 275, 325),
+  forest_type = c("Primary", "Secondary", "Primary", "Secondary", "Primary"),
+  measurement_year = c(2024, 2024, 2024, 2024, 2024)
+)
+
+# Display the input data
+cat("Forest Inventory Data:\n")
+carbon_data_flex <- flextable(head(carbon_data[, 1:4]))
+carbon_data_flex <- set_header_labels(
+  carbon_data_flex,
+  values = list(
+    plot_id             = "Plot ID",
+    carbon_stock_tCO2e  = "Carbon Stock (tCO2-e)",
+    forest_type         = "Forest Type",
+    measurement_year    = "Inventory Date (YYYY)"
+    ))
+
+carbon_data_flex <- width(carbon_data_flex, width = 1)
+carbon_data_flex <- fit_to_width(carbon_data_flex, max_width = 6.5)
+
+# The 'big.mark' argument has been removed, so no thousand separators will be used.
+carbon_data_flex <- colformat_double(
+    carbon_data_flex,
+    digits = 1,
+    na_str = "N/A"
+)
+
+carbon_data_flex |> fontsize(size=8,part="all")
+cat("\nDataset contains", nrow(carbon_data), "measurement plots\n")
+```
+
+----------------------------------------------------------------------

@@ -108,7 +108,7 @@ This is the core analytical step. We calculate total carbon stock using a simple
 
 ```{r calculation}
 # Calculate total carbon stock using simple aggregation
-calculation_summary %
+calculation_summary %>%
   summarise(
     total_plots = n(),
     total_carbon_tCO2e = sum(carbon_stock_tCO2e),
