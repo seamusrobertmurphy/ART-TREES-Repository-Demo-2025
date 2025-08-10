@@ -178,43 +178,21 @@ We offer the following example as a tentative layout. Please explore the folder 
 examine the contents of each sample document, and provide feedback on improved structure more
 appropriate to your project design.
 
-:::::: columns
-::: {.column width="25%"}
-
-----------------------------------------------------------------------------------------------------
-
--   `01_Program_Data/`
-
--   `02_Carbon_Data/`
-
-    -   `TREES-demo-replication.Rmd`
-
--   `03_Spatial_Data/`
-
--   `04_Uncertainty/`
-
--   `05_Safeguards/`
-
--   `06_QAQC/`
-:::
-
-::: {.column width="10%"}
-:::
-
-::: {.column width="65%"}
-<figure>
-
-![Fig,1 Illustrative example of wider repository layout](01_Program_Data/repo-layout-wide.png)
-
-<figcaption aria-hidden="true">
-
-Fig,1 Illustrative example of wider repository layout
-
-</figcaption>
-
-</figure>
-:::
-::::::
++---------------------------+---------------------------------------------------------------------+
+| **Repository Structure:** | ![Fig,1 Illustrative example of wider repository                    |
+|                           | layout](01_Program_Data/repo-layout-wid%20e                         |
+| -   `01_Program_Data/`    | .png){alt="Fig,1 Illustrative example of wider repository layout"}\ |
+|                           | *Fig, 1: Illustrative example of wider repository layout*           |
+| -   `02_Carbon_Data/`     |                                                                     |
+|                           |                                                                     |
+| -   `03_Spatial_Data/`    |                                                                     |
+|                           |                                                                     |
+| -   `04_Uncertainty/`     |                                                                     |
+|                           |                                                                     |
+| -   `05_Safeguards/`      |                                                                     |
+|                           |                                                                     |
+| -   `06_QAQC_SOPs/`       |                                                                     |
++---------------------------+---------------------------------------------------------------------+
 
 ----------------------------------------------------------------------------------------------------
 
@@ -238,7 +216,7 @@ throughout this repository's structure.
     locking in all dependencies. This ensures that anyone can replicate your analysis in the exact
     same computational environment, which is a key part of the verification process.
 
-##### Community of Practice
+##### Repository Governance
 
 We offer a shortlist of default community health files that may be adapted to include SOPs and
 documentation of workbook updates, always aiming to build trust in the auditor:
