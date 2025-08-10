@@ -97,12 +97,6 @@ match exactly.
 
 --------------------------------------------------------------------------------
 
-<div>
-
-</div>
-
---------------------------------------------------------------------------------
-
 #### Step 3. Document Runtime Log
 
 To demonstrate **data integrity** and **reproducibility**, you must document the
@@ -146,7 +140,7 @@ additional layout examples from today's slide for comparison.
 
 -   `06_QAQC_SOPs/`
 
-[![](01_Program_Data/repo-layout-wide.png)](Fig,%201:%20Illustrative%20example%20of%20wider%20repository%20layout)
+[![](01_Program_Files/repo-layout-wide.png)](Fig,%201:%20Illustrative%20example%20of%20wider%20repository%20layout)
 
 --------------------------------------------------------------------------------
 
