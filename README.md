@@ -126,29 +126,27 @@ software dependencies at that precise moment in time,
 
 ### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
 
-We offer the following example as a tentative layout. We welcome any feedback on
+We provided a simplified layout in this github repository, as listed in the
+trunk folders below. However, note that this architecture can become highly
+nested which carried certain trade–offs. Therefore, we welcome any feedback on
 improved structure that is more appropriate to your project design, and provide
 additional layout examples from today's slide for comparison.
 
-+--------------------------------------+
-| **Repository Structure:**            |
-+:=====================================+
-| -   `01_Program_Data/`               |
-|                                      |
-| -   `02_Carbon_Data/`                |
-|                                      |
-|     -   `TREES-demo-replication.Rmd` |
-|                                      |
-| -   `03_Spatial_Data/`               |
-|                                      |
-| -   `04_Uncertainty/`                |
-|                                      |
-| -   `05_Safeguards/`                 |
-|                                      |
-| -   `06_QAQC_SOPs/`                  |
-+--------------------------------------+
+-   `01_Program_Data/`
 
-[![](01_Program_Data/repo-layout-wide.png)](Fig, 1: Illustrative example of wider repository layout)
+-   `02_Carbon_Data/`
+
+    -   `TREES-demo-replication.Rmd`
+
+-   `03_Spatial_Data/`
+
+-   `04_Uncertainty/`
+
+-   `05_Safeguards/`
+
+-   `06_QAQC_SOPs/`
+
+[![](01_Program_Data/repo-layout-wide.png)](Fig,%201:%20Illustrative%20example%20of%20wider%20repository%20layout)
 
 --------------------------------------------------------------------------------
 
@@ -243,57 +241,59 @@ Surfaces, and Geometry Collections `sfc`.
 
 --------------------------------------------------------------------------------
 
-+-----------------+------------------------------------------------------------+
-| ISO Standard    | Components relevant to ART-TREES GHG audit verifications   |
-+=================+============================================================+
-| ISO 27001,      | Two widely discussed ISO standards for data governance are |
-|                 | ISO 27001 and ISO 8000. ISO 27001 is a standard for        |
-| ISO 8000        | Information Security Management Systems (ISMS), while ISO  |
-|                 | 8000 focuses on data quality management. Implementing the  |
-|                 | ISO 27001 standard is a deliverable of information         |
-|                 | security management under the IT governance program and    |
-|                 | not solely a data governance deliverable. However, data    |
-|                 | governance maturity is crucial for complying with ISO      |
-|                 | 27001 and ensuring data security, confidentiality, and     |
-|                 | integrity in information management practices. ISO 8000    |
-|                 | aims to ensure that data used in various contexts, such as |
-|                 | business processes, analytics, and decision-making, meets  |
-|                 | certain quality standards. It covers all the key elements  |
-|                 | of data—Syntax, Provenance, Completion, Accuracy, and      |
-|                 | Certification—providing a standard to measure and certify  |
-|                 | data quality.                                              |
-+-----------------+------------------------------------------------------------+
-| ISO 38505-1     | This is a standard for data governance that provides a set |
-|                 | of guidelines for the governance of data within an         |
-|                 | organization. It considers data governance as a subset of  |
-|                 | IT governance, which in turn is a subset of organizational |
-|                 | governance, and defines clear responsibilities for the     |
-|                 | governing body and oversight mechanisms. At its core, it   |
-|                 | provides a model for evaluating, directing, and monitoring |
-|                 | the handling and usage of data in an organization.         |
-+-----------------+------------------------------------------------------------+
-| ISO 22745       | This standard focuses on master data exchange between      |
-|                 | organizations. It specifies data requirements for messages |
-|                 | containing master data, including syntax, semantic         |
-|                 | encoding, and portability. It is often used in conjunction |
-|                 | with ISO 8000 to realize the benefits of assessing and     |
-|                 | improving data quality.                                    |
-+-----------------+------------------------------------------------------------+
-| ISO 3166        | This standard defines codes for country names, which can   |
-|                 | be utilized for consistent external reference data in      |
-|                 | business applications to reduce time and effort in data    |
-|                 | integration and analytic tasks.                            |
-+-----------------+------------------------------------------------------------+
-| ISO 11179       | This metadata registry (MDR) standard provides a framework |
-|                 | for representing metadata for an organization to make data |
-|                 | understandable and transferable. It provides guidance to   |
-|                 | software developers building metadata repositories.        |
-+-----------------+------------------------------------------------------------+
-| ISO 27701       | This standard serves as a data privacy extension to ISO    |
-|                 | 27001, providing a framework for organizations to          |
-|                 | establish systems that facilitate compliance with data     |
-|                 | privacy regulations like GDPR.                             |
-+-----------------+------------------------------------------------------------+
++------------------+-----------------------------------------------------------+
+| ISO Standard     | Components relevant to ART-TREES GHG audit verifications  |
++==================+===========================================================+
+| ISO 27001,       | Two widely discussed ISO standards for data governance    |
+|                  | are ISO 27001 and ISO 8000. ISO 27001 is a standard for   |
+| ISO 8000         | Information Security Management Systems (ISMS), while ISO |
+|                  | 8000 focuses on data quality management. Implementing the |
+|                  | ISO 27001 standard is a deliverable of information        |
+|                  | security management under the IT governance program and   |
+|                  | not solely a data governance deliverable. However, data   |
+|                  | governance maturity is crucial for complying with ISO     |
+|                  | 27001 and ensuring data security, confidentiality, and    |
+|                  | integrity in information management practices. ISO 8000   |
+|                  | aims to ensure that data used in various contexts, such   |
+|                  | as business processes, analytics, and decision-making,    |
+|                  | meets certain quality standards. It covers all the key    |
+|                  | elements of data—Syntax, Provenance, Completion,          |
+|                  | Accuracy, and Certification—providing a standard to       |
+|                  | measure and certify data quality.                         |
++------------------+-----------------------------------------------------------+
+| ISO 38505-1      | This is a standard for data governance that provides a    |
+|                  | set of guidelines for the governance of data within an    |
+|                  | organization. It considers data governance as a subset of |
+|                  | IT governance, which in turn is a subset of               |
+|                  | organizational governance, and defines clear              |
+|                  | responsibilities for the governing body and oversight     |
+|                  | mechanisms. At its core, it provides a model for          |
+|                  | evaluating, directing, and monitoring the handling and    |
+|                  | usage of data in an organization.                         |
++------------------+-----------------------------------------------------------+
+| ISO 22745        | This standard focuses on master data exchange between     |
+|                  | organizations. It specifies data requirements for         |
+|                  | messages containing master data, including syntax,        |
+|                  | semantic encoding, and portability. It is often used in   |
+|                  | conjunction with ISO 8000 to realize the benefits of      |
+|                  | assessing and improving data quality.                     |
++------------------+-----------------------------------------------------------+
+| ISO 3166         | This standard defines codes for country names, which can  |
+|                  | be utilized for consistent external reference data in     |
+|                  | business applications to reduce time and effort in data   |
+|                  | integration and analytic tasks.                           |
++------------------+-----------------------------------------------------------+
+| ISO 11179        | This metadata registry (MDR) standard provides a          |
+|                  | framework for representing metadata for an organization   |
+|                  | to make data understandable and transferable. It provides |
+|                  | guidance to software developers building metadata         |
+|                  | repositories.                                             |
++------------------+-----------------------------------------------------------+
+| ISO 27701        | This standard serves as a data privacy extension to ISO   |
+|                  | 27001, providing a framework for organizations to         |
+|                  | establish systems that facilitate compliance with data    |
+|                  | privacy regulations like GDPR.                            |
++------------------+-----------------------------------------------------------+
 
 --------------------------------------------------------------------------------
 
