@@ -10,13 +10,10 @@ Winrock Intl
   - [Step 2. Replicate the Script](#step-2-replicate-the-script)
   - [Step 3. Document Runtime Log](#step-3-document-runtime-log)
 - [Appendix I: Repository Guidelines](#appendix-i-repository-guidelines)
-- [Appendix II: ISO Guidelines](#appendix-ii-iso-guidelines)
-- [Appendix III: Replication in
-  `renv`](#appendix-iii-replication-in-renv)
 
 
     The downloaded binary packages are in
-        /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpaBPS4J/downloaded_packages
+        /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpTU7BOc/downloaded_packages
 
 ------------------------------------------------------------------------
 
@@ -163,37 +160,10 @@ Of course. Here is the corrected code formatted within a Markdown code
 block. You can copy this directly and paste it into your `README.md`
 file.
 
-``` markdown
-<table>
-  <tr>
-    <td width="30%" valign="top">
-      <p><strong>Repository Structure:</strong></p>
-      <ul>
-        <li><code>01_Program_Data/</code></li>
-        <li><code>02_Carbon_Data/</code></li>
-        <li><code>03_Spatial_Data/</code>
-          <ul>
-            <li><code>TREES-TMR-Demo.Rmd</code></li>
-          </ul>
-        </li>
-        <li><code>04_Uncertainty/</code></li>
-        <li><code>05_Safeguards/</code></li>
-        <li><code>06_QAQC_SOPs/</code></li>
-      </ul>
-    </td>
-    <td width="70%" valign="top">
-      <img src="01_Program_Data/Communications/assets/repo-layout-wide.png" alt="Fig,1 Illustrative example of wider repository layout" width="100%"/>
-      <br>
-      <em>Fig, 1: Illustrative example of wider repository layout</em>
-    </td>
-  </tr>
-</table>
-```
-
 <table>
 <colgroup>
-<col style="width: 28%" />
-<col style="width: 71%" />
+<col style="width: 31%" />
+<col style="width: 68%" />
 </colgroup>
 <tbody>
 <tr>
@@ -201,255 +171,225 @@ file.
 <ul>
 <li><p><code>01_Program_Data/</code></p></li>
 <li><p><code>02_Carbon_Data/</code></p></li>
-<li><p><code>03_Spatial_Data/</code></p></li>
+<li><p><code>03_Spatial_Data/</code></p>
+<ul>
+<li><code>TREES-TMR-Demo.Rmd</code></li>
+</ul></li>
 <li><p><code>04_Uncertainty/</code></p></li>
 <li><p><code>05_Safeguards/</code></p></li>
 <li><p><code>06_QAQC_SOPs/</code></p></li>
 </ul></td>
-<td><img src="01_Program_Data/repo-layout-wid%20e%20%20.png"
+<td><img src="01_Program_Data/repo-layout-wide.p%20ng"
 alt="Fig,1 Illustrative example of wider repository layout" /><br />
 <em>Fig, 1: Illustrative example of wider repository layout</em></td>
 </tr>
 </tbody>
 </table>
 
-------------------------------------------------------------------------
 
-These are the fundamental concepts that auditors use to evaluate your
-submission, which are embedded throughout this repository’s structure.
+    +---------------------------+----------------------------------------------------------------------+
+    | **Repository Structure:**    | ![Fig,1 Illustrative example of wider repository                     |
+    |                              | layout](01_Program_Data/repo-layout-wid                              |
+    | -   `01_Program_Data/`       | e.png){alt="Fig,1 Illustrative example of wider layout repository"}\ |
+    |                              | *Fig, 1: Illustrative example of wider repository layout*            |
+    | -   `02_Carbon_Data/`        |                                                                      |
+    |                              |                                                                      |
+    | -   `03_Spatial_Data/`       |                                                                      |
+    |                              |                                                                  |
+    |     -   `TREES-TMR-Demo.Rmd` |                                                                  |
+    |                              |                                                                      |
+    | -   `04_Uncertainty/`        |                                                                      |
+    |                              |                                                                      |
+    | -   `05_Safeguards/`         |                                                                      |
+    |                              |                                                                      |
+    | -   `06_QAQC/`          |                                                                      |
+    +---------------------------+----------------------------------------------------------------------+
 
-- Data Traceability: We demonstrate this through clear file naming
-  conventions, a folder for QA/QC procedures, and a structure that links
-  report claims to specific evidence files. Every key figure in a
-  report, such as X hectares deforested, must be traceable back to its
-  raw data source and the methodology used to derive it.
-- Data Completeness: This repository is organized to align directly with
-  the ART TREES requirements. This provides a clear framework for you to
-  check if you have all the necessary data for every required category,
-  such as deforestation areas, emission factors, and safeguards
-  information. The repository also includes a place to document any
-  methodological changes made over time.
-- Data Curation: A well-organized data package allows auditors to
-  quickly find what they need. Our layout, for example, separates
-  Calculations & Analysis from Spatial Data and SOPs & Procedures. This
-  logical grouping helps auditors instinctively navigate your
-  submission. A top-level README and descriptive filenames are also key
-  curation practices.
-- Data Replication: The use of a package management tool like renv (see
-  Appendix II) allows for locking in all dependencies. This ensures that
-  anyone can replicate your analysis in the exact same computational
-  environment, which is a key part of the verification process.
+    ----------------------------------------------------------------------------------------------------
 
-##### Repository Governance
+    These are the fundamental concepts that auditors use to evaluate your submission, which are embedded
+    throughout this repository's structure.
 
-We offer a shortlist of default community health files that may be
-adapted to include SOPs and documentation of workbook updates, always
-aiming to build trust in the auditor:
+    -   Data Traceability: We demonstrate this through clear file naming conventions, a folder for QA/QC
+        procedures, and a structure that links report claims to specific evidence files. Every key
+        figure in a report, such as X hectares deforested, must be traceable back to its raw data source
+        and the methodology used to derive it.
+    -   Data Completeness: This repository is organized to align directly with the ART TREES
+        requirements. This provides a clear framework for you to check if you have all the necessary
+        data for every required category, such as deforestation areas, emission factors, and safeguards
+        information. The repository also includes a place to document any methodological changes made
+        over time.
+    -   Data Curation: A well-organized data package allows auditors to quickly find what they need. Our
+        layout, for example, separates Calculations & Analysis from Spatial Data and SOPs & Procedures.
+        This logical grouping helps auditors instinctively navigate your submission. A top-level README
+        and descriptive filenames are also key curation practices.
+    -   Data Replication: The use of a package management tool like renv (see Appendix II) allows for
+        locking in all dependencies. This ensures that anyone can replicate your analysis in the exact
+        same computational environment, which is a key part of the verification process.
 
-- CODE_OF_CONDUCT.md: A CODE_OF_CONDUCT file defines standards for how
-  to engage in a community.
-- CONTRIBUTING.md: A CONTRIBUTING file communicates how people should
-  contribute to your project. Discussion category forms can also be
-  added to help customize priority templates issued to stakeholder or
-  partners, or community members for opening new discussions in your
-  repository..
-- FUNDING.yml: A FUNDING file displays a sponsor button in your
-  repository to increase the visibility of funding options for your open
-  source project.
-- GOVERNANCE.md: A GOVERNANCE file lets people know about how your
-  project is governed. For example, it might discuss project roles and
-  how decisions are made.
-- Pull request & config.yml: Issue and pull request templates help
-  standardize the information you’d like contributors to include when
-  they open issues and pull requests in your repository.
-- SECURITY.md: A SECURITY file gives instructions on how to report a
-  security vulnerability in your project and description that hyperlinks
-  the file. For more information, see [Adding a security policy to your
-  repository](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository).
-- SUPPORT.md: A SUPPORT file lets people know about ways to get help
-  with your project. For more information, see [Adding support resources
-  to your
-  project](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-support-resources-to-your-project).
+    ##### Repository Governance
 
-------------------------------------------------------------------------
+    We offer a shortlist of default community health files that may be adapted to include SOPs and
+    documentation of workbook updates, always aiming to build trust in the auditor:
 
-<div>
+    -   CODE_OF_CONDUCT.md: A CODE_OF_CONDUCT file defines standards for how to engage in a community.
+    -   CONTRIBUTING.md: A CONTRIBUTING file communicates how people should contribute to your project.
+        Discussion category forms can also be added to help customize priority templates issued to
+        stakeholder or partners, or community members for opening new discussions in your repository..
+    -   FUNDING.yml: A FUNDING file displays a sponsor button in your repository to increase the
+        visibility of funding options for your open source project.
+    -   GOVERNANCE.md: A GOVERNANCE file lets people know about how your project is governed. For
+        example, it might discuss project roles and how decisions are made.
+    -   Pull request & config.yml: Issue and pull request templates help standardize the information
+        you’d like contributors to include when they open issues and pull requests in your repository.
+    -   SECURITY.md: A SECURITY file gives instructions on how to report a security vulnerability in
+        your project and description that hyperlinks the file. For more information, see [Adding a
+        security policy to your
+        repository](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository).
+    -   SUPPORT.md: A SUPPORT file lets people know about ways to get help with your project. For more
+        information, see [Adding support resources to your
+        project](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-support-resources-to-your-project).
 
-</div>
+    ----------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------
+    <div>
 
-------------------------------------------------------------------------
+    </div>
 
-<div>
+    ----------------------------------------------------------------------------------------------------
 
-</div>
+    ----------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------
+    <div>
 
-### Appendix II: ISO Guidelines
+    </div>
 
-The data management principles of traceability, integrity, and
-reproducibility are key to GHG audits. These principles are supported by
-a range of ISO standards. This appendix provides an overview of those
-ISO standards relevant to data governance and quality, and provides
-additional resources for debugging and validating geospatial operations
-across platform using the `liblwgeom` library.
+    ----------------------------------------------------------------------------------------------------
 
-The `liblwgeom` library was derived according to the OpenGIS Simple
-Features Access (SFA) geometry rules (ISO 19125) and was purposely built
-for unbiased unit testing. This `TopGeometry` model drew on open-source
-or platform-neutral architecture to allow access to base geometric
-objects including Points, Curves, Surfaces, and Geometry Collections
-`sfc`.
+    ### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
 
-- The `liblwgeom` library uses the CUnit test framework for unit
-  testing, which provides lightweight method to debug spatial
-  operations.
-- The `make` check command runs a set of regression tests for the entire
-  PostGIS system, which helps verify the integrity of the installation
-  and its dependencies, such as `PROJ4`in cartographic projections and
-  `GEOS` for topological tests.
+    The data management principles of traceability, integrity, and reproducibility are key to GHG
+    audits. These principles are supported by a range of ISO standards. This appendix provides an
+    overview of those ISO standards relevant to data governance and quality, and provides additional
+    resources for debugging and validating geospatial operations across platform using the `liblwgeom`
+    library.
 
-------------------------------------------------------------------------
+    The `liblwgeom` library was derived according to the OpenGIS Simple Features Access (SFA) geometry
+    rules (ISO 19125) and was purposely built for unbiased unit testing. This `TopGeometry` model drew
+    on open-source or platform-neutral architecture to allow access to base geometric objects including
+    Points, Curves, Surfaces, and Geometry Collections `sfc`.
 
-<table>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 84%" />
-</colgroup>
-<thead>
-<tr>
-<th>ISO Standard</th>
-<th>Components relevant to ART-TREES GHG audit verifications</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><p>ISO 27001,</p>
-<p>ISO 8000</p></td>
-<td>Two widely discussed ISO standards for data governance are ISO 27001
-and ISO 8000. ISO 27001 is a standard for Information Security
-Management Systems (ISMS), while ISO 8000 focuses on data quality
-management. Implementing the ISO 27001 standard is a deliverable of
-information security management under the IT governance program and not
-solely a data governance deliverable. However, data governance maturity
-is crucial for complying with ISO 27001 and ensuring data security,
-confidentiality, and integrity in information management practices. ISO
-8000 aims to ensure that data used in various contexts, such as business
-processes, analytics, and decision-making, meets certain quality
-standards. It covers all the key elements of data—Syntax, Provenance,
-Completion, Accuracy, and Certification—providing a standard to measure
-and certify data quality.</td>
-</tr>
-<tr>
-<td>ISO 38505-1</td>
-<td>This is a standard for data governance that provides a set of
-guidelines for the governance of data within an organization. It
-considers data governance as a subset of IT governance, which in turn is
-a subset of organizational governance, and defines clear
-responsibilities for the governing body and oversight mechanisms. At its
-core, it provides a model for evaluating, directing, and monitoring the
-handling and usage of data in an organization.</td>
-</tr>
-<tr>
-<td>ISO 22745</td>
-<td>This standard focuses on master data exchange between organizations.
-It specifies data requirements for messages containing master data,
-including syntax, semantic encoding, and portability. It is often used
-in conjunction with ISO 8000 to realize the benefits of assessing and
-improving data quality.</td>
-</tr>
-<tr>
-<td>ISO 3166</td>
-<td>This standard defines codes for country names, which can be utilized
-for consistent external reference data in business applications to
-reduce time and effort in data integration and analytic tasks.</td>
-</tr>
-<tr>
-<td>ISO 11179</td>
-<td>This metadata registry (MDR) standard provides a framework for
-representing metadata for an organization to make data understandable
-and transferable. It provides guidance to software developers building
-metadata repositories.</td>
-</tr>
-<tr>
-<td>ISO 27701</td>
-<td>This standard serves as a data privacy extension to ISO 27001,
-providing a framework for organizations to establish systems that
-facilitate compliance with data privacy regulations like GDPR.</td>
-</tr>
-</tbody>
-</table>
+    -   The `liblwgeom` library uses the CUnit test framework for unit testing, which provides
+        lightweight method to debug spatial operations.
+    -   The `make` check command runs a set of regression tests for the entire PostGIS system, which
+        helps verify the integrity of the installation and its dependencies, such as `PROJ4`in
+        cartographic projections and `GEOS` for topological tests.
 
-------------------------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------
 
-### Appendix III: Replication in `renv`
+    +-------------------+------------------------------------------------------------------------------+
+    | ISO Standard      | Components relevant to ART-TREES GHG audit verifications                     |
+    +===================+==============================================================================+
+    | ISO 27001,        | Two widely discussed ISO standards for data governance are ISO 27001 and ISO |
+    |                   | 8000. ISO 27001 is a standard for Information Security Management Systems    |
+    | ISO 8000          | (ISMS), while ISO 8000 focuses on data quality management. Implementing the  |
+    |                   | ISO 27001 standard is a deliverable of information security management under |
+    |                   | the IT governance program and not solely a data governance deliverable.      |
+    |                   | However, data governance maturity is crucial for complying with ISO 27001    |
+    |                   | and ensuring data security, confidentiality, and integrity in information    |
+    |                   | management practices. ISO 8000 aims to ensure that data used in various      |
+    |                   | contexts, such as business processes, analytics, and decision-making, meets  |
+    |                   | certain quality standards. It covers all the key elements of data—Syntax,    |
+    |                   | Provenance, Completion, Accuracy, and Certification—providing a standard to  |
+    |                   | measure and certify data quality.                                            |
+    +-------------------+------------------------------------------------------------------------------+
+    | ISO 38505-1       | This is a standard for data governance that provides a set of guidelines for |
+    |                   | the governance of data within an organization. It considers data governance  |
+    |                   | as a subset of IT governance, which in turn is a subset of organizational    |
+    |                   | governance, and defines clear responsibilities for the governing body and    |
+    |                   | oversight mechanisms. At its core, it provides a model for evaluating,       |
+    |                   | directing, and monitoring the handling and usage of data in an organization. |
+    +-------------------+------------------------------------------------------------------------------+
+    | ISO 22745         | This standard focuses on master data exchange between organizations. It      |
+    |                   | specifies data requirements for messages containing master data, including   |
+    |                   | syntax, semantic encoding, and portability. It is often used in conjunction  |
+    |                   | with ISO 8000 to realize the benefits of assessing and improving data        |
+    |                   | quality.                                                                     |
+    +-------------------+------------------------------------------------------------------------------+
+    | ISO 3166          | This standard defines codes for country names, which can be utilized for     |
+    |                   | consistent external reference data in business applications to reduce time   |
+    |                   | and effort in data integration and analytic tasks.                           |
+    +-------------------+------------------------------------------------------------------------------+
+    | ISO 11179         | This metadata registry (MDR) standard provides a framework for representing  |
+    |                   | metadata for an organization to make data understandable and transferable.   |
+    |                   | It provides guidance to software developers building metadata repositories.  |
+    +-------------------+------------------------------------------------------------------------------+
+    | ISO 27701         | This standard serves as a data privacy extension to ISO 27001, providing a   |
+    |                   | framework for organizations to establish systems that facilitate compliance  |
+    |                   | with data privacy regulations like GDPR.                                     |
+    +-------------------+------------------------------------------------------------------------------+
 
-`renv` profiles allow for managing different sets of package
-dependencies for various project contexts, such as separate environments
-for development, production, or demonstrations. To activate a specific
-`renv` profile, you have two primary options:
+    ----------------------------------------------------------------------------------------------------
 
-##### Step 1. Set a project profile
+    ### Appendix III: Replication in `renv` {#appendix-iii-replication-in-renv}
 
-To make a profile the default for future R sessions, run
-`renv::activate()` function. Upon restarting R, you will find `lockfile`
-path assigned to new project `renv` folder (
-`renv/profiles/demo-repo/`).
+    `renv` profiles allow for managing different sets of package dependencies for various project
+    contexts, such as separate environments for development, production, or demonstrations. To activate
+    a specific `renv` profile, you have two primary options:
 
-------------------------------------------------------------------------
+    ##### Step 1. Set a project profile
 
-##### Step 2. Activate a temporary profile:
+    To make a profile the default for future R sessions, run `renv::activate()` function. Upon
+    restarting R, you will find `lockfile` path assigned to new project `renv` folder (
+    `renv/profiles/demo-repo/`).
 
-To activate a profile for the current R session without making it the
-default, you can set the `RENV_PROFILE` environment variable.
+    ----------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------
+    ##### Step 2. Activate a temporary profile:
 
-##### Step 3. Check package dependencies
+    To activate a profile for the current R session without making it the default, you can set the
+    `RENV_PROFILE` environment variable.
 
-Use the `Config/renv/profiles/<profile_name>/dependencies` and
-`Config/renv/profiles/<profile_name>/remotes` fields to check required
-packages and assign locations of remote repositories for those specific
-package builds. These environment fields can be declared in the
-`DESCRIPTION` file specific to that `renv` profile.
+    ----------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------
+    ##### Step 3. Check package dependencies
 
-##### Step 4. Manage package dependencies
+    Use the `Config/renv/profiles/<profile_name>/dependencies` and
+    `Config/renv/profiles/<profile_name>/remotes` fields to check required packages and assign locations
+    of remote repositories for those specific package builds. These environment fields can be declared
+    in the `DESCRIPTION` file specific to that `renv` profile.
 
-- To capture all packages currently installed in the runtime, while
-  overlooking packages listed in existing environment variables, then
-  run `renv::settings$snapshot.type("all")`.
-- Alternatively, you can exclude certain packages from the installation
-  using the `renv::settings$ignored.packages("lwgeom")` function. This
-  proves useful with many debugging and versioning issues among new
-  users.
-- There is also option to manually load and test an `explicit`
-  customized snapshot that overlooks default environment fields
-  previously written into the runtime.
+    ----------------------------------------------------------------------------------------------------
 
-``` r
-# Activate 'demo-repo' profile and set as default for the project
-renv::activate(profile = "demo-repo")
+    ##### Step 4. Manage package dependencies
 
-# To activate a 'dev' profile for a single session only
-Sys.setenv(RENV_PROFILE = "dev")
+    -   To capture all packages currently installed in the runtime, while overlooking packages listed in
+        existing environment variables, then run `renv::settings$snapshot.type("all")`.
+    -   Alternatively, you can exclude certain packages from the installation using the
+        `renv::settings$ignored.packages("lwgeom")` function. This proves useful with many debugging and
+        versioning issues among new users.
+    -   There is also option to manually load and test an `explicit` customized snapshot that overlooks
+        default environment fields previously written into the runtime.
 
-# Defining dependencies in DESCRIPTION index
-Config/renv/profiles/shiny/dependencies: shiny, tidyverse
-Config/renv/profiles/shiny/remotes: rstudio/shiny, tidyverse/tidyverse
+    ``` r
+    # Activate 'demo-repo' profile and set as default for the project
+    renv::activate(profile = "demo-repo")
 
-# Enable 'explicit' snapshot function for the project
-renv::settings$snapshot.type("explicit")
+    # To activate a 'dev' profile for a single session only
+    Sys.setenv(RENV_PROFILE = "dev")
 
-# Exclude package from current environment 
-renv::settings$ignored.packages("lwgeom")
+    # Defining dependencies in DESCRIPTION index
+    Config/renv/profiles/shiny/dependencies: shiny, tidyverse
+    Config/renv/profiles/shiny/remotes: rstudio/shiny, tidyverse/tidyverse
 
-# deactivate the currently-activated project
-renv::deactivate()
-```
+    # Enable 'explicit' snapshot function for the project
+    renv::settings$snapshot.type("explicit")
+
+    # Exclude package from current environment 
+    renv::settings$ignored.packages("lwgeom")
+
+    # deactivate the currently-activated project
+    renv::deactivate()
 
 ##### Runtime Log
 

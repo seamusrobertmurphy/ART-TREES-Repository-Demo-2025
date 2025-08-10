@@ -87,8 +87,6 @@ to how auditors evaluate your submission:
 
 For a deeper dive into these principles, see the **Repository Guidelines** section below.
 
-### Table of Contents
-
 -   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
     -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
     -   [Step 2. Replicate the Script](#step-2-replicate-the-script)
@@ -181,48 +179,43 @@ appropriate to your project design.
 Of course. Here is the corrected code formatted within a Markdown code block. You can copy this
 directly and paste it into your `README.md` file.
 
-``` markdown
-<table>
-  <tr>
-    <td width="30%" valign="top">
-      <p><strong>Repository Structure:</strong></p>
-      <ul>
-        <li><code>01_Program_Data/</code></li>
-        <li><code>02_Carbon_Data/</code></li>
-        <li><code>03_Spatial_Data/</code>
-          <ul>
-            <li><code>TREES-TMR-Demo.Rmd</code></li>
-          </ul>
-        </li>
-        <li><code>04_Uncertainty/</code></li>
-        <li><code>05_Safeguards/</code></li>
-        <li><code>06_QAQC_SOPs/</code></li>
-      </ul>
-    </td>
-    <td width="70%" valign="top">
-      <img src="01_Program_Data/Communications/assets/repo-layout-wide.png" alt="Fig,1 Illustrative example of wider repository layout" width="100%"/>
-      <br>
-      <em>Fig, 1: Illustrative example of wider repository layout</em>
-    </td>
-  </tr>
-</table>
-```
++------------------------------+-------------------------------------------------------------------+
+| **Repository Structure:**    | ![Fig,1 Illustrative example of wider repository layo             |
+|                              | ut](01_Program_Data/repo-layout-wide.p                            |
+| -   `01_Program_Data/`       | ng){alt="Fig,1 Illustrative example of wider repository layout"}\ |
+|                              | *Fig, 1: Illustrative example of wider repository layout*         |
+| -   `02_Carbon_Data/`        |                                                                   |
+|                              |                                                                   |
+| -   `03_Spatial_Data/`       |                                                                   |
+|                              |                                                                   |
+|     -   `TREES-TMR-Demo.Rmd` |                                                                   |
+|                              |                                                                   |
+| -   `04_Uncertainty/`        |                                                                   |
+|                              |                                                                   |
+| -   `05_Safeguards/`         |                                                                   |
+|                              |                                                                   |
+| -   `06_QAQC_SOPs/`          |                                                                   |
++------------------------------+-------------------------------------------------------------------+
 
-+---------------------------+---------------------------------------------------------------------+
-| **Repository Structure:** | ![Fig,1 Illustrative example of wider repository                    |
-|                           | layout](01_Program_Data/repo-layout-wid%20e%20                      |
-| -   `01_Program_Data/`    | .png){alt="Fig,1 Illustrative example of wider repository layout"}\ |
-|                           | *Fig, 1: Illustrative example of wider repository layout*           |
-| -   `02_Carbon_Data/`     |                                                                     |
-|                           |                                                                     |
-| -   `03_Spatial_Data/`    |                                                                     |
-|                           |                                                                     |
-| -   `04_Uncertainty/`     |                                                                     |
-|                           |                                                                     |
-| -   `05_Safeguards/`      |                                                                     |
-|                           |                                                                     |
-| -   `06_QAQC_SOPs/`       |                                                                     |
-+---------------------------+---------------------------------------------------------------------+
+```         
+
++---------------------------+----------------------------------------------------------------------+
+| **Repository Structure:**    | ![Fig,1 Illustrative example of wider repository                     |
+|                              | layout](01_Program_Data/repo-layout-wid                              |
+| -   `01_Program_Data/`       | e.png){alt="Fig,1 Illustrative example of wider layout repository"}\ |
+|                              | *Fig, 1: Illustrative example of wider repository layout*            |
+| -   `02_Carbon_Data/`        |                                                                      |
+|                              |                                                                      |
+| -   `03_Spatial_Data/`       |                                                                      |
+|                              |                                                                  |
+|     -   `TREES-TMR-Demo.Rmd` |                                                                  |
+|                              |                                                                      |
+| -   `04_Uncertainty/`        |                                                                      |
+|                              |                                                                      |
+| -   `05_Safeguards/`         |                                                                      |
+|                              |                                                                      |
+| -   `06_QAQC/`          |                                                                      |
++---------------------------+----------------------------------------------------------------------+
 
 ----------------------------------------------------------------------------------------------------
 
@@ -306,45 +299,47 @@ Points, Curves, Surfaces, and Geometry Collections `sfc`.
 
 ----------------------------------------------------------------------------------------------------
 
-+--------------+----------------------------------------------------------------------------------+
-| ISO Standard | Components relevant to ART-TREES GHG audit verifications                         |
-+==============+==================================================================================+
-| ISO 27001,   | Two widely discussed ISO standards for data governance are ISO 27001 and ISO     |
-|              | 8000. ISO 27001 is a standard for Information Security Management Systems        |
-| ISO 8000     | (ISMS), while ISO 8000 focuses on data quality management. Implementing the ISO  |
-|              | 27001 standard is a deliverable of information security management under the IT  |
-|              | governance program and not solely a data governance deliverable. However, data   |
-|              | governance maturity is crucial for complying with ISO 27001 and ensuring data    |
-|              | security, confidentiality, and integrity in information management practices.    |
-|              | ISO 8000 aims to ensure that data used in various contexts, such as business     |
-|              | processes, analytics, and decision-making, meets certain quality standards. It   |
-|              | covers all the key elements of data—Syntax, Provenance, Completion, Accuracy,    |
-|              | and Certification—providing a standard to measure and certify data quality.      |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 38505-1  | This is a standard for data governance that provides a set of guidelines for the |
-|              | governance of data within an organization. It considers data governance as a     |
-|              | subset of IT governance, which in turn is a subset of organizational governance, |
-|              | and defines clear responsibilities for the governing body and oversight          |
-|              | mechanisms. At its core, it provides a model for evaluating, directing, and      |
-|              | monitoring the handling and usage of data in an organization.                    |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 22745    | This standard focuses on master data exchange between organizations. It          |
-|              | specifies data requirements for messages containing master data, including       |
-|              | syntax, semantic encoding, and portability. It is often used in conjunction with |
-|              | ISO 8000 to realize the benefits of assessing and improving data quality.        |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 3166     | This standard defines codes for country names, which can be utilized for         |
-|              | consistent external reference data in business applications to reduce time and   |
-|              | effort in data integration and analytic tasks.                                   |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 11179    | This metadata registry (MDR) standard provides a framework for representing      |
-|              | metadata for an organization to make data understandable and transferable. It    |
-|              | provides guidance to software developers building metadata repositories.         |
-+--------------+----------------------------------------------------------------------------------+
-| ISO 27701    | This standard serves as a data privacy extension to ISO 27001, providing a       |
-|              | framework for organizations to establish systems that facilitate compliance with |
-|              | data privacy regulations like GDPR.                                              |
-+--------------+----------------------------------------------------------------------------------+
++-------------------+------------------------------------------------------------------------------+
+| ISO Standard      | Components relevant to ART-TREES GHG audit verifications                     |
++===================+==============================================================================+
+| ISO 27001,        | Two widely discussed ISO standards for data governance are ISO 27001 and ISO |
+|                   | 8000. ISO 27001 is a standard for Information Security Management Systems    |
+| ISO 8000          | (ISMS), while ISO 8000 focuses on data quality management. Implementing the  |
+|                   | ISO 27001 standard is a deliverable of information security management under |
+|                   | the IT governance program and not solely a data governance deliverable.      |
+|                   | However, data governance maturity is crucial for complying with ISO 27001    |
+|                   | and ensuring data security, confidentiality, and integrity in information    |
+|                   | management practices. ISO 8000 aims to ensure that data used in various      |
+|                   | contexts, such as business processes, analytics, and decision-making, meets  |
+|                   | certain quality standards. It covers all the key elements of data—Syntax,    |
+|                   | Provenance, Completion, Accuracy, and Certification—providing a standard to  |
+|                   | measure and certify data quality.                                            |
++-------------------+------------------------------------------------------------------------------+
+| ISO 38505-1       | This is a standard for data governance that provides a set of guidelines for |
+|                   | the governance of data within an organization. It considers data governance  |
+|                   | as a subset of IT governance, which in turn is a subset of organizational    |
+|                   | governance, and defines clear responsibilities for the governing body and    |
+|                   | oversight mechanisms. At its core, it provides a model for evaluating,       |
+|                   | directing, and monitoring the handling and usage of data in an organization. |
++-------------------+------------------------------------------------------------------------------+
+| ISO 22745         | This standard focuses on master data exchange between organizations. It      |
+|                   | specifies data requirements for messages containing master data, including   |
+|                   | syntax, semantic encoding, and portability. It is often used in conjunction  |
+|                   | with ISO 8000 to realize the benefits of assessing and improving data        |
+|                   | quality.                                                                     |
++-------------------+------------------------------------------------------------------------------+
+| ISO 3166          | This standard defines codes for country names, which can be utilized for     |
+|                   | consistent external reference data in business applications to reduce time   |
+|                   | and effort in data integration and analytic tasks.                           |
++-------------------+------------------------------------------------------------------------------+
+| ISO 11179         | This metadata registry (MDR) standard provides a framework for representing  |
+|                   | metadata for an organization to make data understandable and transferable.   |
+|                   | It provides guidance to software developers building metadata repositories.  |
++-------------------+------------------------------------------------------------------------------+
+| ISO 27701         | This standard serves as a data privacy extension to ISO 27001, providing a   |
+|                   | framework for organizations to establish systems that facilitate compliance  |
+|                   | with data privacy regulations like GDPR.                                     |
++-------------------+------------------------------------------------------------------------------+
 
 ----------------------------------------------------------------------------------------------------
 
