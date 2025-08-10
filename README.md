@@ -27,10 +27,7 @@ Winrock Intl 2025-08-10
 
 -   [Appendix III: Replication in `renv`](#appendix-iii-replication-in-renv)
 
--   [Appendix III: Replication in `git`](#appendix-iii-replication-in-git)
-
-    The downloaded binary packages are in
-    /var/folders/\_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpCrvM0F/downloaded_packages
+-   [Appendix IV: Replication in `git`](#appendix-iv-replication-in-git)
 
 --------------------------------------------------------------------------------
 
@@ -374,7 +371,7 @@ renv::deactivate()
 
 --------------------------------------------------------------------------------
 
-### Appendix III: Replication in `git` {#appendix-iii-replication-in-git}
+### Appendix IV: Replication in `git` {#appendix-iv-replication-in-git}
 
 ##### Step 1: Install Git
 
