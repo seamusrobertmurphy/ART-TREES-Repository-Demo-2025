@@ -12,7 +12,7 @@ Winrock Intl
 
 
     The downloaded binary packages are in
-        /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//Rtmpzm9ZXk/downloaded_packages
+        /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpOtroX2/downloaded_packages
 
 ------------------------------------------------------------------------
 
@@ -178,7 +178,7 @@ file.
 </ul></td>
 <td><img src="01_Program_Data/repo-layout-wide%20.png"
 alt="Fig,1 Illustrative example of wider repository layout"
-width="400" /><br />
+width="300" /><br />
 <em>Fig, 1: Illustrative example of wider repository layout</em></td>
 </tr>
 </tbody>

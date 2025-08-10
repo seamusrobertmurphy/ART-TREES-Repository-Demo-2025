@@ -183,7 +183,7 @@ directly and paste it into your `README.md` file.
 | **Repository Structure:**    | ![Fig,1 Illustrative example of wider repository layo             |
 |                              | ut](01_Program_Data/repo-layout-wide                              |
 | -   `01_Program_Data/`       | .png){alt="Fig,1 Illustrative example of wider repository layout" |
-|                              | width="400"}\                                                     |
+|                              | width="300"}\                                                     |
 | -   `02_Carbon_Data/`        | *Fig, 1: Illustrative example of wider repository layout*         |
 |                              |                                                                   |
 | -   `03_Spatial_Data/`       |                                                                   |
