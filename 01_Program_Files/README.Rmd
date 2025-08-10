@@ -3,10 +3,10 @@ title: "ART-TREES Audit Repository Demo"
 author: "Winrock Intl"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  github_document:
     toc: true
     toc_depth: 4
-    keep_md: true
+#    keep_md: true
 
 always_allow_html: TRUE
 editor_options: 
@@ -179,80 +179,6 @@ appropriate to your project design.
 Of course. Here is the corrected code formatted within a Markdown code block. You can copy this
 directly and paste it into your `README.md` file.
 
-+------------------------------+--------------------------------------------------------+
-| **Repository Structure:**    | Example Structure                                      |
-+==============================+========================================================+
-| -   `01_Program_Data/`       | ![](01_Program_Data/repo-layout-wide.png){width="350"} |
-|                              |                                                        |
-| -   `02_Carbon_Data/`        |                                                        |
-|                              |                                                        |
-| -   `03_Spatial_Data/`       |                                                        |
-|                              |                                                        |
-|     -   `TREES-TMR-Demo.Rmd` |                                                        |
-|                              |                                                        |
-| -   `04_Uncertainty/`        |                                                        |
-|                              |                                                        |
-| -   `05_Safeguards/`         |                                                        |
-|                              |                                                        |
-| -   `06_QAQC_SOPs/`          |                                                        |
-+------------------------------+--------------------------------------------------------+
-
-+------------------------------+--------------------------------------------------------+
-| **Repository Structure:**    | ![](01_Program_Data/repo-layout-wide.png){width="350"} |
-|                              |                                                        |
-| -   `01_Program_Data/`       |                                                        |
-|                              |                                                        |
-| -   `02_Carbon_Data/`        |                                                        |
-|                              |                                                        |
-| -   `03_Spatial_Data/`       |                                                        |
-|                              |                                                        |
-|     -   `TREES-TMR-Demo.Rmd` |                                                        |
-|                              |                                                        |
-| -   `04_Uncertainty/`        |                                                        |
-|                              |                                                        |
-| -   `05_Safeguards/`         |                                                        |
-|                              |                                                        |
-| -   `06_QAQC_SOPs/`          |                                                        |
-+------------------------------+--------------------------------------------------------+
-
-+------------------------------+-------------------------------------------------------------------+
-| **Repository Structure:**    | ![Fig,1 Illustrative example of wider repository layo             |
-|                              | ut](01_Program_Data/repo-layout-wide                              |
-| -   `01_Program_Data/`       | .png){alt="Fig,1 Illustrative example of wider repository layout" |
-|                              | width="300"}\                                                     |
-| -   `02_Carbon_Data/`        | *Fig, 1: Illustrative example of wider repository layout*         |
-|                              |                                                                   |
-| -   `03_Spatial_Data/`       |                                                                   |
-|                              |                                                                   |
-|     -   `TREES-TMR-Demo.Rmd` |                                                                   |
-|                              |                                                                   |
-| -   `04_Uncertainty/`        |                                                                   |
-|                              |                                                                   |
-| -   `05_Safeguards/`         |                                                                   |
-|                              |                                                                   |
-| -   `06_QAQC_SOPs/`          |                                                                   |
-+------------------------------+-------------------------------------------------------------------+
-
-```         
-
-+---------------------------+----------------------------------------------------------------------+
-| **Repository Structure:**    | ![Fig,1 Illustrative example of wider repository                     |
-|                              | layout](01_Program_Data/repo-layout-wid                              |
-| -   `01_Program_Data/`       | e.png){alt="Fig,1 Illustrative example of wider layout repository"}\ |
-|                              | *Fig, 1: Illustrative example of wider repository layout*            |
-| -   `02_Carbon_Data/`        |                                                                      |
-|                              |                                                                      |
-| -   `03_Spatial_Data/`       |                                                                      |
-|                              |                                                                  |
-|     -   `TREES-TMR-Demo.Rmd` |                                                                  |
-|                              |                                                                      |
-| -   `04_Uncertainty/`        |                                                                      |
-|                              |                                                                      |
-| -   `05_Safeguards/`         |                                                                      |
-|                              |                                                                      |
-| -   `06_QAQC/`          |                                                                      |
-+---------------------------+----------------------------------------------------------------------+
-
 ----------------------------------------------------------------------------------------------------
 
 These are the fundamental concepts that auditors use to evaluate your submission, which are embedded
@@ -419,7 +345,7 @@ in the `DESCRIPTION` file specific to that `renv` profile.
 -   There is also option to manually load and test an `explicit` customized snapshot that overlooks
     default environment fields previously written into the runtime.
 
-``` r
+```{r, eval=FALSE}
 # Activate 'demo-repo' profile and set as default for the project
 renv::activate(profile = "demo-repo")
 
@@ -427,8 +353,8 @@ renv::activate(profile = "demo-repo")
 Sys.setenv(RENV_PROFILE = "dev")
 
 # Defining dependencies in DESCRIPTION index
-Config/renv/profiles/shiny/dependencies: shiny, tidyverse
-Config/renv/profiles/shiny/remotes: rstudio/shiny, tidyverse/tidyverse
+#Config/renv/profiles/shiny/dependencies: shiny, tidyverse
+#Config/renv/profiles/shiny/remotes: rstudio/shiny, tidyverse/tidyverse
 
 # Enable 'explicit' snapshot function for the project
 renv::settings$snapshot.type("explicit")
