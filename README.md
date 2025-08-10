@@ -1,4 +1,4 @@
-![](https://art.apx.com/images/ART.png){width="500"}
+![](https://art.apx.com/images/ART.png)
 
 [![LinkedIn
 Badge](https://img.shields.io/badge/Project-Profile-blue)](https://art.apx.com/mymodule/reg/TabDocuments.asp?r=111&ad=Prpt&act=update&type=PRO&aProj=pub&tablename=doc&id1=109)
