@@ -3,10 +3,10 @@ title: "ART-TREES Audit Repository Demo"
 author: "Winrock Intl"
 date: "`r Sys.Date()`"
 output:
-  github_document:
+  html_document:
     toc: true
     toc_depth: 4
-#    keep_md: true
+    keep_md: true
 
 always_allow_html: TRUE
 editor_options: 
