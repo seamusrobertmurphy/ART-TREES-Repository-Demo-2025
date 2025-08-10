@@ -42,7 +42,7 @@ section below.
 
 --------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit 
+### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
 
 #### Step 1. Clone the Repository
 
@@ -124,7 +124,7 @@ software dependencies at that precise moment in time,
 
 --------------------------------------------------------------------------------
 
-### Appendix I: Repository Guidelines
+### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
 
 We provided a simplified layout in this github repository, as listed in the
 trunk folders below. However, note that this architecture can become highly
@@ -218,13 +218,94 @@ in the auditor:
 
 --------------------------------------------------------------------------------
 
-### Appendix II: ISO Guidelines 
+### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
 
 The data management principles of traceability, integrity, and reproducibility
 are key to GHG audits. These principles are supported by a range of ISO
 standards. This appendix provides an overview of those ISO standards relevant to
-data governance and quality, and provides additional resources for debugging and
-validating geospatial operations across platform using the `liblwgeom` library.
+GHG verification practices and ART-TREES data governance and quality
+commitments. It also provides additional resources for debugging and validating
+geospatial operations across platform using the `liblwgeom` library.
+
+--------------------------------------------------------------------------------
+
+-   **ISO 27001 & ISO 8000:** Two widely discussed ISO standards for data
+    governance are ISO 27001 and ISO 8000. ISO 27001 is a standard for
+    Information Security Management Systems (ISMS), while ISO 8000 focuses on
+    data quality management. Implementing the ISO 27001 standard is a
+    deliverable of information security management under the IT governance
+    program and not solely a data governance deliverable. However, data
+    governance maturity is crucial for complying with ISO 27001 and ensuring
+    data security, confidentiality, and integrity in information management
+    practices. ISO 8000 aims to ensure that data used in various contexts, such
+    as business processes, analytics, and decision-making, meets certain quality
+    standards. It covers all the key elements of data—Syntax, Provenance,
+    Completion, Accuracy, and Certification—providing a standard to measure and
+    certify data quality.
+
+-   **ISO 38505-1:** This is a standard for data governance that provides a set
+    of guidelines for the governance of data within an organization. It
+    considers data governance as a subset of IT governance, which in turn is a
+    subset of organizational governance, and defines clear responsibilities for
+    the governing body and oversight mechanisms. At its core, it provides a
+    model for evaluating, directing, and monitoring the handling and usage of
+    data in an organization.
+
+-   **ISO 22745**: This standard focuses on master data exchange between
+    organizations. It specifies data requirements for messages containing master
+    data, including syntax, semantic encoding, and portability. It is often used
+    in conjunction with ISO 8000 to realize the benefits of assessing and
+    improving data quality
+
+-   **ISO 3166**:This standard defines codes for country names, which can be
+    utilized for consistent external reference data in business applications to
+    reduce time and effort in data integration and analytic tasks.
+
+-   **ISO 11179**: This metadata registry (MDR) standard provides a framework
+    for representing metadata for an organization to make data understandable
+    and transferable. It provides guidance to software developers building
+    metadata repositories.
+
+-   **ISO 27701**: This standard serves as a data privacy extension to ISO
+    27001, providing a framework for organizations to establish systems that
+    facilitate compliance with data privacy regulations like GDPR.
+
+-   **ISO 14064-1:2018:** This standard provides a framework for quantifying and
+    reporting GHG emissions and removals. It is essential for ensuring that the
+    GHG assertion is transparent, consistent, and credible, forming the
+    foundation of the entire verification process.
+
+    **ISO 14064-2:2019:** This standard focuses on GHG projects, providing
+    detailed requirements for monitoring, quantifying, and reporting activities
+    that reduce emissions or enhance removals. It ensures that the specific
+    methodologies used in the TREES Monitoring Report (TMR) are robust and
+    verifiable.
+
+    **ISO 14064-3:2019:** This is the core standard for auditors. It outlines
+    the principles and requirements for verifying a GHG assertion, including
+    planning the verification, conducting the assessment, and managing the
+    assurance engagement. Adherence to this standard ensures the audit is
+    conducted with rigor and impartiality.
+
+    **ISO 14065:2020:** This standard specifies the requirements for the
+    competence and impartiality of the verification/validation body (VVB). It
+    ensures that the auditing organization itself operates to a high standard,
+    building trust in the verification outcome.
+
+    **ISO 14066:2011:** This standard details the specific skills and knowledge
+    required for the individuals conducting the audit. It ensures that the audit
+    team has the necessary expertise in areas like GHG accounting, forestry, and
+    local country context to make an informed and reliable assessment.
+
+    **ISO 19011:2018:** This standard provides a general framework for auditing
+    management systems of any kind. While not specific to GHG, it offers best
+    practices for audit planning, conduct, and reporting that are foundational
+    to the work of a VVB and complement the more specific requirements of the
+    ISO 14060 series.
+
+--------------------------------------------------------------------------------
+
+##### Geometry Testing
 
 The `liblwgeom` library was derived according to the OpenGIS Simple Features
 Access (SFA) geometry rules (ISO 19125) and was purposely built for unbiased
@@ -241,63 +322,7 @@ Surfaces, and Geometry Collections `sfc`.
 
 --------------------------------------------------------------------------------
 
-+------------------+-----------------------------------------------------------+
-| ISO Standard     | Components relevant to ART-TREES GHG audit verifications  |
-+==================+===========================================================+
-| ISO 27001,       | Two widely discussed ISO standards for data governance    |
-|                  | are ISO 27001 and ISO 8000. ISO 27001 is a standard for   |
-| ISO 8000         | Information Security Management Systems (ISMS), while ISO |
-|                  | 8000 focuses on data quality management. Implementing the |
-|                  | ISO 27001 standard is a deliverable of information        |
-|                  | security management under the IT governance program and   |
-|                  | not solely a data governance deliverable. However, data   |
-|                  | governance maturity is crucial for complying with ISO     |
-|                  | 27001 and ensuring data security, confidentiality, and    |
-|                  | integrity in information management practices. ISO 8000   |
-|                  | aims to ensure that data used in various contexts, such   |
-|                  | as business processes, analytics, and decision-making,    |
-|                  | meets certain quality standards. It covers all the key    |
-|                  | elements of data—Syntax, Provenance, Completion,          |
-|                  | Accuracy, and Certification—providing a standard to       |
-|                  | measure and certify data quality.                         |
-+------------------+-----------------------------------------------------------+
-| ISO 38505-1      | This is a standard for data governance that provides a    |
-|                  | set of guidelines for the governance of data within an    |
-|                  | organization. It considers data governance as a subset of |
-|                  | IT governance, which in turn is a subset of               |
-|                  | organizational governance, and defines clear              |
-|                  | responsibilities for the governing body and oversight     |
-|                  | mechanisms. At its core, it provides a model for          |
-|                  | evaluating, directing, and monitoring the handling and    |
-|                  | usage of data in an organization.                         |
-+------------------+-----------------------------------------------------------+
-| ISO 22745        | This standard focuses on master data exchange between     |
-|                  | organizations. It specifies data requirements for         |
-|                  | messages containing master data, including syntax,        |
-|                  | semantic encoding, and portability. It is often used in   |
-|                  | conjunction with ISO 8000 to realize the benefits of      |
-|                  | assessing and improving data quality.                     |
-+------------------+-----------------------------------------------------------+
-| ISO 3166         | This standard defines codes for country names, which can  |
-|                  | be utilized for consistent external reference data in     |
-|                  | business applications to reduce time and effort in data   |
-|                  | integration and analytic tasks.                           |
-+------------------+-----------------------------------------------------------+
-| ISO 11179        | This metadata registry (MDR) standard provides a          |
-|                  | framework for representing metadata for an organization   |
-|                  | to make data understandable and transferable. It provides |
-|                  | guidance to software developers building metadata         |
-|                  | repositories.                                             |
-+------------------+-----------------------------------------------------------+
-| ISO 27701        | This standard serves as a data privacy extension to ISO   |
-|                  | 27001, providing a framework for organizations to         |
-|                  | establish systems that facilitate compliance with data    |
-|                  | privacy regulations like GDPR.                            |
-+------------------+-----------------------------------------------------------+
-
---------------------------------------------------------------------------------
-
-### Appendix III: Replication in `renv` 
+### Appendix III: Replication in `renv` {#appendix-iii-replication-in-renv}
 
 `renv` profiles allow for managing different sets of package dependencies for
 various project contexts, such as separate environments for development,
