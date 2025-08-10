@@ -179,23 +179,23 @@ appropriate to your project design.
 Of course. Here is the corrected code formatted within a Markdown code block. You can copy this
 directly and paste it into your `README.md` file.
 
-+------------------------------+------------------------------------------------------------------+
-| **Repository Structure:**    | ![Fig,1 Illustrative example of wider repository layo            |
-|                              | ut](01_Program_Data/repo-layout-wide.p%20n                       |
-| -   `01_Program_Data/`       | g){alt="Fig,1 Illustrative example of wider repository layout"}\ |
-|                              | *Fig, 1: Illustrative example of wider repository layout*        |
-| -   `02_Carbon_Data/`        |                                                                  |
-|                              |                                                                  |
-| -   `03_Spatial_Data/`       |                                                                  |
-|                              |                                                                  |
-|     -   `TREES-TMR-Demo.Rmd` |                                                                  |
-|                              |                                                                  |
-| -   `04_Uncertainty/`        |                                                                  |
-|                              |                                                                  |
-| -   `05_Safeguards/`         |                                                                  |
-|                              |                                                                  |
-| -   `06_QAQC_SOPs/`          |                                                                  |
-+------------------------------+------------------------------------------------------------------+
++------------------------------+-------------------------------------------------------------------+
+| **Repository Structure:**    | ![Fig,1 Illustrative example of wider repository layo             |
+|                              | ut](01_Program_Data/repo-layout-wide                              |
+| -   `01_Program_Data/`       | .png){alt="Fig,1 Illustrative example of wider repository layout" |
+|                              | width="400"}\                                                     |
+| -   `02_Carbon_Data/`        | *Fig, 1: Illustrative example of wider repository layout*         |
+|                              |                                                                   |
+| -   `03_Spatial_Data/`       |                                                                   |
+|                              |                                                                   |
+|     -   `TREES-TMR-Demo.Rmd` |                                                                   |
+|                              |                                                                   |
+| -   `04_Uncertainty/`        |                                                                   |
+|                              |                                                                   |
+| -   `05_Safeguards/`         |                                                                   |
+|                              |                                                                   |
+| -   `06_QAQC_SOPs/`          |                                                                   |
++------------------------------+-------------------------------------------------------------------+
 
 ```         
 
