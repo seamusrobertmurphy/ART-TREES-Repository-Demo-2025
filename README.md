@@ -53,7 +53,7 @@ below.
 
 --------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
+### The Practical Exercise: Mock Audit
 
 #### Step 1. Clone the Repository
 
@@ -134,7 +134,7 @@ software dependencies at that precise moment in time.
 
 --------------------------------------------------------------------------------
 
-### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
+### Appendix I: Repository Guidelines
 
 We provided a simplified layout in this github repository, as shown in the list
 of its trunk folders below. However, this architecture can become highly nested
@@ -231,7 +231,7 @@ in the auditor:
 
 --------------------------------------------------------------------------------
 
-### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
+### Appendix II: ISO Guidelines 
 
 The data management principles of traceability, integrity, and reproducibility
 are key to GHG audits. These principles are supported by a range of ISO
@@ -308,7 +308,7 @@ Surfaces, and Geometry Collections `sfc`.
 
 --------------------------------------------------------------------------------
 
-### Appendix III: Replication in `renv` {#appendix-iii-replication-in-renv}
+### Appendix III: Replication in `renv`
 
 `renv` profiles allow for managing different sets of package dependencies for
 various project contexts, such as separate environments for development,
@@ -376,7 +376,7 @@ renv::deactivate()
 
 --------------------------------------------------------------------------------
 
-### Appendix IV: Replication in `git` {#appendix-iv-replication-in-git}
+### Appendix IV: Replication in `git` 
 
 ##### Step 1: Install Git
 
