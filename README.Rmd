@@ -162,7 +162,7 @@ dependencies and committing it to the repository.
 -   Open your R console and run `devtools::session_info()`.
 
 -   Copy the full output and save it as a text file named `runtime_log_YYYYMMDD.txt` in the
-    `/06_QAQC_SOPs/` folder
+    `/06_QAQC/` folder
 
 -   Use Git to commit this file to create a permanent, verifiable link between the code, the data,
     and the computational environment.
@@ -180,21 +180,22 @@ appropriate to your project design.
 
 :::::: columns
 ::: {.column width="25%"}
-. . ,
+
+----------------------------------------------------------------------------------------------------
 
 -   `01_Program_Data/`
 
 -   `02_Carbon_Data/`
 
--   `03_Spatial_Data/`
+    -   `TREES-demo-replication.Rmd`
 
-    -   `TREES-TMR-Demo.Rmd`
+-   `03_Spatial_Data/`
 
 -   `04_Uncertainty/`
 
 -   `05_Safeguards/`
 
--   `06_QAQC_SOPs/`
+-   `06_QAQC/`
 :::
 
 ::: {.column width="10%"}
@@ -203,7 +204,7 @@ appropriate to your project design.
 ::: {.column width="65%"}
 <figure>
 
-<img src="01_Program_Data/Communications/assets/repo-layout-wide.png" alt="Fig,1 Illustrative example of wider repository layout" width="1000"/>
+![Fig,1 Illustrative example of wider repository layout](01_Program_Data/repo-layout-wide.png)
 
 <figcaption aria-hidden="true">
 
@@ -402,7 +403,7 @@ renv::deactivate()
 
 ##### Runtime Log
 
-``` r
+```{r, eval=T}
 devtools::session_info()
 ```
 
