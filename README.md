@@ -19,8 +19,9 @@ a training resource for submitting a complete data package for an ART TREES
 verification audit. Here, we document some best practices for using version
 control to ensure perfect reproducibility of your calculations.
 
-As you navigate this repository, keep the following core concepts in mind, as
-these are fundamental to how auditors evaluate your submission:
+As you navigate this repository, keep the following concepts of **Data
+Integrity** in mind, as these are fundamental to how auditors evaluate your
+submission:
 
 -   **Data Traceability**: Every key figure must be traceable back to its
     original source data and the methodology used to derive it.
@@ -118,11 +119,11 @@ software dependencies at that precise moment in time,
 
 --------------------------------------------------------------------------------
 
-### Appendix I: Repository Guidelines
+### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
 
-We provided a simplified layout in this github repository, as listed in the
-trunk folders below. However, note that this architecture can become highly
-nested which carried certain trade–offs. Therefore, we welcome any feedback on
+We provided a simplified layout in this github repository, as shown in the list
+of its trunk folders below. However, this architecture can become highly nested
+which may not suit everyone's preferences. Therefore, we welcome any feedback on
 improved structure that is more appropriate to your project design, and provide
 additional layout examples from today's slide for comparison.
 
@@ -144,6 +145,8 @@ additional layout examples from today's slide for comparison.
 
 --------------------------------------------------------------------------------
 
+##### Repository Principles
+
 These are the fundamental concepts that auditors use to evaluate your
 submission, which are embedded throughout this repository's structure.
 
@@ -163,7 +166,7 @@ submission, which are embedded throughout this repository's structure.
     from Spatial Data and SOPs & Procedures. This logical grouping helps
     auditors instinctively navigate your submission. A top-level README and
     descriptive filenames are also key curation practices.
--   Data Replication: The use of a package management tool like renv (see
+-   Data Replication: The use of a package management tool like `renv` (see
     Appendix II) allows for locking in all dependencies. This ensures that
     anyone can replicate your analysis in the exact same computational
     environment, which is a key part of the verification process.
@@ -198,20 +201,6 @@ in the auditor:
 
 --------------------------------------------------------------------------------
 
-<div>
-
-</div>
-
---------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------
-
-<div>
-
-</div>
-
---------------------------------------------------------------------------------
-
 ### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
 
 The data management principles of traceability, integrity, and reproducibility
@@ -237,13 +226,12 @@ geospatial operations across platform using the `liblwgeom` library.
     Completion, Accuracy, and Certification—providing a standard to measure and
     certify data quality.
 
--   **ISO 38505-1:** This is a standard for data governance that provides a set
-    of guidelines for the governance of data within an organization. It
-    considers data governance as a subset of IT governance, which in turn is a
-    subset of organizational governance, and defines clear responsibilities for
-    the governing body and oversight mechanisms. At its core, it provides a
-    model for evaluating, directing, and monitoring the handling and usage of
-    data in an organization.
+-   **ISO 38505-1:** This is a standard that provides a set of guidelines for
+    the governance of data within an organization. It considers data governance
+    as a subset of IT governance, which in turn is a subset of organizational
+    governance, and defines clear responsibilities for the governing body and
+    oversight mechanisms. At its core, it provides a model for evaluating,
+    directing, and monitoring the handling and usage of data in an organization.
 
 -   **ISO 22745**: This standard focuses on master data exchange between
     organizations. It specifies data requirements for messages containing master
@@ -269,29 +257,29 @@ geospatial operations across platform using the `liblwgeom` library.
     GHG assertion is transparent, consistent, and credible, forming the
     foundation of the entire verification process.
 
-    **ISO 14064-2:2019:** This standard focuses on GHG projects, providing
+-   **ISO 14064-2:2019:** This standard focuses on GHG projects, providing
     detailed requirements for monitoring, quantifying, and reporting activities
     that reduce emissions or enhance removals. It ensures that the specific
     methodologies used in the TREES Monitoring Report (TMR) are robust and
     verifiable.
 
-    **ISO 14064-3:2019:** This is the core standard for auditors. It outlines
+-   **ISO 14064-3:2019:** This is the core standard for auditors. It outlines
     the principles and requirements for verifying a GHG assertion, including
     planning the verification, conducting the assessment, and managing the
     assurance engagement. Adherence to this standard ensures the audit is
     conducted with rigor and impartiality.
 
-    **ISO 14065:2020:** This standard specifies the requirements for the
+-   **ISO 14065:2020:** This standard specifies the requirements for the
     competence and impartiality of the verification/validation body (VVB). It
     ensures that the auditing organization itself operates to a high standard,
     building trust in the verification outcome.
 
-    **ISO 14066:2011:** This standard details the specific skills and knowledge
+-   **ISO 14066:2011:** This standard details the specific skills and knowledge
     required for the individuals conducting the audit. It ensures that the audit
     team has the necessary expertise in areas like GHG accounting, forestry, and
     local country context to make an informed and reliable assessment.
 
-    **ISO 19011:2018:** This standard provides a general framework for auditing
+-   **ISO 19011:2018:** This standard provides a general framework for auditing
     management systems of any kind. While not specific to GHG, it offers best
     practices for audit planning, conduct, and reporting that are foundational
     to the work of a VVB and complement the more specific requirements of the
@@ -388,266 +376,62 @@ devtools::session_info()
 ```
 
 ```         
-─ Session info ───────────────────────────────────────────────────────────────
+─ Session info ──────────────────────────────────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.3.0 (2023-04-21)
- os       macOS 15.6
- system   aarch64, darwin20
- ui       X11
+ version  R version 4.4.3 (2025-02-28)
+ os       Fedora Linux 40 (Workstation Edition)
+ system   x86_64, linux-gnu
+ ui       RStudio
  language (EN)
- collate  en_US.UTF-8
- ctype    en_US.UTF-8
+ collate  en_CA.UTF-8
+ ctype    en_CA.UTF-8
  tz       America/Vancouver
- date     2025-08-09
- pandoc   3.6.1 @ /usr/local/bin/ (via rmarkdown)
- quarto   1.6.40 @ /usr/local/bin/quarto
+ date     2025-08-10
+ rstudio  2025.05.0+496 Mariposa Orchid (desktop)
+ pandoc   3.1.3 @ /usr/bin/pandoc
+ quarto   1.7.31 @ /usr/bin/quarto
 
-─ Packages ───────────────────────────────────────────────────────────────────
- package            * version    date (UTC) lib source
- abind              * 1.4-8      2024-09-12 [1] CRAN (R 4.3.3)
- ape                  5.8-1      2024-12-16 [1] CRAN (R 4.3.3)
- assertthat           0.2.1      2019-03-21 [1] CRAN (R 4.3.3)
- backports            1.5.0      2024-05-23 [1] CRAN (R 4.3.3)
- base64enc            0.1-3      2015-07-28 [1] CRAN (R 4.3.3)
- bit                  4.6.0      2025-03-06 [1] CRAN (R 4.3.3)
- bit64                4.6.0-1    2025-01-16 [1] CRAN (R 4.3.3)
- bitops               1.0-9      2024-10-03 [1] CRAN (R 4.3.3)
- boot                 1.3-31     2024-08-28 [1] CRAN (R 4.3.3)
- brew                 1.0-10     2023-12-16 [1] CRAN (R 4.3.3)
- brio                 1.1.5      2024-04-24 [1] CRAN (R 4.3.3)
- broom                1.0.8      2025-03-28 [1] CRAN (R 4.3.3)
- bslib              * 0.9.0      2025-01-30 [1] CRAN (R 4.3.3)
- cachem               1.1.0      2024-05-16 [1] CRAN (R 4.3.3)
- callr                3.7.6      2024-03-25 [1] CRAN (R 4.3.3)
- car                  3.1-3      2024-09-27 [1] CRAN (R 4.3.3)
- carData              3.0-5      2022-01-06 [1] CRAN (R 4.3.3)
- caret              * 7.0-1      2024-12-10 [1] CRAN (R 4.3.3)
- class                7.3-23     2025-01-01 [1] CRAN (R 4.3.3)
- classInt             0.4-11     2025-01-08 [1] CRAN (R 4.3.3)
- cli                  3.6.5      2025-04-23 [1] CRAN (R 4.3.3)
- coda                 0.19-4.1   2024-01-31 [1] CRAN (R 4.3.3)
- codetools            0.2-20     2024-03-31 [1] CRAN (R 4.3.1)
- colorspace           2.1-1      2024-07-26 [1] CRAN (R 4.3.3)
- cols4all           * 0.8        2024-10-16 [1] CRAN (R 4.3.3)
- contfrac             1.1-12     2018-05-17 [1] CRAN (R 4.3.3)
- coro                 1.1.0      2024-11-05 [1] CRAN (R 4.3.3)
- corpcor              1.6.10     2021-09-16 [1] CRAN (R 4.3.3)
- covr               * 3.6.4      2023-11-09 [1] CRAN (R 4.3.1)
- cowplot            * 1.2.0      2025-07-07 [1] CRAN (R 4.3.3)
- crayon               1.5.3      2024-06-20 [1] CRAN (R 4.3.3)
- crosstalk            1.2.1      2023-11-23 [1] CRAN (R 4.3.3)
- cubature             2.1.4      2025-06-02 [1] CRAN (R 4.3.3)
- data.table           1.17.8     2025-07-10 [1] CRAN (R 4.3.3)
- DBI                  1.2.3      2024-06-02 [1] CRAN (R 4.3.3)
- deldir               2.0-4      2024-02-28 [1] CRAN (R 4.3.3)
- deSolve              1.40       2023-11-27 [1] CRAN (R 4.3.3)
- devtools             2.4.5      2022-10-11 [1] CRAN (R 4.3.0)
- digest               0.6.37     2024-08-19 [1] CRAN (R 4.3.3)
- doParallel           1.0.17     2022-02-07 [1] CRAN (R 4.3.3)
- dplyr              * 1.1.4      2023-11-17 [1] CRAN (R 4.3.1)
- e1071              * 1.7-16     2024-09-16 [1] CRAN (R 4.3.3)
- easypackages         0.1.0      2016-12-05 [1] CRAN (R 4.3.0)
- elevatr            * 0.99.0     2023-09-12 [1] CRAN (R 4.3.0)
- ellipsis             0.3.2      2021-04-29 [1] CRAN (R 4.3.3)
- elliptic             1.4-0      2019-03-14 [1] CRAN (R 4.3.3)
- evaluate             1.0.4      2025-06-18 [1] CRAN (R 4.3.3)
- exactextractr      * 0.10.0     2023-09-20 [1] CRAN (R 4.3.1)
- farver               2.1.2      2024-05-13 [1] CRAN (R 4.3.3)
- fastmap              1.2.0      2024-05-15 [1] CRAN (R 4.3.3)
- forcats            * 1.0.0      2023-01-29 [1] CRAN (R 4.3.0)
- foreach              1.5.2      2022-02-02 [1] CRAN (R 4.3.3)
- Formula              1.2-5      2023-02-24 [1] CRAN (R 4.3.3)
- fs                   1.6.6      2025-04-12 [1] CRAN (R 4.3.3)
- future               1.40.0     2025-04-10 [1] CRAN (R 4.3.3)
- future.apply         1.11.3     2024-10-27 [1] CRAN (R 4.3.3)
- FuzzyNumbers         0.4-7      2021-11-15 [1] CRAN (R 4.3.3)
- FuzzyNumbers.Ext.2   3.2        2017-09-05 [1] CRAN (R 4.3.3)
- gdalcubes          * 0.7.1      2025-03-20 [1] CRAN (R 4.3.3)
- gdalUtilities      * 1.2.5      2023-08-10 [1] CRAN (R 4.3.0)
- generics             0.1.4      2025-05-09 [1] CRAN (R 4.3.3)
- geojsonsf          * 2.0.3      2022-05-30 [1] CRAN (R 4.3.3)
- geos               * 0.2.4      2023-11-30 [1] CRAN (R 4.3.3)
- ggmap              * 4.0.1      2025-04-07 [1] CRAN (R 4.3.3)
- ggplot2            * 3.5.2      2025-04-09 [1] CRAN (R 4.3.3)
- ggplotify          * 0.1.2      2023-08-09 [1] CRAN (R 4.3.0)
- ggpubr             * 0.6.1      2025-06-27 [1] CRAN (R 4.3.3)
- ggrepel            * 0.9.6      2024-09-07 [1] CRAN (R 4.3.3)
- ggsignif             0.6.4      2022-10-13 [1] CRAN (R 4.3.0)
- ggspatial          * 1.1.9      2023-08-17 [1] CRAN (R 4.3.0)
- ggstats            * 0.10.0     2025-07-02 [1] CRAN (R 4.3.3)
- giscoR             * 0.6.1      2025-01-27 [1] CRAN (R 4.3.3)
- globals              0.17.0     2025-04-16 [1] CRAN (R 4.3.3)
- glue                 1.8.0      2024-09-30 [1] CRAN (R 4.3.3)
- gmm                  1.8        2023-06-06 [1] CRAN (R 4.3.3)
- gower                1.0.2      2024-12-17 [1] CRAN (R 4.3.3)
- gridExtra            2.3        2017-09-09 [1] CRAN (R 4.3.3)
- gridGraphics         0.5-1      2020-12-13 [1] CRAN (R 4.3.3)
- gtable               0.3.6      2024-10-25 [1] CRAN (R 4.3.3)
- hardhat              1.4.1      2025-01-31 [1] CRAN (R 4.3.3)
- hdf5r              * 1.3.12     2025-01-20 [1] CRAN (R 4.3.3)
- hexbin               1.28.5     2024-11-13 [1] CRAN (R 4.3.3)
- hms                  1.1.3      2023-03-21 [1] CRAN (R 4.3.0)
- htmltools          * 0.5.8.1    2024-04-04 [1] CRAN (R 4.3.3)
- htmlwidgets          1.6.4      2023-12-06 [1] CRAN (R 4.3.1)
- httpuv               1.6.16     2025-04-16 [1] CRAN (R 4.3.3)
- httr               * 1.4.7      2023-08-15 [1] CRAN (R 4.3.0)
- httr2              * 1.1.2      2025-03-26 [1] CRAN (R 4.3.3)
- hypergeo             1.2-14     2025-03-24 [1] CRAN (R 4.3.3)
- interp               1.1-6      2024-01-26 [1] CRAN (R 4.3.3)
- ipred                0.9-15     2024-07-18 [1] CRAN (R 4.3.3)
- iterators            1.0.14     2022-02-05 [1] CRAN (R 4.3.3)
- jpeg                 0.1-11     2025-03-21 [1] CRAN (R 4.3.3)
- jquerylib            0.1.4      2021-04-26 [1] CRAN (R 4.3.3)
- jsonlite           * 2.0.0      2025-03-27 [1] CRAN (R 4.3.3)
- KernSmooth           2.23-26    2025-01-01 [1] CRAN (R 4.3.3)
- knitr              * 1.50       2025-03-16 [1] CRAN (R 4.3.3)
- later                1.4.2      2025-04-08 [1] CRAN (R 4.3.3)
- lattice            * 0.22-7     2025-04-02 [1] CRAN (R 4.3.3)
- latticeExtra         0.6-30     2022-07-04 [1] CRAN (R 4.3.3)
- lava                 1.8.1      2025-01-12 [1] CRAN (R 4.3.3)
- lazyeval             0.2.2      2019-03-15 [1] CRAN (R 4.3.3)
- leafem             * 0.2.4      2025-05-01 [1] CRAN (R 4.3.3)
- leafgl             * 0.2.2      2024-11-13 [1] CRAN (R 4.3.3)
- leaflegend           1.2.1      2024-05-09 [1] CRAN (R 4.3.3)
- leaflet            * 2.2.2      2024-03-26 [1] CRAN (R 4.3.1)
- leafpop              0.1.0      2021-05-22 [1] CRAN (R 4.3.0)
- leafsync             0.1.0      2019-03-05 [1] CRAN (R 4.3.0)
- libgeos            * 3.11.1-3   2025-03-19 [1] CRAN (R 4.3.3)
- lifecycle            1.0.4      2023-11-07 [1] CRAN (R 4.3.3)
- listenv              0.9.1      2024-01-29 [1] CRAN (R 4.3.3)
- logger               0.4.0      2024-10-22 [1] CRAN (R 4.3.3)
- lubridate          * 1.9.4      2024-12-08 [1] CRAN (R 4.3.3)
- luz                * 0.4.0      2023-04-17 [1] CRAN (R 4.3.0)
- lwgeom             * 0.2-14     2024-02-21 [1] CRAN (R 4.3.1)
- magrittr             2.0.3      2022-03-30 [1] CRAN (R 4.3.3)
- maptiles           * 0.10.0     2025-05-07 [1] CRAN (R 4.3.3)
- mapview            * 2.11.2     2023-10-13 [1] CRAN (R 4.3.1)
- MASS                 7.3-58.4   2023-03-07 [1] CRAN (R 4.3.0)
- Matrix               1.5-4      2023-04-04 [1] CRAN (R 4.3.0)
- matrixcalc           1.0-6      2022-09-14 [1] CRAN (R 4.3.3)
- MCMCglmm             2.36       2024-05-06 [1] CRAN (R 4.3.1)
- memoise              2.0.1      2021-11-26 [1] CRAN (R 4.3.3)
- mgcv               * 1.9-1      2023-12-21 [1] CRAN (R 4.3.3)
- microbenchmark       1.5.0      2024-09-04 [1] CRAN (R 4.3.3)
- mime                 0.13       2025-03-17 [1] CRAN (R 4.3.3)
- miniUI               0.1.2      2025-04-17 [1] CRAN (R 4.3.3)
- ModelMetrics         1.2.2.2    2020-03-17 [1] CRAN (R 4.3.3)
- MomTrunc             6.1        2024-10-28 [1] CRAN (R 4.3.3)
- mvtnorm              1.3-3      2025-01-10 [1] CRAN (R 4.3.3)
- ncdf4              * 1.24       2025-03-25 [1] CRAN (R 4.3.3)
- nlme               * 3.1-168    2025-03-31 [1] CRAN (R 4.3.3)
- nnet               * 7.3-20     2025-01-01 [1] CRAN (R 4.3.3)
- openxlsx           * 4.2.8      2025-01-25 [1] CRAN (R 4.3.3)
- parallelly           1.45.0     2025-06-02 [1] CRAN (R 4.3.3)
- pillar               1.11.0     2025-07-04 [1] CRAN (R 4.3.3)
- pkgbuild             1.4.8      2025-05-26 [1] CRAN (R 4.3.3)
- pkgconfig            2.0.3      2019-09-22 [1] CRAN (R 4.3.3)
- pkgload              1.4.0      2024-06-28 [1] CRAN (R 4.3.3)
- plotly             * 4.11.0     2025-06-19 [1] CRAN (R 4.3.3)
- plyr                 1.8.9      2023-10-02 [1] CRAN (R 4.3.3)
- png                  0.1-8      2022-11-29 [1] CRAN (R 4.3.3)
- prettyunits          1.2.0      2023-09-24 [1] CRAN (R 4.3.3)
- pROC                 1.18.5     2023-11-01 [1] CRAN (R 4.3.3)
- processx             3.8.6      2025-02-21 [1] CRAN (R 4.3.3)
- prodlim              2025.04.28 2025-04-28 [1] CRAN (R 4.3.3)
- profvis              0.4.0      2024-09-20 [1] CRAN (R 4.3.3)
- progress             1.2.3      2023-12-06 [1] CRAN (R 4.3.1)
- progressr            0.15.1     2024-11-22 [1] CRAN (R 4.3.3)
- promises             1.3.3      2025-05-29 [1] CRAN (R 4.3.3)
- proxy                0.4-27     2022-06-09 [1] CRAN (R 4.3.3)
- ps                   1.9.1      2025-04-12 [1] CRAN (R 4.3.3)
- purrr              * 1.0.4      2025-02-05 [1] CRAN (R 4.3.3)
- R6                   2.6.1      2025-02-15 [1] CRAN (R 4.3.3)
- randomForest       * 4.7-1.2    2024-09-22 [1] CRAN (R 4.3.3)
- rappdirs             0.3.3      2021-01-31 [1] CRAN (R 4.3.3)
- raster             * 3.6-32     2025-03-28 [1] CRAN (R 4.3.3)
- rasterVis          * 0.51.6     2023-11-01 [1] CRAN (R 4.3.3)
- rayshader          * 0.37.3     2024-02-21 [1] CRAN (R 4.3.1)
- rbibutils            2.3        2024-10-04 [1] CRAN (R 4.3.3)
- RColorBrewer       * 1.1-3      2022-04-03 [1] CRAN (R 4.3.3)
- Rcpp               * 1.1.0      2025-07-02 [1] CRAN (R 4.3.3)
- RcppArmadillo      * 14.6.0-1   2025-07-02 [1] CRAN (R 4.3.3)
- RcppCensSpatial    * 0.3.0      2022-06-27 [1] CRAN (R 4.3.0)
- RcppEigen          * 0.3.4.0.2  2024-08-24 [1] CRAN (R 4.3.3)
- RcppParallel       * 5.1.10     2025-01-24 [1] CRAN (R 4.3.3)
- RCurl                1.98-1.17  2025-03-22 [1] CRAN (R 4.3.3)
- Rdpack               2.6.4      2025-04-09 [1] CRAN (R 4.3.3)
- readr              * 2.1.5      2024-01-10 [1] CRAN (R 4.3.1)
- recipes              1.3.1      2025-05-21 [1] CRAN (R 4.3.3)
- relliptical          1.3.0      2024-02-07 [1] CRAN (R 4.3.1)
- remotes              2.5.0      2024-03-17 [1] CRAN (R 4.3.3)
- renv               * 1.1.4      2025-03-20 [1] CRAN (R 4.3.3)
- reshape2             1.4.4      2020-04-09 [1] CRAN (R 4.3.0)
- rex                  1.2.1      2021-11-26 [1] CRAN (R 4.3.3)
- rgl                * 1.3.24     2025-06-25 [1] CRAN (R 4.3.3)
- rlang                1.1.6      2025-04-11 [1] CRAN (R 4.3.3)
- rmarkdown          * 2.29       2024-11-04 [1] CRAN (R 4.3.3)
- rpart                4.1.24     2025-01-07 [1] CRAN (R 4.3.3)
- rstatix              0.7.2      2023-02-01 [1] CRAN (R 4.3.0)
- RStoolbox          * 1.0.2.1    2025-02-03 [1] CRAN (R 4.3.3)
- rstudioapi           0.17.1     2024-10-22 [1] CRAN (R 4.3.3)
- rts                * 1.1-14     2023-10-01 [1] CRAN (R 4.3.3)
- Ryacas0              0.4.4      2023-01-12 [1] CRAN (R 4.3.3)
- s2                 * 1.1.9      2025-05-23 [1] CRAN (R 4.3.3)
- sandwich             3.1-1      2024-09-15 [1] CRAN (R 4.3.3)
- sass                 0.4.10     2025-04-11 [1] CRAN (R 4.3.3)
- satellite            1.0.5      2024-02-10 [1] CRAN (R 4.3.3)
- scales             * 1.4.0      2025-04-24 [1] CRAN (R 4.3.3)
- sessioninfo          1.2.3      2025-02-05 [1] CRAN (R 4.3.3)
- settings             0.2.7      2021-05-07 [1] CRAN (R 4.3.3)
- sf                 * 1.0-21     2025-05-15 [1] CRAN (R 4.3.3)
- shiny                1.11.1     2025-07-03 [1] CRAN (R 4.3.3)
- shinyWidgets         0.9.0      2025-02-21 [1] CRAN (R 4.3.3)
- sp                 * 2.2-0      2025-02-01 [1] CRAN (R 4.3.3)
- spacesXYZ            1.6-0      2025-06-06 [1] CRAN (R 4.3.3)
- spData             * 2.3.4      2025-01-08 [1] CRAN (R 4.3.3)
- spdep              * 1.3-13     2025-06-10 [1] CRAN (R 4.3.3)
- stars              * 0.6-8      2025-02-01 [1] CRAN (R 4.3.3)
- StempCens            1.2.0      2025-06-11 [1] CRAN (R 4.3.3)
- stringi              1.8.7      2025-03-27 [1] CRAN (R 4.3.3)
- stringr            * 1.5.1      2023-11-14 [1] CRAN (R 4.3.1)
- survival             3.8-3      2024-12-17 [1] CRAN (R 4.3.3)
- svglite              2.2.1      2025-05-12 [1] CRAN (R 4.3.3)
- systemfonts          1.2.3      2025-04-30 [1] CRAN (R 4.3.3)
- tensorA              0.36.2.1   2023-12-13 [1] CRAN (R 4.3.3)
- terra              * 1.8-54     2025-06-01 [1] CRAN (R 4.3.3)
- terrainr           * 0.7.5      2023-10-04 [1] CRAN (R 4.3.1)
- testthat           * 3.2.3      2025-01-13 [1] CRAN (R 4.3.3)
- textshaping          1.0.1      2025-05-01 [1] CRAN (R 4.3.3)
- tibble             * 3.3.0      2025-06-08 [1] CRAN (R 4.3.3)
- tidyr              * 1.3.1      2024-01-24 [1] CRAN (R 4.3.1)
- tidyselect           1.2.1      2024-03-11 [1] CRAN (R 4.3.1)
- tidyterra          * 0.7.2      2025-04-14 [1] CRAN (R 4.3.3)
- tidyverse          * 2.0.0      2023-02-22 [1] CRAN (R 4.3.0)
- timechange           0.3.0      2024-01-18 [1] CRAN (R 4.3.3)
- timeDate             4041.110   2024-09-22 [1] CRAN (R 4.3.3)
- tlrmvnmvt            1.1.2      2022-06-09 [1] CRAN (R 4.3.3)
- tmvtnorm             1.6        2023-12-05 [1] CRAN (R 4.3.3)
- torch                0.15.1     2025-07-10 [1] CRAN (R 4.3.3)
- tzdb                 0.5.0      2025-03-15 [1] CRAN (R 4.3.3)
- unifir               0.2.4      2024-02-01 [1] CRAN (R 4.3.3)
- units                0.8-7      2025-03-11 [1] CRAN (R 4.3.3)
- urlchecker           1.0.1      2021-11-30 [1] CRAN (R 4.3.3)
- usethis              3.1.0      2024-11-26 [1] CRAN (R 4.3.3)
- uuid                 1.2-1      2024-07-29 [1] CRAN (R 4.3.3)
- vctrs                0.6.5      2023-12-01 [1] CRAN (R 4.3.3)
- viridisLite          0.4.2      2023-05-02 [1] CRAN (R 4.3.3)
- withr                3.0.2      2024-10-28 [1] CRAN (R 4.3.3)
- wk                   0.9.4      2024-10-11 [1] CRAN (R 4.3.3)
- xfun                 0.52       2025-04-02 [1] CRAN (R 4.3.3)
- xgboost            * 1.7.11.1   2025-05-15 [1] CRAN (R 4.3.3)
- XML                  3.99-0.18  2025-01-01 [1] CRAN (R 4.3.3)
- xml2                 1.3.8      2025-03-14 [1] CRAN (R 4.3.3)
- xtable               1.8-4      2019-04-21 [1] CRAN (R 4.3.3)
- xts                * 0.14.1     2024-10-15 [1] CRAN (R 4.3.3)
- yaml                 2.3.10     2024-07-26 [1] CRAN (R 4.3.3)
- yulab.utils          0.2.0      2025-01-29 [1] CRAN (R 4.3.3)
- zeallot              0.2.0      2025-05-27 [1] CRAN (R 4.3.3)
- zip                  2.3.3      2025-05-13 [1] CRAN (R 4.3.3)
- zoo                * 1.8-14     2025-04-10 [1] CRAN (R 4.3.3)
+─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ cachem        1.1.0   2024-05-16 [2] CRAN (R 4.4.0)
+ cli           3.6.5   2025-04-23 [2] CRAN (R 4.4.3)
+ CoprManager   0.5.7   2025-04-26 [4] local
+ devtools      2.4.5   2022-10-11 [2] CRAN (R 4.4.0)
+ digest        0.6.37  2024-08-19 [2] CRAN (R 4.4.1)
+ ellipsis      0.3.2   2021-04-29 [2] CRAN (R 4.4.0)
+ fastmap       1.2.0   2024-05-15 [2] CRAN (R 4.4.0)
+ fs            1.6.6   2025-04-12 [2] CRAN (R 4.4.3)
+ glue          1.8.0   2024-09-30 [2] CRAN (R 4.4.1)
+ htmltools     0.5.8.1 2024-04-04 [2] CRAN (R 4.4.0)
+ htmlwidgets   1.6.4   2023-12-06 [2] CRAN (R 4.4.0)
+ httpuv        1.6.16  2025-04-16 [2] CRAN (R 4.4.3)
+ later         1.4.2   2025-04-08 [2] CRAN (R 4.4.3)
+ lifecycle     1.0.4   2023-11-07 [2] CRAN (R 4.4.0)
+ magrittr      2.0.3   2022-03-30 [2] CRAN (R 4.4.0)
+ memoise       2.0.1   2021-11-26 [2] CRAN (R 4.4.0)
+ mime          0.13    2025-03-17 [2] CRAN (R 4.4.3)
+ miniUI        0.1.2   2025-04-17 [2] CRAN (R 4.4.3)
+ pkgbuild      1.4.7   2025-03-24 [2] CRAN (R 4.4.3)
+ pkgload       1.4.0   2024-06-28 [2] CRAN (R 4.4.1)
+ profvis       0.4.0   2024-09-20 [2] CRAN (R 4.4.1)
+ promises      1.3.2   2024-11-28 [2] CRAN (R 4.4.2)
+ purrr         1.0.4   2025-02-05 [2] CRAN (R 4.4.2)
+ R6            2.6.1   2025-02-15 [2] CRAN (R 4.4.2)
+ Rcpp          1.0.14  2025-01-12 [2] CRAN (R 4.4.2)
+ remotes       2.5.0   2024-03-17 [2] CRAN (R 4.4.0)
+ rlang         1.1.6   2025-04-11 [2] CRAN (R 4.4.3)
+ rstudioapi    0.17.1  2024-10-22 [2] CRAN (R 4.4.1)
+ sessioninfo   1.2.3   2025-02-05 [2] CRAN (R 4.4.2)
+ shiny         1.10.0  2024-12-14 [2] CRAN (R 4.4.2)
+ urlchecker    1.0.1   2021-11-30 [2] CRAN (R 4.4.0)
+ usethis       3.1.0   2024-11-26 [2] CRAN (R 4.4.2)
+ vctrs         0.6.5   2023-12-01 [2] CRAN (R 4.4.0)
+ xtable        1.8-4   2019-04-21 [2] CRAN (R 4.4.0)
 
- [1] /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library
- * ── Packages attached to the search path.
+ [1] /home/seamus/R/x86_64-redhat-linux-gnu-library/4.4
+ [2] /usr/local/lib/R/library
+ [3] /usr/lib64/R/library
+ [4] /usr/share/R/library
 
 ──────────────────────────────────────────────────────────────────────────────
 ```
