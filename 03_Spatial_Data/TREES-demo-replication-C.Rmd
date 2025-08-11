@@ -14,7 +14,7 @@ editor_options:
     wrap: 70
 ---
 
-```{r}
+```{r, echo=F}
 #| warning: false
 #| message: false
 #| error: false
@@ -26,7 +26,8 @@ easypackages::packages(
   "FawR", "forestdata", "ForestToolsRS", "ggplot2", "giscoR",
   "htmltools", "janitor", "jsonlite", "lattice", 
   "kableExtra", "kernlab", "knitr", "Mlmetrics", 
-  "osmdata", "plotly", "psych", "RColorBrewer", "rmarkdown", "readxl", 
+  "osmdata", "plotly", "psych", 
+  "RColorBrewer", "rmarkdown", "readxl", "rnaturalearth",
   "sf", "tibble", "tidymodels", "tidyverse", "tinytex", "tune", 
   "useful", "webshot", "webshot2",
   prompt = F
@@ -58,26 +59,60 @@ analysis.
 
 ### Import data
 
-#### Demography
+#### AOI
 
 ```{r, class.source = c("numCode", "r", "numberLines"), eval=T}
-country <- gisco_get_countries(
-  resolution  = "20", 
-  country     = "ECU", 
-  epsg        = "4326")
+library(rnaturalearth)
+library(sf)
+library(ggplot2)
+library(viridis)
+library(patchwork)
 
-ggplot(country) +
-  geom_sf(color = "grey80") +
-  geom_sf(data = country, fill = "grey30", color = "white") +
-  coord_sf(xlim = c(-92, -76), ylim = c(-5, 2)) +
+ecuador_aoi_1 <- rnaturalearth::ne_states(
+  "Ecuador", returnclass = "sf")
+ecuador_aoi_0 <- rnaturalearth::ne_countries(
+  type = "countries", 
+  country = "Ecuador",
+  scale = "medium", 
+  returnclass = "sf")
+
+p1 <- ggplot(ecuador_aoi_0) + geom_sf()
+p2 <- ggplot(ecuador_aoi_1) + geom_sf()
+p1 + p2
 ```
 
-```{r}
+#### Demography
 
-query = osmdata::opq("Ecuador") |> # opq = overpass query
-  osmdata::add_osm_feature(key = "boundary", value = "administrative") |>
+```{r}
+library(osmdata)
+library(httr2)
+library(ggmap)
+# Check features available in OSM data
+osmdata::available_features()
+
+# Extract forest risk features within Ecuador
+ecuador_bbox = osmdata::getbb("Ecuador")
+ecuador_hospitals <- ecuador_bbox |> osmdata::opq() |>
+  osmdata::add_osm_feature(key = "amenity", value = "hospital") |>
   osmdata::osmdata_sf()
-boundaries = query$osm_multipolygons
+
+ggplot() + geom_sf(data = ecuador_hospitals$osm_polygons)
+ecuador_hospitals_map <- get_map(ecuador_bbox, maptype = "roadmap")
+
+ecuador_aoi  = ecuador_bbox |> 
+  osmdata::opq() |> 
+  osmdata::add_osm_feature(
+    key = "boundary", 
+    value = "administrative") |>
+  osmdata::osmdata_sf()
+
+
+
+ecuador_aoi = ecuador_bbox |>
+  osmdata::opq() |>
+  osmdata::add_osm_feature()
+
+query$osm_multipolygons
 country  = boundaries |>
   dplyr::filter(admin_level == "2", name == "Liberia") |>
   dplyr::select(name, admin_level, geometry) |>
