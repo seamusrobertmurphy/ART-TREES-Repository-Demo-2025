@@ -75,7 +75,6 @@ easypackages::packages(
   
 # Verify package is loaded & check data
 cat("All packages loaded successfully")
-cat("\nDataset contains", nrow(carbon_data), "measurement plots\n")
 ```
 
 --------------------------------------------------------------------------------
