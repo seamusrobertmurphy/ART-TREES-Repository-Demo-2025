@@ -29,7 +29,7 @@ Winrock Intl 2025-08-10
 
 -   [Appendix IV: Replication in `git`](#appendix-iv-replication-in-git)
 
--   [Versión en Español: El Ejercicio Práctico](#version-en-espanol-el-ejericicio-practicol)
+-   [Versión en Español: El Ejercicio Práctico](#version-en-espanol-el-ejericicio-practico)
 
 --------------------------------------------------------------------------------
 
