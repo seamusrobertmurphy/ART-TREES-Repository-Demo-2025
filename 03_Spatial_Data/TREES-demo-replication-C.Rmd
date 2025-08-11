@@ -2,7 +2,7 @@
 title: "ART-TREES Audit Replication Demo C"
 author: "Winrock Intl"
 date: "`r Sys.Date()`"
-subtitle: "Training exercise in replication of risk-allocated deforestation mapping"
+subtitle: "Training exercise in risk-allocated deforestation mapping for scoping potential for nested REDD markets"
 output:
   github_document:
     toc: true
@@ -22,8 +22,8 @@ editor_options:
 #| echo: false
 easypackages::packages(
   "animation", "allodb", "BIOMASS", "c2z", "caret", 
-  "dataMaid", "DescTools","dplyr",
-  "extrafont", "FawR", "ForestToolsRS", "ggplot2", "giscoR",
+  "dataMaid", "DescTools","dplyr", "extrafont", 
+  "FawR", "forestdata", "ForestToolsRS", "ggplot2", "giscoR",
   "htmltools", "janitor", "jsonlite", "lattice", 
   "kableExtra", "kernlab", "knitr", "Mlmetrics", 
   "osmdata", "plotly", "psych", "RColorBrewer", "rmarkdown", "readxl", 
@@ -50,11 +50,11 @@ sf::sf_use_s2(use_s2 = FALSE)
 
 ### Introduction
 
-The following spatial covariates were imported and processed as
-potential drivers of deforestation risk. Covariates were merged
-between demographic and geographic datasets surrounding the project
-area and national level datasets beyond the project area in order to
-enable jurisdictions analysis.
+The following spatial covariates were imported as potential drivers of
+deforestation risk. Covariates were merged between demographic and
+geographic datasets surrounding the project area and national level
+datasets beyond the project area in order to enable jurisdictions
+analysis.
 
 ### Import data
 
@@ -63,7 +63,7 @@ enable jurisdictions analysis.
 ```{r, class.source = c("numCode", "r", "numberLines"), eval=T}
 country <- gisco_get_countries(
   resolution  = "20", 
-  country     = "Ecuador", 
+  country     = "ECU", 
   epsg        = "4326")
 
 ggplot(country) +

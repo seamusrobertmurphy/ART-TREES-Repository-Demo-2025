@@ -1,6 +1,6 @@
 ---
 title: "ART-TREES Audit Replication Demo B"
-subtitle: "Training exercise in replication of Monte Carlo simulation of landcover classification"
+subtitle: "Training exercise to replicate Monte Carlo simulation of landcover classification"
 author: "Winrock Intl"
 date: "`r Sys.Date()`"
 output:
@@ -93,7 +93,7 @@ allometry database and a dummy dataset from the Smithsonian Institute `ForestGEO
 #| message: false
 #| error: false
 #| echo: true
-library("allodb") # https://docs.ropensci.org/allodb/
+install.packages("allodb") # https://docs.ropensci.org/allodb/
 set.seed(333)
 data(scbi_stem1)
 dataset = scbi_stem1

@@ -1,0 +1,60 @@
+─ Session info ───────────────────────────────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.3.0 (2023-04-21)
+ os       macOS 15.6
+ system   aarch64, darwin20
+ ui       RStudio
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       America/Vancouver
+ date     2025-08-11
+ rstudio  2024.12.1+563 Kousa Dogwood (desktop)
+ pandoc   3.6.1 @ /usr/local/bin/ (via rmarkdown)
+ quarto   1.6.40 @ /usr/local/bin/quarto
+
+─ Packages ───────────────────────────────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ cachem        1.1.0   2024-05-16 [1] CRAN (R 4.3.3)
+ cli           3.6.5   2025-04-23 [1] CRAN (R 4.3.3)
+ devtools      2.4.5   2022-10-11 [1] CRAN (R 4.3.0)
+ digest        0.6.37  2024-08-19 [1] CRAN (R 4.3.3)
+ ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.3.3)
+ evaluate      1.0.4   2025-06-18 [1] CRAN (R 4.3.3)
+ fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.3.3)
+ fs            1.6.6   2025-04-12 [1] CRAN (R 4.3.3)
+ glue          1.8.0   2024-09-30 [1] CRAN (R 4.3.3)
+ htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.3.3)
+ htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.3.1)
+ httpuv        1.6.16  2025-04-16 [1] CRAN (R 4.3.3)
+ knitr         1.50    2025-03-16 [1] CRAN (R 4.3.3)
+ later         1.4.2   2025-04-08 [1] CRAN (R 4.3.3)
+ lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.3.3)
+ magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.3.3)
+ memoise       2.0.1   2021-11-26 [1] CRAN (R 4.3.3)
+ mime          0.13    2025-03-17 [1] CRAN (R 4.3.3)
+ miniUI        0.1.2   2025-04-17 [1] CRAN (R 4.3.3)
+ pkgbuild      1.4.8   2025-05-26 [1] CRAN (R 4.3.3)
+ pkgload       1.4.0   2024-06-28 [1] CRAN (R 4.3.3)
+ profvis       0.4.0   2024-09-20 [1] CRAN (R 4.3.3)
+ promises      1.3.3   2025-05-29 [1] CRAN (R 4.3.3)
+ purrr         1.0.4   2025-02-05 [1] CRAN (R 4.3.3)
+ R6            2.6.1   2025-02-15 [1] CRAN (R 4.3.3)
+ Rcpp          1.1.0   2025-07-02 [1] CRAN (R 4.3.3)
+ remotes       2.5.0   2024-03-17 [1] CRAN (R 4.3.3)
+ rlang         1.1.6   2025-04-11 [1] CRAN (R 4.3.3)
+ rmarkdown     2.29    2024-11-04 [1] CRAN (R 4.3.3)
+ rsconnect     1.5.0   2025-06-26 [1] CRAN (R 4.3.3)
+ rstudioapi    0.17.1  2024-10-22 [1] CRAN (R 4.3.3)
+ sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.3.3)
+ shiny         1.11.1  2025-07-03 [1] CRAN (R 4.3.3)
+ urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.3.3)
+ usethis       3.1.0   2024-11-26 [1] CRAN (R 4.3.3)
+ vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.3.3)
+ xfun          0.52    2025-04-02 [1] CRAN (R 4.3.3)
+ xtable        1.8-4   2019-04-21 [1] CRAN (R 4.3.3)
+ yaml          2.3.10  2024-07-26 [1] CRAN (R 4.3.3)
+
+ [1] /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────
