@@ -1,0 +1,305 @@
+---
+title: "ART-TREES Audit Replication Demo B"
+subtitle: "Training exercise in replication of Monte Carlo simulation of landcover classification"
+author: "Winrock Intl"
+date: "`r Sys.Date()`"
+output:
+  github_document:
+    toc: true
+    toc_depth: 4
+#    keep_md: true
+
+always_allow_html: TRUE
+editor_options: 
+  markdown: 
+    wrap: 100
+---
+
+```{r setup-1}
+#| warning: false
+#| message: false
+#| error: false
+#| include: false
+#| echo: false
+easypackages::packages(
+  "animation", "allodb", "BIOMASS", "c2z", "caret", "dataMaid", "DescTools","dplyr",
+  "extrafont", "FawR", "ForestToolsRS", "ggplot2", "htmltools",
+  "janitor", "jsonlite", "lattice", "kableExtra", "kernlab",
+  "knitr", "Mlmetrics", "olsrr", "plotly", "psych", "RColorBrewer",
+  "rmarkdown", "readxl", "tibble", "tidymodels", "tidyverse",
+  "tinytex", "tune", "useful", "webshot", "webshot2",
+  prompt = F
+  )
+  
+knitr::opts_chunk$set(
+  echo    = TRUE, 
+  message = FALSE, 
+  warning = FALSE,
+  error   = FALSE, 
+  cache   = FALSE,
+  comment = NA, 
+  tidy.opts = list(width.cutoff = 60)
+)
+
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+sf::sf_use_s2(use_s2 = FALSE)
+```
+
+----------------------------------------------------------------------------------------------------
+
+### **Introduction**
+
+As cited on page 46 of the TREES Standards (V2.0), calculations of uncertainty deductions are
+derived using the following formula:
+
+$$
+UNC_t = (GHG ER_t + GHG REMV_t) \times UA_t \text{.            EQ 10}
+$$
+
+##### Table 1: Parameters used in Equation 10
+
+|              |                                                                   |
+|--------------|-------------------------------------------------------------------|
+| $UNC_t$      | Uncertainty deduction for year $t$ ($tCO_2e$)                     |
+| $GHG ER_t$   | Gross greenhouse gas emissions reductions for year $t$ ($tCO_2e$) |
+| $GHG REMV_t$ | Gross greenhouse gas removals for year $t$ ($tCO_2e$)             |
+| $UA_t$       | The uncertainty adjustment factor for year $t$                    |
+
+The uncertainty adjustment factor ($UAdj_t$) quantifies the proportional adjustment to emissions
+reductions and removals based on statistical uncertainty. It is defined as:
+
+$$
+UAdj_t = 0.524417 \times \frac{HW_{90\%t}}{1.645006}
+$$
+
+##### Table 2: Parameters used in Equation 11
+
+|                       |                                                                 |
+|-----------------------|-----------------------------------------------------------------|
+| $90\%\text{ C I}_{t}$ | The half-width of 90% confidence interval as percentage of mean |
+| $1.645006$            | $t$ value for a 90% confidence interval                         |
+| $0.524417$            | A scaling constant to adjust the proportion.                    |
+
+----------------------------------------------------------------------------------------------------
+
+### Import data
+
+This section outlines the tools for importing and preparing forestry and biomass data for analysis,
+a key step in building ART-TREES-compliant MRV systems. Using the `allodb` package, we load a global
+allometry database and a dummy dataset from the Smithsonian Institute `ForestGEO` project.
+
+```{r dummy-import}
+#| warning: false
+#| message: false
+#| error: false
+#| echo: true
+library("allodb") # https://docs.ropensci.org/allodb/
+set.seed(333)
+data(scbi_stem1)
+dataset = scbi_stem1
+head(dataset) |> tibble::as_tibble()
+
+psych::describe(dataset)
+str(dataset)
+```
+
+##### Table 3: Table summary of public dataset from `allodb` package (n = 2287)
+
+Accurate selection of probability density functions (PDFs) is essential for modeling uncertainties
+in carbon stocks and activity data. This section describes methodologies for fitting PDFs to data,
+ensuring results are robust and aligned with ART-TREES best practices.
+
+-   Use of statistical tests for goodness-of-fit validation.
+-   Integration of domain expertise to refine parameter selection.
+
+```{r, fig.show='hold', out.width="33%"}
+# add allometry database
+data(equations)
+data("equations_metadata")
+show_cols   = c("equation_id", "equation_taxa", "equation_allometry")
+eq_tab_acer = new_equations(subset_taxa = "Acer")
+head(eq_tab_acer[, show_cols])
+
+# Compute above ground biomass
+dataset$agb = allodb::get_biomass(
+    dbh     = dataset$dbh,
+    genus   = dataset$genus,
+    species = dataset$species,
+    coords  = c(-78.2, 38.9)
+  )
+
+# examine dbh ~ agb function
+dbh_agb = lm(dbh ~ agb, data = dataset)
+#olsrr::ols_test_breusch_pagan(lm(dbh_agb)) #<0.0000
+#h = lattice::histogram(dbh ~ agb, data = dataset)
+plot(
+  x    = dataset$dbh,
+  y    = dataset$agb,
+  col  = factor(scbi_stem1$genus),
+  xlab = "DBH (cm)",
+  ylab = "AGB (kg)"
+)
+
+# examine univariate distributions
+h1 = hist(dataset$dbh, breaks=10, col="red")
+xfit<-seq(min(dataset$dbh),max(dataset$dbh),length=40)
+yfit<-dnorm(xfit,mean=mean(dataset$dbh),sd=sd(dataset$dbh))
+yfit <- yfit*diff(h1$mids[1:2])*length(dataset$dbh)
+lines(xfit, yfit, col="blue", lwd=2)
+
+h2 = hist(dataset$agb, breaks=10, col="red")
+xfit<-seq(min(dataset$agb),max(dataset$agb),length=40)
+yfit<-dnorm(xfit,mean=mean(dataset$agb),sd=sd(dataset$agb))
+yfit <- yfit*diff(h2$mids[1:2])*length(dataset$agb)
+lines(xfit, yfit, col="blue", lwd=2)
+wilcox.test(dataset$dbh) # p<0.00001
+wilcox.test(dataset$agb) # p<0.00001
+```
+
+### Activity data simulation
+
+This section introduces the design of the Monte Carlo simulation regime, including:
+
+-   Simulation parameters are defined to balance computational efficiency and statistical
+    robustness.
+-   Cross-validation techniques are employed to evaluate model performance and identify bias or
+    variance.
+
+The `LGOCV` acronym used in the `caret` package functions below stands for "leave one group out
+cross validation". We must select the `%` of test data that is set out from the build upon which the
+model will be repeatedly trained. Note, the following code applies functions to full dataset without
+explicit training-test split.
+
+```{r}
+# Cross-validation split for bias detection
+#samples     = caret::createDataPartition(dataset_tidy$volume, p = 0.80, list = FALSE)
+#train_data  = dataset_tidy[samples, ]
+#test_data   = dataset_tidy[-samples, ]
+
+# Simulation pattern & regime
+monte_carlo = trainControl(
+  method    = "LGOCV",
+  number    = 10,     # number of simulations
+  p         = 0.8)     # percentage resampled
+
+
+# Training model fit with all covariates (".") & the simulation
+lm_monte_carlo = train(
+  data      = dataset, 
+  agb ~ ., 
+  na.action = na.omit,
+  trControl = monte_carlo)
+
+lm_monte_carlo 
+```
+
+To enable access to these predictions, we need to instruct `caret` to retain the resampled
+predictions by setting `savePredictions = "final"` in our `trainControl()` function. It's important
+to be aware that if you're working with a large dataset or numerous resampling iterations, the
+resulting `train()` object may grow significantly in size. This happens because `caret` must store a
+record of every row, including both the observed values and predictions, for each resampling
+iteration. By visualizing the results, we can offer insights into the performance of our model on
+the resampled data.
+
+```{r}
+monte_carlo_viz = trainControl(
+  method    = "LGOCV", 
+  p         = 0.8,            
+  number    = 1,  # just for saving previous results
+  savePredictions = "final") 
+
+lm_monte_carlo_viz = train(
+  agb ~ ., 
+  data      = dataset, 
+  method    = "lm",
+  na.action = na.omit,
+  trControl = monte_carlo_viz)
+
+head(lm_monte_carlo_viz$pred)  # residuals 
+
+lm_monte_carlo_viz$pred |> 
+  ggplot(aes(x=pred,y=obs)) +
+    geom_point(shape=1) + 
+    geom_abline(slope=1, colour='blue')  +
+    coord_obs_pred()
+```
+
+This following chunks showcase running a Monte Carlo simulations of LULC classification to estimate
+uncertainty of activity data predictons.
+
+```{r}
+#| eval: false
+remotes::install_github("ytarazona/ForesToolboxRS")
+library(ForesToolboxRS)
+dir.create("./data/testdata")
+download.file("https://github.com/ytarazona/ft_data/raw/main/data/LC08_232066_20190727_SR.zip", destfile = "testdata/LC08_232066_20190727_SR.zip")
+unzip("testdata/LC08_232066_20190727_SR.zip", exdir = "testdata") 
+download.file("https://github.com/ytarazona/ft_data/raw/main/data/signatures.zip", destfile = "testdata/signatures.zip")
+unzip("testdata/signatures.zip", exdir = "testdata")
+
+image <- stack("./data/testdata/LC08_232066_20190727_SR.tif")
+sig <- read_sf("./data/testdata/signatures.shp")
+```
+
+#### Train classifier
+
+```{r}
+#| eval: false
+classRF <- mla(img = image, model = "randomForest", endm = sig, training_split = 80)
+print(classRF)
+```
+
+#### Classify landcover
+
+```{r}
+#| eval: false
+# Classification
+colmap <- c("#0000FF","#228B22","#FF1493", "#00FF00")
+plot(classRF$Classification, main = "RandomForest Classification", col = colmap, axes = TRUE)
+```
+
+#### Visualize uncertainty
+
+```{r}
+#| eval: false
+plot(
+  cal_ml$svm_mccv,
+  main = "Monte Carlo Cross-Validation calibration",
+  col = "darkmagenta",
+  type = "b",
+  ylim = c(0, 0.4),
+  ylab = "Error between 0 and 1",
+  xlab = "Number of iterations"
+)
+lines(cal_ml$randomForest_mccv, col = "red", type = "b")
+lines(cal_ml$naiveBayes_mccv, col = "green", type = "b")
+lines(cal_ml$knn_mccv, col = "blue", type = "b")
+legend(
+  "topleft",
+  c(
+    "Support Vector Machine",
+    "Random Forest",
+    "Naive Bayes",
+    "K-nearest Neighbors"
+  ),
+  col = c("darkmagenta", "red", "green", "blue"),
+  lty = 1,
+  cex = 0.7
+)
+```
+
+#### Runtime log
+
+Documenting the computational environment is essential for reproducibility. This information allows
+others to recreate the exact same computational conditions.
+
+```{r session_info, class.source = c("numCode", "r", "numberLines")}
+# Document the computational environment
+cat("Runtime Environment Information:\n")
+cat("================================\n")
+devtools::sessionInfo()
+
+# Autosave log in 06_QCQC folder
+writeLines(capture.output(devtools::session_info()), 
+           paste0("../06_QAQC/runtime_log_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".txt"))
+```

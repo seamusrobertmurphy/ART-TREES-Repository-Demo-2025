@@ -1,0 +1,291 @@
+---
+title: "ART-TREES Audit Replication Demo C"
+author: "Winrock Intl"
+date: "`r Sys.Date()`"
+subtitle: "Training exercise in replication of risk-allocated deforestation mapping"
+output:
+  github_document:
+    toc: true
+    toc_depth: 4
+
+always_allow_html: TRUE
+editor_options: 
+  markdown: 
+    wrap: 70
+---
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| include: false
+#| echo: false
+easypackages::packages(
+  "animation", "allodb", "BIOMASS", "c2z", "caret", 
+  "dataMaid", "DescTools","dplyr",
+  "extrafont", "FawR", "ForestToolsRS", "ggplot2", "giscoR",
+  "htmltools", "janitor", "jsonlite", "lattice", 
+  "kableExtra", "kernlab", "knitr", "Mlmetrics", 
+  "osmdata", "plotly", "psych", "RColorBrewer", "rmarkdown", "readxl", 
+  "sf", "tibble", "tidymodels", "tidyverse", "tinytex", "tune", 
+  "useful", "webshot", "webshot2",
+  prompt = F
+  )
+  
+knitr::opts_chunk$set(
+  echo    = TRUE, 
+  message = FALSE, 
+  warning = FALSE,
+  error   = FALSE, 
+  cache   = FALSE,
+  comment = NA, 
+  tidy.opts = list(width.cutoff = 60)
+)
+
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+sf::sf_use_s2(use_s2 = FALSE)
+```
+
+----------------------------------------------------------------------
+
+### Introduction
+
+The following spatial covariates were imported and processed as
+potential drivers of deforestation risk. Covariates were merged
+between demographic and geographic datasets surrounding the project
+area and national level datasets beyond the project area in order to
+enable jurisdictions analysis.
+
+### Import data
+
+#### Demography
+
+```{r, class.source = c("numCode", "r", "numberLines"), eval=T}
+country <- gisco_get_countries(
+  resolution  = "20", 
+  country     = "Ecuador", 
+  epsg        = "4326")
+
+ggplot(country) +
+  geom_sf(color = "grey80") +
+  geom_sf(data = country, fill = "grey30", color = "white") +
+  coord_sf(xlim = c(-92, -76), ylim = c(-5, 2)) +
+```
+
+```{r}
+
+query = osmdata::opq("Ecuador") |> # opq = overpass query
+  osmdata::add_osm_feature(key = "boundary", value = "administrative") |>
+  osmdata::osmdata_sf()
+boundaries = query$osm_multipolygons
+country  = boundaries |>
+  dplyr::filter(admin_level == "2", name == "Liberia") |>
+  dplyr::select(name, admin_level, geometry) |>
+  sf::st_cast() |> 
+  sf::st_transform(4326)
+sf::st_write(country, "./AOI/aoi_ecuador.shp", delete_layer=T)
+```
+
+```{r, class.source = c("numCode", "r", "numberLines"), eval=T}
+# Housing
+places_points_liberia_1=sf::st_read("./data/liberia-osmdata/liberia_point.shp")|>
+  st_cast("POINT")|>sf::st_intersection(country)|>
+  dplyr::select(name,place)|>
+  dplyr::mutate(place = as.factor(place)) |> 
+  dplyr::mutate(name = as.character(name))
+
+places_points_liberia_2 <- sf::st_read("./data/liberia-osmdata/gis_osm_places_free_1.shp")|>
+  st_cast("POINT")|>sf::st_intersection(country)|>
+  dplyr::select(name,fclass)|>
+  dplyr::rename(place=fclass)|>
+  dplyr::mutate(place = as.factor(place))|> 
+  dplyr::mutate(name = as.character(name))
+
+places_worship <- sf::st_read("./data/liberia-osmdata/gis_osm_pofw_free_1.shp") |>
+  sf::st_intersection(country)|>
+  dplyr::select(name,fclass)|>
+  dplyr::rename(creed=fclass) |> 
+  dplyr::mutate(creed=as.factor(creed))  |> 
+  dplyr::mutate(name = as.character(name)) |> 
+  st_cast("POINT")
+
+places_points <- places_points_project %>%
+  bind_rows(places_points_liberia_1,places_points_liberia_2, places_worship) %>%
+  group_by(across(-geometry)) %>%
+  summarise(geometry = st_union(geometry), .groups = "drop")
+places_points = sf::st_cast(places_points, "POINT")
+sf::st_write(places_points, "./data/covariates/places_points.shp", delete_dsn=T)
+
+buildings_private <- sf::st_read("./data/liberia-osmdata/gis_osm_buildings_a_free_1.shp") |> 
+  sf::st_intersection(country) |> sf::st_simplify(preserveTopology = FALSE, dTolerance = 1000) |>
+  dplyr::select(name,fclass) |>
+  dplyr::rename(place = fclass) |> 
+  dplyr::mutate(place = as.factor(place))|> 
+  dplyr::mutate(name = as.character(name)) |>
+  st_cast("MULTIPOLYGON") 
+sf::st_write(buildings_private, "./data/covariates/buildings_private.shp", delete_dsn=T)
+
+buildings_public <- sf::st_read("./data/liberia-osmdata/gis_osm_pois_a_free_1.shp")  |>
+  sf::st_intersection(country) |>
+  dplyr::select(name,fclass) |>
+  dplyr::rename(place = fclass) |> 
+  dplyr::mutate(place = as.factor(place))|> 
+  dplyr::mutate(name = as.character(name)) |>
+  st_cast("MULTIPOLYGON") 
+sf::st_write(buildings_public, "./data/covariates/buildings_public.shp", delete_dsn=T)
+
+buildings_merged <- buildings_private |> bind_rows(buildings_public) |>
+  group_by(across(-geometry)) |> summarise(geometry = st_union(geometry), .groups = "drop")
+buildings_merged = sf::st_cast(buildings_merged, "POLYGON")
+sf::st_write(buildings_merged, "./data/covariates/buildings.shp", delete_dsn=T)
+
+# Boundaries
+places_poly_liberia <- sf::st_read("./data/liberia-osmdata/liberia_poly.shp")|>st_cast("GEOMETRY")
+places_poly_county <- places_poly_liberia[st_geometry_type(places_poly_liberia) %in% c("POLYGON", "MULTIPOLYGON"), ] |>
+  sf::st_intersection(country)|>
+  dplyr::select(name,place,admin_leve)|>
+  dplyr::mutate(place = as.factor(place)) |> 
+  dplyr::mutate(name = as.character(name)) |>
+  dplyr::rename(admin_level = admin_leve) |>
+  dplyr::filter(admin_level == "4") 
+places_poly_county <- places_poly_county[st_geometry_type(places_poly_county) %in% c("POLYGON", "MULTIPOLYGON"), ] |>
+  sf::st_cast("MULTIPOLYGON")
+sf::st_write(places_poly_county, "./data/covariates/places_poly_county.shp", delete_dsn=T)  
+
+places_poly_district <- places_poly_liberia[st_geometry_type(places_poly_liberia) %in% c("POLYGON", "MULTIPOLYGON"), ] |>
+  st_cast("POLYGON")|>sf::st_intersection(country)|>
+  dplyr::select(name,place,admin_leve)|>
+  dplyr::mutate(place = as.factor(place)) |> 
+  dplyr::mutate(name = as.character(name)) |>
+  dplyr::rename(admin_level = admin_leve) |>
+  dplyr::filter(admin_level == "6")
+places_poly_district <- places_poly_district[st_geometry_type(places_poly_district) %in% c("POLYGON", "MULTIPOLYGON"), ] |>
+  sf::st_cast("MULTIPOLYGON")
+sf::st_write(places_poly_district, "./data/covariates/places_poly_district.shp", delete_dsn=T)  
+```
+
+#### Hydrography
+
+```{r, class.source = c("numCode", "r", "numberLines"), eval=F}
+waterways_liberia =
+sf::st_read("./data/liberia-osmdata/gis_osm_waterways_free_1.shp")
+\|\> sf::st_intersection(bbox_country) \|\> dplyr::select(name,fclass)
+\|\> dplyr::mutate(fclass = as.factor(fclass))\|\> dplyr::mutate(name
+= as.character(name)) waterways_liberia \<-
+waterways_liberia[st_geometry_type(waterways_liberia) %in%
+c("LINESTRING", "MULTILINESTRING"), ] \|\> st_cast("MULTILINESTRING")
+
+waterways_project = sf::st_read("./data/Winrock_GIS/PA_river.shp")
+\|\> sf::st_intersection(bbox_country) \|\> dplyr::select(name,fclass)
+\|\> dplyr::mutate(fclass = as.factor(fclass))\|\> dplyr::mutate(name
+= as.character(name)) waterways_project \<-
+waterways_project[st_geometry_type(waterways_project) %in%
+c("LINESTRING", "MULTILINESTRING"), ] \|\> st_cast("MULTILINESTRING")
+
+waterways_hydrosheds =
+sf::st_read("/Users/seamus/repos/rspb-redd-risk-new/data/hydro/HydroRIVERS_v10_af.shp")
+\|\> sf::st_intersection(bbox_country) waterways_hydrosheds \<-
+waterways_hydrosheds[st_geometry_type(waterways_hydrosheds) %in%
+c("LINESTRING", "MULTILINESTRING"), ] \|\> st_cast("MULTILINESTRING")
+
+waterways_merged \<- waterways_liberia \|\>
+bind_rows(waterways_project) \|\> group_by(across(-geometry)) \|\>
+summarise(geometry = st_union(geometry), .groups = "drop")
+waterways_merged = sf::st_cast(waterways_merged, "MULTILINESTRING")
+sf::st_write(waterways_merged,
+"./data/covariates/waterways_merged.shp", delete_dsn=T)
+
+waterbodies_collection =
+sf::st_read("./data/liberia-osmdata/gis_osm_water_a_free_1.shp") \|\>
+sf::st_intersection(bbox_country) \|\> dplyr::select(name,fclass) \|\>
+dplyr::mutate(fclass = as.factor(fclass))\|\> dplyr::mutate(name =
+as.character(name)) waterbodies_poly \<-
+waterbodies_collection[st_geometry_type(waterbodies_collection) %in%
+c("POLYGON", "MULTIPOLYGON"), ] waterbodies_lines \<-
+waterbodies_collection[st_geometry_type(waterbodies_collection) %in%
+c("LINESTRING", "MULTILINESTRING"), ] waterbodies_poly_lines =
+sf::st_boundary(waterbodies_poly)
+
+waterbodies_waterways_merged \<- waterbodies_lines \|\>
+bind_rows(waterbodies_poly_lines, waterways_merged) \|\>
+group_by(across(-geometry)) \|\> summarise(geometry =
+st_union(geometry), .groups = "drop") waterbodies_waterways_merged =
+sf::st_cast(waterbodies_waterways_merged, "MULTILINESTRING")
+sf::st_write(waterbodies_waterways_merged,
+"./data/covariates/waterbodies_waterways_merged.shp", delete_dsn=T)
+```
+
+#### Transport
+
+```{r, class.source = c("numCode", "r", "numberLines"), eval=F}
+transport=sf::st_read("./data/liberia-osmdata/gis_osm_transport_a_free_1.shp")\|\>
+st_boundary()\|\> sf::st_intersection(bbox_country_2) \|\>
+dplyr::select(name,fclass) \|\> dplyr::mutate(fclass =
+as.factor(fclass))\|\> dplyr::mutate(name = as.character(name))
+
+railways =
+sf::st_read("./data/liberia-osmdata/gis_osm_railways_free_1.shp") \|\>
+sf::st_intersection(bbox_country_2) \|\> dplyr::select(name,fclass)
+\|\> dplyr::mutate(fclass = as.factor(fclass))\|\> dplyr::mutate(name
+= as.character(name))
+
+roads_liberia =
+sf::st_read("./data/liberia-osmdata/gis_osm_roads_free_1.shp") \|\>
+sf::st_intersection(bbox_country_2) \|\> dplyr::select(name,fclass)
+\|\> dplyr::mutate(fclass = as.factor(fclass))\|\> dplyr::mutate(name
+= as.character(name))
+
+roads_project = sf::st_read("./data/Winrock_GIS/PA_roads.shp") \|\>
+sf::st_intersection(bbox_country_1) \|\> dplyr::select(name,fclass)
+\|\> dplyr::mutate(fclass = as.factor(fclass))\|\> dplyr::mutate(name
+= as.character(name))
+
+roads_rail_transport_merged \<- transport \|\> bind_rows(railways,
+roads_liberia, roads_project) \|\> group_by(across(-geometry)) \|\>
+summarise(geometry = st_union(geometry), .groups = "drop")
+
+roads = sf::st_cast(roads_rail_transport_merged, "MULTILINESTRING")
+sf::st_write(roads,
+"./data/covariates/roads_rail_transport_merged.shp", delete_dsn=T)
+
+roads \<- roads \|\> bind_rows(roads_sle) \|\>
+group_by(across(-geometry)) \|\> summarise(geometry =
+st_union(geometry), .groups = "drop") sf::st_write(roads,
+"./data/covariates/roads_intl.shp", delete_dsn=T)
+
+roads_lib = sf::st_read("./data/covariates/roads_intl.shp") \|\>
+st_cast("MULTILINESTRING") roads_sle =
+sf::st_read("./data/liberia-osmdata/hotosm_sle_roads_lines_shp.shp")
+\|\>st_cast("MULTILINESTRING") roads_lib =
+sf::st_intersection(roads_lib, bbox_aoi_2)\|\>dplyr::select(name)
+roads_sle = sf::st_intersection(roads_sle,
+bbox_aoi_2)\|\>dplyr::select(name) roads = rbind(roads_lib, roads_sle)
+sf::st_write(roads, "./data/ROADS/roads.shp", delete_layer=T)
+
+roads_lib = sf::st_intersection(roads_lib, bbox_aoi_2) roads_sle =
+sf::st_intersection(roads_sle, bbox_aoi_2)
+tmap::tm_shape(roads_clip) + tmap::tm_lines(col="orange", lwd=0.6) +
+tmap::tm_shape(aoi) + tm_borders(col="red", lwd=1.7)
+```
+
+#### Topography
+
+```{r, class.source = c("numCode", "r", "numberLines"), eval=F}
+dem = raster::subset(STACK, "DEM") 
+slope_tangent = raster::terrain(dem,
+  opt="slope",
+  unit="tangent",
+  neighbors=8,
+  filename="./data/DEM/slope_tangent.tif"
+  )
+
+slope_tangent = terra::rast("./data/DEM/slope_tangent.tif")
+slope_percent = slope_tangent * 100 
+slope_percent = terra::clamp(slope_percent, 0, 100) 
+slope_percent = raster::raster(slope_percent) 
+raster::writeRaster(slope_percent,"./data/covariates/slope_percent.tif", overwrite=T)
+
+urban <- terra::mask(LULC_LIBERIA_2024, LULC_LIBERIA_2024 == 4, maskvalue = FALSE) 
+urban <- raster::raster(urban)
+raster::writeRaster(urban, "./data/covariates/urban.tif", overwrite=T)
+```
