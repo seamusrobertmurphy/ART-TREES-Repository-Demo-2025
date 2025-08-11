@@ -202,14 +202,17 @@ purposes.
 ``` r
 # Display final result prominently
 cat("=====================================\n")
-=====================================
 cat("       REPRODUCIBILITY CHECK\n")
-       REPRODUCIBILITY CHECK
 cat("=====================================\n")
-=====================================
 cat("   TOTAL CARBON STOCK:", total_carbon, "tCO₂e\n")
-   TOTAL CARBON STOCK: 1550 tCO₂e
 cat("=====================================\n")
+```
+
+```         
+=====================================
+        REPRODUCIBILITY CHECK
+=====================================
+    TOTAL CARBON STOCK: 1550 tCO₂e
 =====================================
 ```
 
