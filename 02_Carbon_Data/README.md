@@ -43,7 +43,7 @@ forest inventory data using publicly available methodologies.
 **1,550 tCO₂e**. This demonstrates that:
 
 -   Your computational environment is properly configured
--   The analysis is transparent and reproducible\
+-   The analysis is transparent and reproducible
 -   The methodology can be independently verified
 
 **Key Principles Demonstrated**:
@@ -62,16 +62,9 @@ package versions should be documented (see runtime log at the end of this
 script) to ensure computational reproducibility.
 
 ``` r
-# Load required packages for data manipulation
+# Install package compiler & load requirements
 install.packages("easypackages")
-```
 
-```         
-The downloaded binary packages are in
-    /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//Rtmp2RTaUB/downloaded_packages
-```
-
-``` r
 easypackages::packages(
   "animation", "allodb", "BIOMASS", "dataMaid", "DescTools","dplyr", "flextble",
   "FawR", "ForestToolsRS", "ggplot2", "janitor", "lattice", "kableExtra", 
@@ -80,12 +73,9 @@ easypackages::packages(
   prompt = F
   )
   
-# Verify package is loaded
+# Verify package is loaded & check data
 cat("All packages loaded successfully")
-```
-
-```         
-All packages loaded successfully
+cat("\nDataset contains", nrow(carbon_data), "measurement plots\n")
 ```
 
 --------------------------------------------------------------------------------
@@ -111,13 +101,7 @@ carbon_data <- data.frame(
 
 # Display input data
 cat("Forest Inventory Data:\n")
-```
 
-```         
-Forest Inventory Data:
-```
-
-``` r
 carbon_data_flex <- flextable(head(carbon_data[, 1:4])) |>
   set_header_labels(carbon_data_flex,values = list(
     plot_id             = "Plot ID",
@@ -129,11 +113,7 @@ carbon_data_flex = fit_to_width(carbon_data_flex, max_width = 6.5)
 carbon_data_flex = fontsize(carbon_data_flex, size=8,part="all")
 carbon_data_flex = width(carbon_data_flex, width = 1)
 carbon_data_flex
-```
 
-![](TREES-demo-replication-A_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
-
-``` r
 cat("\nDataset contains", nrow(carbon_data), "measurement plots\n")
 ```
 
@@ -152,47 +132,27 @@ in any reproducible analysis.
 # Check for missing values
 missing_values <- sum(is.na(carbon_data$carbon_stock_tCO2e))
 cat("Missing values in carbon stock data:", missing_values, "\n")
+
+# Verify data types
+cat("Data structure verification:\n")
+str(carbon_data)
+
+# Summary statistics
+cat("\nCarbon stock summary statistics:\n")
+summary(carbon_data$carbon_stock_tCO2e)
 ```
 
 ```         
 Missing values in carbon stock data: 0 
-```
 
-``` r
-# Verify data types
-cat("Data structure verification:\n")
-```
-
-```         
 Data structure verification:
-```
-
-``` r
-str(carbon_data)
-```
-
-```         
 'data.frame':   5 obs. of  4 variables:
  $ plot_id           : chr  "PLOT_001" "PLOT_002" "PLOT_003" "PLOT_004" ...
  $ carbon_stock_tCO2e: num  310 290 350 275 325
  $ forest_type       : chr  "Primary" "Secondary" "Primary" "Secondary" ...
  $ measurement_date  : Date, format: "2024-03-15" "2024-04-22" ...
-```
 
-``` r
-# Summary statistics
-cat("\nCarbon stock summary statistics:\n")
-```
-
-```         
 Carbon stock summary statistics:
-```
-
-``` r
-summary(carbon_data$carbon_stock_tCO2e)
-```
-
-```         
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     275     290     310     310     325     350 
 ```
@@ -220,33 +180,16 @@ calculation_summary = carbon_data |>
 # Extract result & visualize
 total_carbon <- calculation_summary$total_carbon_tCO2e
 cat("Calculation Summary:\n")
-```
-
-```         
-Calculation Summary:
-```
-
-``` r
 cat("- Number of plots:", calculation_summary$total_plots, "\n")
-```
-
-```         
-- Number of plots: 5 
-```
-
-``` r
 cat("- Mean carbon per plot:", calculation_summary$mean_carbon_per_plot, "tCO₂e\n")
-```
-
-```         
-- Mean carbon per plot: 310 tCO₂e
-```
-
-``` r
 cat("- Total carbon stock:", total_carbon, "tCO₂e\n")
 ```
 
 ```         
+Calculation Summary:
+- Number of plots: 5 
+- Mean carbon per plot: 310 tCO₂e
+
 - Total carbon stock: 1550 tCO₂e
 ```
 
@@ -260,41 +203,14 @@ purposes.
 ``` r
 # Display final result prominently
 cat("=====================================\n")
-```
-
-```         
 =====================================
-```
-
-``` r
 cat("       REPRODUCIBILITY CHECK\n")
-```
-
-```         
        REPRODUCIBILITY CHECK
-```
-
-``` r
 cat("=====================================\n")
-```
-
-```         
 =====================================
-```
-
-``` r
 cat("   TOTAL CARBON STOCK:", total_carbon, "tCO₂e\n")
-```
-
-```         
    TOTAL CARBON STOCK: 1550 tCO₂e
-```
-
-``` r
 cat("=====================================\n")
-```
-
-```         
 =====================================
 ```
 
@@ -327,21 +243,10 @@ information allows others to recreate the exact same computational conditions.
 ``` r
 # Document the computational environment
 cat("Runtime Environment Information:\n")
-```
-
-```         
 Runtime Environment Information:
-```
-
-``` r
 cat("================================\n")
-```
-
-```         
 ================================
-```
 
-``` r
 sessionInfo()
 ```
 
@@ -422,7 +327,7 @@ loaded via a namespace (and not attached):
 ```
 
 ``` r
-# Autosave log in 06_QCQC folder
+# Autosave runtime log in 06_QCQC folder
 writeLines(capture.output(devtools::session_info()), 
            paste0("../06_QAQC/runtime_log_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".txt"))
 ```
