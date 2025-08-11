@@ -29,6 +29,8 @@ Winrock Intl 2025-08-10
 
 -   [Appendix IV: Replication in `git`](#appendix-iv-replication-in-git)
 
+-   [Versión en Español: El Ejercicio Práctico](#version-en-espanol-el-ejericicio-practicol)
+
 --------------------------------------------------------------------------------
 
 Welcome to the
@@ -53,7 +55,7 @@ below.
 
 --------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
+### The Practical Exercise: Mock Audit
 
 #### Step 1. Clone the Repository
 
@@ -134,7 +136,7 @@ software dependencies at that precise moment in time.
 
 --------------------------------------------------------------------------------
 
-### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
+### Appendix I: Repository Guidelines
 
 We provided a simplified layout in this github repository, as shown in the list
 of its trunk folders below. However, this architecture can become highly nested
@@ -233,7 +235,7 @@ in the auditor:
 
 --------------------------------------------------------------------------------
 
-### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
+### Appendix II: ISO Guidelines
 
 The data management principles of traceability, integrity, and reproducibility
 are key to GHG audits. These principles are supported by a range of ISO
@@ -294,7 +296,7 @@ Surfaces, and Geometry Collections `sfc`.
 
 --------------------------------------------------------------------------------
 
-### Appendix III: Replication in `renv` {#appendix-iii-replication-in-renv}
+### Appendix III: Replication in `renv`
 
 `renv` profiles allow for managing different sets of package dependencies for
 various project contexts, such as separate environments for development,
@@ -362,7 +364,7 @@ renv::deactivate()
 
 --------------------------------------------------------------------------------
 
-### Appendix IV: Replication in `git` {#appendix-iv-replication-in-git}
+### Appendix IV: Replication in `git` 
 
 ##### Step 1: Install Git
 
@@ -811,4 +813,96 @@ devtools::session_info()
 
 ``` r
 #Sys.getenv()
+```
+
+--------------------------------------------------------------------------------
+
+### Versión en Español: El Ejercicio Práctico
+
+#### Paso 1. Clonar el Repositorio
+
+*Antes de comenzar, asegúrese de que Git, R y RStudio estén instalados y que sea posible una conexión a internet (consulte el Apéndice IV para las guías de instalación).*
+
+Abra su herramienta de línea de comandos (o GitHub Desktop) y clone este repositorio en su computadora local. Este paso es crucial para trabajar con datos precisos y controlados por versiones.
+
+```r
+git clone https://github.com/seamusrobertmurphy/TREES-demo-repository.git`
+```
+
+#### Paso 2. Replicar el Script
+
+El script de análisis y sus datos se encuentran en el directorio /02_Carbon_Data/. Simplemente abra el archivo ART-TREES-TMR-Replication-Demo.Rmd en su entorno R y ejecútelo. El script realizará automáticamente un cálculo simple de reservas de carbono y generará el resultado final.
+
+-   **Abrir el Script**: Inicie RStudio y abra el archivo `02_Carbon_Data/ART-TREES-TMR-Replication-Demo.Rmd`.
+-   **Inspeccionar el Código**: Antes de ejecutar, revise el código. Verá que está dividido en fragmentos lógicos:
+    -   Cargar el paquete R requerido (`library(dplyr)`).
+    -   Definir el conjunto de datos directamente dentro del script (datos hipotéticos de parcelas forestales).
+    -   Realizar un cálculo simple para sumar las reservas totales de carbono.
+    -   Generar el valor final calculado en tCO₂e.
+-   **Ejecutar el Script**: Ejecute todo el archivo R Markdown. Puede hacer esto haciendo clic en el botón "Run All Chunks" en RStudio o usando la función knitr. El script procesará los datos y mostrará el resultado final en la consola.
+
+La salida del script mostrará un único valor final calculado en tCO₂e. Compare este resultado con la cifra reportada en la Tabla 16 del TMR. Deben coincidir exactamente.
+
+-   **Si los resultados coinciden**: Ha demostrado exitosamente la reproducibilidad de datos. La combinación de los datos controlados por versiones y el script en este repositorio ha producido el mismo resultado que la presentación oficial. Este es un éxito crítico para cualquier auditoría.
+-   **Si los resultados no coinciden**: Esta es una oportunidad clave de aprendizaje. Muestra cómo incluso pequeñas discrepancias, una versión diferente de software, un paquete faltante o un archivo de datos alterado, pueden llevar a resultados diferentes. Este es un hallazgo común y serio en una auditoría de verificación, y subraya la necesidad de un control de versiones riguroso y un proceso robusto de QA/QC.
+
+#### Paso 3. Documentar el Registro de Tiempo de Ejecución
+
+Para demostrar **integridad de datos** y **reproducibilidad**, debe documentar el entorno de software exacto utilizado para sus cálculos. Un **auditor requerirá este registro de tiempo de ejecución** para verificar independientemente sus resultados. Este paso involucra generar un registro de las dependencias de su sesión R y confirmarlo en el repositorio.
+
+-   Abra su consola R y ejecute `devtools::session_info()`.
+
+-   Copie la salida completa y guárdela como un archivo de texto llamado `runtime_log_YYYYMMDD.txt` en la carpeta `/06_QAQC/`
+
+-   Use Git para confirmar este archivo y crear un enlace permanente y verificable entre el código, los datos y el entorno computacional.
+
+El registro resultante sirve como una instantánea de su sistema de cómputo y todas las dependencias de software en ese momento preciso en el tiempo.
+
+### Apéndice III: Replicación en `renv`
+
+Los perfiles de `renv` permiten administrar diferentes conjuntos de dependencias de paquetes para varios contextos de proyecto, como entornos separados para desarrollo, producción o demostraciones. Para activar un perfil específico de `renv`, tiene dos opciones principales:
+
+#### Paso 1. Establecer un perfil de proyecto
+
+Para hacer que un perfil sea el predeterminado para futuras sesiones R, ejecute la función `renv::activate()`. Al reiniciar R, encontrará la ruta del `lockfile` asignada a la nueva carpeta `renv` del proyecto (`renv/profiles/demo-repo/`).
+
+#### Paso 2. Activar un perfil temporal:
+
+Para activar un perfil para la sesión R actual sin hacerlo predeterminado, puede establecer la variable de entorno `RENV_PROFILE`.
+
+#### Paso 3. Verificar dependencias de paquetes
+
+Use los archivos de puntos de paquetes y campos de entorno encontrados en `Config/renv/profiles/<profile_name>/dependencies` y `Config/renv/profiles/<profile_name>/remotes` para verificar la lista de paquetes requeridos y asignar ubicaciones de repositorios remotos para construcciones específicas de paquetes. Estos campos de entorno también pueden declararse en el archivo `DESCRIPTION` específico para ese perfil `renv`.
+
+#### Paso 4. Administrar dependencias de paquetes
+
+-   Para capturar todos los paquetes actualmente instalados en el tiempo de ejecución, mientras se pasan por alto los paquetes listados en variables de entorno existentes, entonces ejecute `renv::settings$snapshot.type("all")`.
+-   Alternativamente, puede excluir ciertos paquetes de la instalación usando la función `renv::settings$ignored.packages("lwgeom")`. Esto resulta útil con muchos problemas de depuración y control de versiones entre nuevos usuarios.
+-   También existe la opción de cargar y probar manualmente una instantánea personalizada `explicit` que pasa por alto los campos de entorno predeterminados previamente escritos en el tiempo de ejecución.
+
+```r
+# Activar perfil 'demo-repo' y establecer como predeterminado para el proyecto
+renv::activate(profile = "demo-repo")
+
+# Para activar un perfil 'dev' solo para una sesión
+Sys.setenv(RENV_PROFILE = "dev")
+
+# Definir dependencias en el índice DESCRIPTION
+#Config/renv/profiles/shiny/dependencies: shiny, tidyverse
+#Config/renv/profiles/shiny/remotes: rstudio/shiny, tidyverse/tidyverse
+
+# Habilitar función de instantánea 'explicit' para el proyecto
+renv::settings$snapshot.type("explicit")
+
+# Excluir paquete del entorno actual 
+renv::settings$ignored.packages("lwgeom")
+
+# desactivar el proyecto actualmente activado
+renv::deactivate()
+```
+
+#### Registro de Tiempo de Ejecución
+
+```r
+devtools::session_info()
 ```
