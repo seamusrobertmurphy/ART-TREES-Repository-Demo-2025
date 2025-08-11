@@ -33,7 +33,7 @@ As you navigate this repository, keep the following **Data Integrity** concepts 
 
 ------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
+### The Practical Exercise: Mock Audit
 
 #### Step 1. Clone the Repository
 
@@ -82,7 +82,7 @@ The resulting log serves as a snapshot of your computing system and all the soft
 
 ------------------------------------------------------------------------
 
-### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
+### Appendix I: Repository Guidelines
 
 We provided a simplified layout in this github repository, as shown in the list of its trunk folders below. However, this architecture can become highly nested which may not suit everyone’s preferences. Therefore, we welcome any feedback on improved structure that is more appropriate to your project design, and provide additional layout examples from today’s slide for comparison.
 
@@ -92,11 +92,13 @@ We provided a simplified layout in this github repository, as shown in the list 
 
 -   `02_Carbon_Data/`
 
-    -   `TREES-demo-replication.Rmd`
+    -   `TREES-demo-replication-A.Rmd`
 
 -   `03_Spatial_Data/`
 
 -   `04_Uncertainty/`
+
+    -   `TREES-demo-replication-B.Rmd`
 
 -   `05_Safeguards/`
 
@@ -136,7 +138,7 @@ We offer a shortlist of default community health files that may be adapted to in
 
 ------------------------------------------------------------------------
 
-### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
+### Appendix II: ISO Guidelines
 
 The data management principles of traceability, integrity, and reproducibility are key to GHG audits. These principles are supported by a range of ISO standards. This appendix provides an overview of those ISO standards relevant to data governance and quality, and provides additional resources for debugging and validating geospatial operations across platform using the `liblwgeom` library.
 
@@ -156,7 +158,7 @@ The `liblwgeom` library was derived according to the OpenGIS Simple Features Acc
 
 ------------------------------------------------------------------------
 
-### Appendix III: Replication in `renv` {#appendix-iii-replication-in-renv}
+### Appendix III: Replication in `renv` 
 
 `renv` profiles allow for managing different sets of package dependencies for various project contexts, such as separate environments for development, production, or demonstrations. To activate a specific `renv` profile, you have two primary options:
 
@@ -207,7 +209,7 @@ renv::deactivate()
 
 ------------------------------------------------------------------------
 
-### Appendix IV: Replication in `git` {#appendix-iv-replication-in-git}
+### Appendix IV: Replication in `git`
 
 ##### Step 1: Install Git
 
