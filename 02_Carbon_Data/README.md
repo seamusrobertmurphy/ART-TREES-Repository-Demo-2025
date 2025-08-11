@@ -11,18 +11,49 @@ Badge](https://img.shields.io/badge/Project-Steward-critical)](https://www.ambie
 [![Annexes
 Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
 
-|  |
-|:---|
-| Winrock International 2025-08-08 |
-| \- [**1. Introduction: The Goal of This Exercise**](#1-introduction-the-goal-of-this-exercise) - [**2. Loading Required Packages**](#2-loading-required-packages) - [**3. Creating the Dataset**](#3-creating-the-dataset) - [**4. Data Quality Verification**](#4-data-quality-verification) - [**5. Carbon Stock Calculation**](#5-carbon-stock-calculation) - [**6. Result Verification**](#6-result-verification) - [**7. Document Runtime Log**](#7-document-runtime-log) - [**8. Exercise Completion**](#8-exercise-completion) |
-| \### **1. Introduction: The Goal of This Exercise** |
-| This R Markdown file demonstrates **perfect reproducibility** in environmental data analysis, a fundamental principle for any credible scientific or audit process. |
-| **The Challenge**: An independent reviewer must be able to take your data and your code, run it in a documented environment, and get the exact same result you reported. |
-| This script performs a straightforward calculation of total carbon stock from forest inventory data using publicly available methodologies. |
-| **Your task**: Run this script and verify that you get the expected result of **1,550 tCO₂e**. This demonstrates that: |
-| \- Your computational environment is properly configured - The analysis is transparent and reproducible - The methodology can be independently verified |
-| **Key Principles Demonstrated**: |
-| \- **Data Traceability**: Every calculation step is documented - **Reproducibility**: Results are identical across different users and systems - **Transparency**: Methods are open and verifiable |
+--------------------------------------------------------------------------------
+
+Winrock International
+
+-   [**1. Introduction**](#1-introduction)
+-   [**2. Loading Required Packages**](#2-loading-required-packages)
+-   [**3. Creating the Dataset**](#3-creating-the-dataset)
+-   [**4. Data Quality Verification**](#4-data-quality-verification)
+-   [**5. Carbon Stock Calculation**](#5-carbon-stock-calculation)
+-   [**6. Result Verification**](#6-result-verification)
+-   [**7. Document Runtime Log**](#7-document-runtime-log)
+-   [**8. Exercise Completion**](#8-exercise-completion)
+
+--------------------------------------------------------------------------------
+
+### **1. Introduction**
+
+This R Markdown file demonstrates **perfect reproducibility** in environmental
+data analysis, a fundamental principle for any credible scientific or audit
+process.
+
+**The Challenge**: An independent reviewer must be able to take your data and
+your code, run it in a documented environment, and get the exact same result you
+reported.
+
+This script performs a straightforward calculation of total carbon stock from
+forest inventory data using publicly available methodologies.
+
+**Your task**: Run this script and verify that you get the expected result of
+**1,550 tCO₂e**. This demonstrates that:
+
+-   Your computational environment is properly configured
+-   The analysis is transparent and reproducible\
+-   The methodology can be independently verified
+
+**Key Principles Demonstrated**:
+
+-   **Data Traceability**: Every calculation step is documented
+-   **Reproducibility**: Results are identical across different users and
+    systems
+-   **Transparency**: Methods are open and verifiable
+
+--------------------------------------------------------------------------------
 
 ### **2. Loading Required Packages**
 
@@ -37,7 +68,7 @@ install.packages("easypackages")
 
 ```         
 The downloaded binary packages are in
-    /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//RtmpvAQ1mV/downloaded_packages
+    /var/folders/_t/0yt99n3d0s1c1hnx40n3g9gw0000gn/T//Rtmp2RTaUB/downloaded_packages
 ```
 
 ``` r

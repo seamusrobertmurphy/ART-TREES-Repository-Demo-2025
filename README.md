@@ -1,8 +1,17 @@
 <img src="https://art.apx.com/images/ART.png" width="500"/>
 
-[![LinkedIn Badge](https://img.shields.io/badge/Project-Profile-blue)](https://art.apx.com/mymodule/reg/TabDocuments.asp?r=111&ad=Prpt&act=update&type=PRO&aProj=pub&tablename=doc&id1=109) [![Pubs Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://orcid.org/my-orcid?orcid=0000-0002-1792-0351) [![Twitter Badge](https://img.shields.io/badge/Project-Tweets-critical?color=blue)](https://x.com/) [![Program Badge](https://img.shields.io/badge/Project-Steward-critical)](https://www.ambiente.gob.ec/) [![Annexes Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
+[![LinkedIn
+Badge](https://img.shields.io/badge/Project-Profile-blue)](https://art.apx.com/mymodule/reg/TabDocuments.asp?r=111&ad=Prpt&act=update&type=PRO&aProj=pub&tablename=doc&id1=109)
+[![Pubs
+Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://orcid.org/my-orcid?orcid=0000-0002-1792-0351)
+[![Twitter
+Badge](https://img.shields.io/badge/Project-Tweets-critical?color=blue)](https://x.com/)
+[![Program
+Badge](https://img.shields.io/badge/Project-Steward-critical)](https://www.ambiente.gob.ec/)
+[![Annexes
+Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 Winrock Intl 2025-08-10
 
@@ -20,73 +29,120 @@ Winrock Intl 2025-08-10
 
 -   [Appendix IV: Replication in `git`](#appendix-iv-replication-in-git)
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-Welcome to the [ART-TREES-demo-repository.git](https://github.com/seamusrobertmurphy/TREES-demo-repository), a training resource for submitting a complete data package for an ART TREES verification audit. Here, we document some best practices for using version control to ensure perfect reproducibility of your calculations.
+Welcome to the
+[ART-TREES-demo-repository.git](https://github.com/seamusrobertmurphy/TREES-demo-repository),
+a training resource for submitting a complete data package for an ART TREES
+verification audit. Here, we document some best practices for using version
+control to ensure perfect reproducibility of your calculations.
 
-As you navigate this repository, keep the following **Data Integrity** concepts in mind, as these are fundamental to how auditors evaluate your submission. For a deeper dive into these principles, see **Repository Guidelines** section below.
+As you navigate this repository, keep the following **Data Integrity** concepts
+in mind, as these are fundamental to how auditors evaluate your submission. For
+a deeper dive into these principles, see **Repository Guidelines** section
+below.
 
--   **Data Traceability**: Every key figure must be traceable back to its original source data and the methodology used to derive it.
--   **Data Completeness**: All information required to justify your GHG assertion must be included, with nothing significant missing.
--   **Data Curation**: A logical folder structure, descriptive file names, and clear documentation allow auditors to quickly find what they need.
--   **Data Reproducibility**: Package management or version control implemented to ensure replication of computational environment and runtime indexing.
+-   **Data Traceability**: Every key figure must be traceable back to its
+    original source data and the methodology used to derive it.
+-   **Data Completeness**: All information required to justify your GHG
+    assertion must be included, with nothing significant missing.
+-   **Data Curation**: A logical folder structure, descriptive file names, and
+    clear documentation allow auditors to quickly find what they need.
+-   **Data Reproducibility**: Package management or version control implemented
+    to ensure replication of computational environment and runtime indexing.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit
+### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
 
 #### Step 1. Clone the Repository
 
-*Before starting, please ensure Git, R, and RStudio are installed, and an internet connection is possible (see Appendix IV for installation guides).*
+*Before starting, please ensure Git, R, and RStudio are installed, and an
+internet connection is possible (see Appendix IV for installation guides).*
 
-Open your command-line tool (or GitHub Desktop) and clone this repository to your local computer. This step is crucial for working with precise, version-controlled data.
+Open your command-line tool (or GitHub Desktop) and clone this repository to
+your local computer. This step is crucial for working with precise,
+version-controlled data.
 
 ``` r
 git clone https://github.com/seamusrobertmurphy/TREES-demo-repository.git`
 ```
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-#### Step 2. Replicate the Script[^1]
+#### Step 2. Replicate the Script[^readme-1]
 
-[^1]: Please note that this public repository is for demonstration purposes. To review Winrock’s active audit repository used to replicate previous submissions of your program’s GHG assertions and emissions calculations, you may request access through the following link: <https://github.com/seamusrobertmurphy/TREES-ecuador-repository.git>
+[^readme-1]: Please note that this public repository is for demonstration
+    purposes. To review Winrock’s active audit repository used to replicate
+    previous submissions of your program’s GHG assertions and emissions
+    calculations, you may request access through the following link:
+    <https://github.com/seamusrobertmurphy/TREES-ecuador-repository.git>
 
-The analysis script and its data are located in the /02_Carbon_Data/ directory. Simply open the ART-TREES-TMR-Replication-Demo.Rmd file in your R environment and run it. The script will automatically perform a simple carbon stock calculation and output the final result.
+The analysis script and its data are located in the /02_Carbon_Data/ directory.
+Simply open the ART-TREES-TMR-Replication-Demo.Rmd file in your R environment
+and run it. The script will automatically perform a simple carbon stock
+calculation and output the final result.
 
--   Open the Script: Launch RStudio and open the `02_Carbon_Data/ART-TREES-TMR-Replication-Demo.Rmd` file.
--   Inspect the Code: Before running, review the code. You’ll see that it’s broken down into logical chunks:
+-   Open the Script: Launch RStudio and open the
+    `02_Carbon_Data/ART-TREES-TMR-Replication-Demo.Rmd` file.
+-   Inspect the Code: Before running, review the code. You’ll see that it’s
+    broken down into logical chunks:
     -   Loading the required R package (`library(dplyr)`).
-    -   Defining the dataset directly within the script (hypothetical forest plot data).
+    -   Defining the dataset directly within the script (hypothetical forest
+        plot data).
     -   Performing a simple calculation to sum the total carbon stock.
     -   Outputting the final calculated value in tCO₂e.
--   Run the Script: Execute the entire R Markdown file. You can do this by clicking the “Run All Chunks” button in RStudio or by using the knitr function. The script will process the data and display the final result in the console.
+-   Run the Script: Execute the entire R Markdown file. You can do this by
+    clicking the “Run All Chunks” button in RStudio or by using the knitr
+    function. The script will process the data and display the final result in
+    the console.
 
-The script’s output will display a single, final calculated value in tCO₂e. Compare this result to the figure reported in Table 16 of the TMR. They should match exactly.
+The script’s output will display a single, final calculated value in tCO₂e.
+Compare this result to the figure reported in Table 16 of the TMR. They should
+match exactly.
 
--   If the results match: You have successfully demonstrated data reproducibility. The combination of the version-controlled data and script in this repository has produced the same result as the official submission. This is a critical success for any audit.
--   If the results do not match: This is a key learning opportunity. It shows how even small discrepancies, a different software version, a missing package, or an altered data file, can lead to different results. This is a common and serious finding in a verification audit, and it underscores the need for rigorous version control and a robust QA/QC process.
+-   If the results match: You have successfully demonstrated data
+    reproducibility. The combination of the version-controlled data and script
+    in this repository has produced the same result as the official submission.
+    This is a critical success for any audit.
+-   If the results do not match: This is a key learning opportunity. It shows
+    how even small discrepancies, a different software version, a missing
+    package, or an altered data file, can lead to different results. This is a
+    common and serious finding in a verification audit, and it underscores the
+    need for rigorous version control and a robust QA/QC process.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 #### Step 3. Document Runtime Log
 
-To demonstrate **data integrity** and **reproducibility**, you must document the exact software environment used for your calculations. An **auditor will require this runtime log** to independently verify your results. This step involves generating a log of your R session’s dependencies and committing it to the repository.
+To demonstrate **data integrity** and **reproducibility**, you must document the
+exact software environment used for your calculations. An **auditor will require
+this runtime log** to independently verify your results. This step involves
+generating a log of your R session’s dependencies and committing it to the
+repository.
 
 -   Open your R console and run `devtools::session_info()`.
 
--   Copy the full output and save it as a text file named `runtime_log_YYYYMMDD.txt` in the `/06_QAQC/` folder
+-   Copy the full output and save it as a text file named
+    `runtime_log_YYYYMMDD.txt` in the `/06_QAQC/` folder
 
--   Use Git to commit this file to create a permanent, verifiable link between the code, the data, and the computational environment.
+-   Use Git to commit this file to create a permanent, verifiable link between
+    the code, the data, and the computational environment.
 
-The resulting log serves as a snapshot of your computing system and all the software dependencies at that precise moment in time.
+The resulting log serves as a snapshot of your computing system and all the
+software dependencies at that precise moment in time.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-### Appendix I: Repository Guidelines
+### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
 
-We provided a simplified layout in this github repository, as shown in the list of its trunk folders below. However, this architecture can become highly nested which may not suit everyone’s preferences. Therefore, we welcome any feedback on improved structure that is more appropriate to your project design, and provide additional layout examples from today’s slide for comparison.
+We provided a simplified layout in this github repository, as shown in the list
+of its trunk folders below. However, this architecture can become highly nested
+which may not suit everyone’s preferences. Therefore, we welcome any feedback on
+improved structure that is more appropriate to your project design, and provide
+additional layout examples from today’s slide for comparison.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 -   `01_Program_Data/`
 
@@ -104,87 +160,184 @@ We provided a simplified layout in this github repository, as shown in the list 
 
 -   `06_QAQC_SOPs/`
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ![](01_Program_Files/repo-layout-wide.png)
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ##### Repository Principles
 
-These are the fundamental concepts that auditors use to evaluate your submission, which are embedded throughout this repository’s structure.
+These are the fundamental concepts that auditors use to evaluate your
+submission, which are embedded throughout this repository’s structure.
 
--   Data Traceability: We demonstrate this through clear file naming conventions, a folder for QA/QC procedures, and a structure that links report claims to specific evidence files. Every key figure in a report, such as X hectares deforested, must be traceable back to its raw data source and the methodology used to derive it.
--   Data Completeness: This repository is organized to align directly with the ART TREES requirements. This provides a clear framework for you to check if you have all the necessary data for every required category, such as deforestation areas, emission factors, and safeguards information. The repository also includes a place to document any methodological changes made over time.
--   Data Curation: A well-organized data package allows auditors to quickly find what they need. Our layout, for example, separates Calculations & Analysis from Spatial Data and SOPs & Procedures. This logical grouping helps auditors instinctively navigate your submission. A top-level README and descriptive filenames are also key curation practices.
--   Data Reproducibility: Independent verification requires identical computational outcomes. This standard demands that any auditor can execute the same analysis and achieve matching results using the provided code, data, and environment specifications. Package management tools like `renv` (Appendix III) combined with `git` version control (Appendix IV) deliver perfect reproducibility through:
-    -   Permanent Records: Immutable tracking of all modifications prevents manipulation while ensuring verification integrity.
-    -   Environment Capture: Precise control of scripts, dependencies, and runtime conditions enables exact replication of carbon stock calculations
-    -   Change Documentation: Systematic tracking supports robust QA/QC processes required for GHG verification audits.
+-   Data Traceability: We demonstrate this through clear file naming
+    conventions, a folder for QA/QC procedures, and a structure that links
+    report claims to specific evidence files. Every key figure in a report, such
+    as X hectares deforested, must be traceable back to its raw data source and
+    the methodology used to derive it.
+-   Data Completeness: This repository is organized to align directly with the
+    ART TREES requirements. This provides a clear framework for you to check if
+    you have all the necessary data for every required category, such as
+    deforestation areas, emission factors, and safeguards information. The
+    repository also includes a place to document any methodological changes made
+    over time.
+-   Data Curation: A well-organized data package allows auditors to quickly find
+    what they need. Our layout, for example, separates Calculations & Analysis
+    from Spatial Data and SOPs & Procedures. This logical grouping helps
+    auditors instinctively navigate your submission. A top-level README and
+    descriptive filenames are also key curation practices.
+-   Data Reproducibility: Independent verification requires identical
+    computational outcomes. This standard demands that any auditor can execute
+    the same analysis and achieve matching results using the provided code,
+    data, and environment specifications. Package management tools like `renv`
+    (Appendix III) combined with `git` version control (Appendix IV) deliver
+    perfect reproducibility through:
+    -   Permanent Records: Immutable tracking of all modifications prevents
+        manipulation while ensuring verification integrity.
+    -   Environment Capture: Precise control of scripts, dependencies, and
+        runtime conditions enables exact replication of carbon stock
+        calculations
+    -   Change Documentation: Systematic tracking supports robust QA/QC
+        processes required for GHG verification audits.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ##### Repository Governance
 
-We offer a shortlist of default community health files that may be adapted to include SOPs and documentation of workbook updates, always aiming to build trust in the auditor:
+We offer a shortlist of default community health files that may be adapted to
+include SOPs and documentation of workbook updates, always aiming to build trust
+in the auditor:
 
--   CODE_OF_CONDUCT.md: A CODE_OF_CONDUCT file defines standards for how to engage in a community.
--   CONTRIBUTING.md: A CONTRIBUTING file communicates how people should contribute to your project. Discussion category forms can also be added to help customize priority templates issued to stakeholder or partners, or community members for opening new discussions in your repository..
--   FUNDING.yml: A FUNDING file displays a sponsor button in your repository to increase the visibility of funding options for your open source project.
--   GOVERNANCE.md: A GOVERNANCE file lets people know about how your project is governed. For example, it might discuss project roles and how decisions are made.
--   Pull request & config.yml: Issue and pull request templates help standardize the information you’d like contributors to include when they open issues and pull requests in your repository.
--   SECURITY.md: A SECURITY file gives instructions on how to report a security vulnerability in your project and description that hyperlinks the file. For more information, see [Adding a security policy to your repository](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository).
--   SUPPORT.md: A SUPPORT file lets people know about ways to get help with your project. For more information, see [Adding support resources to your project](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-support-resources-to-your-project).
+-   CODE_OF_CONDUCT.md: A CODE_OF_CONDUCT file defines standards for how to
+    engage in a community.
+-   CONTRIBUTING.md: A CONTRIBUTING file communicates how people should
+    contribute to your project. Discussion category forms can also be added to
+    help customize priority templates issued to stakeholder or partners, or
+    community members for opening new discussions in your repository..
+-   FUNDING.yml: A FUNDING file displays a sponsor button in your repository to
+    increase the visibility of funding options for your open source project.
+-   GOVERNANCE.md: A GOVERNANCE file lets people know about how your project is
+    governed. For example, it might discuss project roles and how decisions are
+    made.
+-   Pull request & config.yml: Issue and pull request templates help standardize
+    the information you’d like contributors to include when they open issues and
+    pull requests in your repository.
+-   SECURITY.md: A SECURITY file gives instructions on how to report a security
+    vulnerability in your project and description that hyperlinks the file. For
+    more information, see [Adding a security policy to your
+    repository](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository).
+-   SUPPORT.md: A SUPPORT file lets people know about ways to get help with your
+    project. For more information, see [Adding support resources to your
+    project](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-support-resources-to-your-project).
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-### Appendix II: ISO Guidelines
+### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
 
-The data management principles of traceability, integrity, and reproducibility are key to GHG audits. These principles are supported by a range of ISO standards. This appendix provides an overview of those ISO standards relevant to data governance and quality, and provides additional resources for debugging and validating geospatial operations across platform using the `liblwgeom` library.
+The data management principles of traceability, integrity, and reproducibility
+are key to GHG audits. These principles are supported by a range of ISO
+standards. This appendix provides an overview of those ISO standards relevant to
+data governance and quality, and provides additional resources for debugging and
+validating geospatial operations across platform using the `liblwgeom` library.
 
-The `liblwgeom` library was derived according to the OpenGIS Simple Features Access (SFA) geometry rules (ISO 19125) and was purposely built for unbiased unit testing. This `TopGeometry` model drew on open-source or platform-neutral architecture to allow access to base geometric objects including Points, Curves, Surfaces, and Geometry Collections `sfc`.
+The `liblwgeom` library was derived according to the OpenGIS Simple Features
+Access (SFA) geometry rules (ISO 19125) and was purposely built for unbiased
+unit testing. This `TopGeometry` model drew on open-source or platform-neutral
+architecture to allow access to base geometric objects including Points, Curves,
+Surfaces, and Geometry Collections `sfc`.
 
--   The `liblwgeom` library uses the CUnit test framework for unit testing, which provides lightweight method to debug spatial operations.
--   The `make` check command runs a set of regression tests for the entire PostGIS system, which helps verify the integrity of the installation and its dependencies, such as `PROJ4`in cartographic projections and `GEOS` for topological tests.
+-   The `liblwgeom` library uses the CUnit test framework for unit testing,
+    which provides lightweight method to debug spatial operations.
+-   The `make` check command runs a set of regression tests for the entire
+    PostGIS system, which helps verify the integrity of the installation and its
+    dependencies, such as `PROJ4`in cartographic projections and `GEOS` for
+    topological tests.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
--   **ISO 27001 & ISO 8000**: Two widely discussed ISO standards for data governance are ISO 27001 and ISO 8000. ISO 27001 is a standard for Information Security Management Systems (ISMS), while ISO 8000 focuses on data quality management. Implementing the ISO 27001 standard is a deliverable of information security management under the IT governance program and not solely a data governance deliverable. However, data governance maturity is crucial for complying with ISO 27001 and ensuring data security, confidentiality, and integrity in information management practices. ISO 8000 aims to ensure that data used in various contexts, such as business processes, analytics, and decision-making, meets certain quality standards. It covers all the key elements of data—Syntax, Provenance, Completion, Accuracy, and Certification—providing a standard to measure and certify data quality.
--   **ISO 38505-1**: This is a standard for data governance that provides a set of guidelines for the governance of data within an organization. It considers data governance as a subset of IT governance, which in turn is a subset of organizational governance, and defines clear responsibilities for the governing body and oversight mechanisms. At its core, it provides a model for evaluating, directing, and monitoring the handling and usage of data in an organization.
--   **ISO 22745**: This standard focuses on master data exchange between organizations. It specifies data requirements for messages containing master data, including syntax, semantic encoding, and portability. It is often used in conjunction with ISO 8000 to realize the benefits of assessing and improving data quality.
--   **ISO 3166**: This standard defines codes for country names, which can be utilized for consistent external reference data in business applications to reduce time and effort in data integration and analytic tasks.
--   **ISO 11179**: This metadata registry (MDR) standard provides a framework for representing metadata for an organization to make data understandable and transferable. It provides guidance to software developers building metadata repositories.
--   **ISO 27701**: This standard serves as a data privacy extension to ISO 27001, providing a framework for organizations to establish systems that facilitate compliance with data privacy regulations like GDPR.
+-   **ISO 27001 & ISO 8000**: Two widely discussed ISO standards for data
+    governance are ISO 27001 and ISO 8000. ISO 27001 is a standard for
+    Information Security Management Systems (ISMS), while ISO 8000 focuses on
+    data quality management. Implementing the ISO 27001 standard is a
+    deliverable of information security management under the IT governance
+    program and not solely a data governance deliverable. However, data
+    governance maturity is crucial for complying with ISO 27001 and ensuring
+    data security, confidentiality, and integrity in information management
+    practices. ISO 8000 aims to ensure that data used in various contexts, such
+    as business processes, analytics, and decision-making, meets certain quality
+    standards. It covers all the key elements of data—Syntax, Provenance,
+    Completion, Accuracy, and Certification—providing a standard to measure and
+    certify data quality.
+-   **ISO 38505-1**: This is a standard for data governance that provides a set
+    of guidelines for the governance of data within an organization. It
+    considers data governance as a subset of IT governance, which in turn is a
+    subset of organizational governance, and defines clear responsibilities for
+    the governing body and oversight mechanisms. At its core, it provides a
+    model for evaluating, directing, and monitoring the handling and usage of
+    data in an organization.
+-   **ISO 22745**: This standard focuses on master data exchange between
+    organizations. It specifies data requirements for messages containing master
+    data, including syntax, semantic encoding, and portability. It is often used
+    in conjunction with ISO 8000 to realize the benefits of assessing and
+    improving data quality.
+-   **ISO 3166**: This standard defines codes for country names, which can be
+    utilized for consistent external reference data in business applications to
+    reduce time and effort in data integration and analytic tasks.
+-   **ISO 11179**: This metadata registry (MDR) standard provides a framework
+    for representing metadata for an organization to make data understandable
+    and transferable. It provides guidance to software developers building
+    metadata repositories.
+-   **ISO 27701**: This standard serves as a data privacy extension to ISO
+    27001, providing a framework for organizations to establish systems that
+    facilitate compliance with data privacy regulations like GDPR.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-### Appendix III: Replication in `renv` 
+### Appendix III: Replication in `renv` {#appendix-iii-replication-in-renv}
 
-`renv` profiles allow for managing different sets of package dependencies for various project contexts, such as separate environments for development, production, or demonstrations. To activate a specific `renv` profile, you have two primary options:
+`renv` profiles allow for managing different sets of package dependencies for
+various project contexts, such as separate environments for development,
+production, or demonstrations. To activate a specific `renv` profile, you have
+two primary options:
 
 ##### Step 1. Set a project profile
 
-To make a profile the default for future R sessions, run `renv::activate()` function. Upon restarting R, you will find `lockfile` path assigned to new project `renv` folder ( `renv/profiles/demo-repo/`).
+To make a profile the default for future R sessions, run `renv::activate()`
+function. Upon restarting R, you will find `lockfile` path assigned to new
+project `renv` folder ( `renv/profiles/demo-repo/`).
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ##### Step 2. Activate a temporary profile:
 
-To activate a profile for the current R session without making it the default, you can set the `RENV_PROFILE` environment variable.
+To activate a profile for the current R session without making it the default,
+you can set the `RENV_PROFILE` environment variable.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ##### Step 3. Check package dependencies
 
-Use the package dotfiles and environment fields found in `Config/renv/profiles/<profile_name>/dependencies` and `Config/renv/profiles/<profile_name>/remotes` to check list of required packages and assign locations of remote repositories for specific package builds. These environment fields can be also declared in the `DESCRIPTION` file specific to that `renv` profile.
+Use the package dotfiles and environment fields found in
+`Config/renv/profiles/<profile_name>/dependencies` and
+`Config/renv/profiles/<profile_name>/remotes` to check list of required packages
+and assign locations of remote repositories for specific package builds. These
+environment fields can be also declared in the `DESCRIPTION` file specific to
+that `renv` profile.
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ##### Step 4. Manage package dependencies
 
--   To capture all packages currently installed in the runtime, while overlooking packages listed in existing environment variables, then run `renv::settings$snapshot.type("all")`.
--   Alternatively, you can exclude certain packages from the installation using the `renv::settings$ignored.packages("lwgeom")` function. This proves useful with many debugging and version control issues among new users.
--   There is also option to manually load and test an `explicit` customized snapshot that overlooks default environment fields previously written into the runtime.
+-   To capture all packages currently installed in the runtime, while
+    overlooking packages listed in existing environment variables, then run
+    `renv::settings$snapshot.type("all")`.
+-   Alternatively, you can exclude certain packages from the installation using
+    the `renv::settings$ignored.packages("lwgeom")` function. This proves useful
+    with many debugging and version control issues among new users.
+-   There is also option to manually load and test an `explicit` customized
+    snapshot that overlooks default environment fields previously written into
+    the runtime.
 
 ``` r
 # Activate 'demo-repo' profile and set as default for the project
@@ -207,9 +360,9 @@ renv::settings$ignored.packages("lwgeom")
 renv::deactivate()
 ```
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-### Appendix IV: Replication in `git`
+### Appendix IV: Replication in `git` {#appendix-iv-replication-in-git}
 
 ##### Step 1: Install Git
 
@@ -332,7 +485,8 @@ git config --global --list
 
 **Option A: HTTPS with Personal Access Token** *(Beginner)*
 
-1.  GitHub =\> Settings =\> Developer settings =\> Personal access tokens =\> Tokens (classic)
+1.  GitHub =\> Settings =\> Developer settings =\> Personal access tokens =\>
+    Tokens (classic)
 2.  Click “Generate new token (classic)”
 3.  Set expiration: 90+ days
 4.  Select scopes: repo, workflow, gist, user:email
@@ -425,7 +579,8 @@ cat ~/.ssh/id_ed25519.pub
 
 ##### Step 6: Complete Audit Training Exercise
 
-We offer two types of exercises below that were considered potentially useful for trainee participants and their audit development.
+We offer two types of exercises below that were considered potentially useful
+for trainee participants and their audit development.
 
 **Type 1: Clone Repository from GitHub**
 
@@ -530,8 +685,10 @@ git push -u origin main           # Push and set upstream tracking
 git pull --ff-only               # Pull without merge conflicts
 ```
 
--   Cheatsheet by `hectorsector` accessed 2025-08 [here](https://training.github.com/)
--   Cheatsheet by Hostinger accessed 2025-08 [here](https://cdn.hostinger.com/tutorials/pdf/Git-Cheat-Sheet-EN.pdf?_gl=1*pkr9ot*_gcl_au*MTE0MjAzMTE5OC4xNzU0ODAyOTM2*_ga*MTQ1ODYxNTIxNS4xNzU0ODAyOTM2*_ga_73N1QWLEMH*czE3NTQ4MDI5MzYkbzEkZzAkdDE3NTQ4MDI5NTAkajQ2JGwwJGgyOTkyMzE0NDU)
+-   Cheatsheet by `hectorsector` accessed 2025-08
+    [here](https://training.github.com/)
+-   Cheatsheet by Hostinger accessed 2025-08
+    [here](https://cdn.hostinger.com/tutorials/pdf/Git-Cheat-Sheet-EN.pdf?_gl=1*pkr9ot*_gcl_au*MTE0MjAzMTE5OC4xNzU0ODAyOTM2*_ga*MTQ1ODYxNTIxNS4xNzU0ODAyOTM2*_ga_73N1QWLEMH*czE3NTQ4MDI5MzYkbzEkZzAkdDE3NTQ4MDI5NTAkajQ2JGwwJGgyOTkyMzE0NDU)
 
 ##### Git Troubleshooting
 
@@ -585,7 +742,7 @@ git reset --hard HEAD^            # Hard reset (loses changes)
 -   Working with multiple repositories
 -   Advanced branch management
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ##### Runtime Log
 
