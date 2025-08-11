@@ -10,7 +10,7 @@ output:
     df_print: kable
     highlight: pygments
     latex_engine: xelatex
-    keep_md: true
+#    keep_md: true
     
 always_allow_html: TRUE
 editor_options: 
@@ -118,61 +118,140 @@ carbon_data <- data.frame(
   plot_id = c("PLOT_001", "PLOT_002", "PLOT_003", "PLOT_004", "PLOT_005"),
   carbon_stock_tCO2e = c(310, 290, 350, 275, 325),
   forest_type = c("Primary", "Secondary", "Primary", "Secondary", "Primary"),
-  measurement_year = c(2024, 2024, 2024, 2024, 2024)
+  measurement_date = as.Date(c("2024-03-15", "2024-04-22", "2024-05-08", "2024-06-12", "2024-07-03"))
 )
 
-# Display the input data
+# Display input data
 cat("Forest Inventory Data:\n")
-carbon_data_flex = flextable(head(carbon_data[, 1:4])) |>
-  set_header_labels(carbon_data_flex,
-  values = list(
-    plot_id                 = "Plot ID",
-    carbon_stock_tCO2e      = "Carbon Stock (tCO2-e)",
-    forest_type             = "Forest Type",
-    measurement_year        = "Inventory Date (YYYY)"
-  )) |> width(width = 1) |> fit_to_width(max_width = 6.5) |>
-  colformat_double(digits = 1, na_str = "N/A")
-  #colformat_double(carbon_data_flex, j = "carbon_stock_tCO2e", digits = 1, na_str = "N/A")
-
-carbon_data_flex |> fontsize(size=8,part="all")
-cat("\nDataset contains", nrow(carbon_data), "measurement plots\n")
-```
-
-```{r, class.source = c("numCode", "r", "numberLines")}
-
-# Create standardized forest inventory dataset
-# Each row represents one forest measurement plot
-carbon_data <- data.frame(
-  plot_id = c("PLOT_001", "PLOT_002", "PLOT_003", "PLOT_004", "PLOT_005"),
-  carbon_stock_tCO2e = c(310, 290, 350, 275, 325),
-  forest_type = c("Primary", "Secondary", "Primary", "Secondary", "Primary"),
-  measurement_year = c(2024, 2024, 2024, 2024, 2024)
-)
-
-# Display the input data
-cat("Forest Inventory Data:\n")
-carbon_data_flex <- flextable(head(carbon_data[, 1:4]))
-carbon_data_flex <- set_header_labels(
-  carbon_data_flex,
-  values = list(
+carbon_data_flex <- flextable(head(carbon_data[, 1:4])) |>
+  set_header_labels(carbon_data_flex,values = list(
     plot_id             = "Plot ID",
     carbon_stock_tCO2e  = "Carbon Stock (tCO2-e)",
     forest_type         = "Forest Type",
-    measurement_year    = "Inventory Date (YYYY)"
-    ))
+    measurement_year    = "Inventory Date (YYYY)")) 
 
-carbon_data_flex <- width(carbon_data_flex, width = 1)
-carbon_data_flex <- fit_to_width(carbon_data_flex, max_width = 6.5)
+carbon_data_flex = fit_to_width(carbon_data_flex, max_width = 6.5)
+carbon_data_flex = fontsize(carbon_data_flex, size=8,part="all")
+carbon_data_flex = width(carbon_data_flex, width = 1)
+carbon_data_flex
 
-# The 'big.mark' argument has been removed, so no thousand separators will be used.
-carbon_data_flex <- colformat_double(
-    carbon_data_flex,
-    digits = 1,
-    na_str = "N/A"
-)
-
-carbon_data_flex |> fontsize(size=8,part="all")
 cat("\nDataset contains", nrow(carbon_data), "measurement plots\n")
 ```
 
 ----------------------------------------------------------------------
+
+### **4. Data Quality Verification**
+
+Before performing calculations, we first verify data integrity, a
+critical step in any reproducible analysis.
+
+```{r data_verification, class.source = c("numCode", "r", "numberLines")}
+# Check for missing values
+missing_values <- sum(is.na(carbon_data$carbon_stock_tCO2e))
+cat("Missing values in carbon stock data:", missing_values, "\n")
+
+# Verify data types
+cat("Data structure verification:\n")
+str(carbon_data)
+
+# Summary statistics
+cat("\nCarbon stock summary statistics:\n")
+summary(carbon_data$carbon_stock_tCO2e)
+```
+
+----------------------------------------------------------------------
+
+### **5. Carbon Stock Calculation**
+
+This is the core analytical step. We calculate total carbon stock
+using a simple, transparent aggregation method that can be easily
+verified by independent reviewers.
+
+**Methodology**: Sum all individual plot measurements to get total
+carbon stock across the study area.
+
+```{r calculation, class.source = c("numCode", "r", "numberLines")}
+# Calculate total carbon stock using simple aggregation
+calculation_summary = carbon_data |>
+  summarise(
+    total_plots = n(),
+    total_carbon_tCO2e = sum(carbon_stock_tCO2e),
+    mean_carbon_per_plot = round(mean(carbon_stock_tCO2e), 1)
+  )
+
+# Extract result & visualize
+total_carbon <- calculation_summary$total_carbon_tCO2e
+cat("Calculation Summary:\n")
+cat("- Number of plots:", calculation_summary$total_plots, "\n")
+cat("- Mean carbon per plot:", calculation_summary$mean_carbon_per_plot, "tCO₂e\n")
+cat("- Total carbon stock:", total_carbon, "tCO₂e\n")
+```
+
+----------------------------------------------------------------------
+
+### **6. Result Verification**
+
+This section presents the final result in a clear format for
+verification purposes.
+
+```{r results, class.source = c("numCode", "r", "numberLines")}
+# Display final result prominently
+cat("=====================================\n")
+cat("       REPRODUCIBILITY CHECK\n")
+cat("=====================================\n")
+cat("   TOTAL CARBON STOCK:", total_carbon, "tCO₂e\n")
+cat("=====================================\n")
+
+# Verification check
+expected_result <- 1550
+if (total_carbon == expected_result) {
+  cat("\n✓ SUCCESS: Result matches expected value!\n")
+  cat("✓ Reproducibility confirmed\n")
+} else {
+  cat("\n✗ WARNING: Result does not match expected value\n")
+  cat("Expected:", expected_result, "tCO₂e\n")
+  cat("Calculated:", final_total_carbon, "tCO₂e\n")
+  cat("Difference:", abs(final_total_carbon - expected_result), "tCO₂e\n")
+}
+```
+
+----------------------------------------------------------------------
+
+### **7. Document Runtime Log**
+
+Documenting the computational environment is essential for
+reproducibility. This information allows others to recreate the exact
+same computational conditions.
+
+```{r session_info, class.source = c("numCode", "r", "numberLines")}
+# Document the computational environment
+cat("Runtime Environment Information:\n")
+cat("================================\n")
+sessionInfo()
+
+# Autosave log in 06_QCQC folder
+writeLines(capture.output(devtools::session_info()), 
+           paste0("../06_QAQC/runtime_log_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".txt"))
+```
+
+----------------------------------------------------------------------
+
+### **8. Exercise Completion**
+
+**Congratulations!** If you see "SUCCESS" above, you have:
+
+1.  **Demonstrated reproducibility**: Your result matches the expected
+    value
+2.  **Verified data integrity**: The calculation process is
+    transparent
+3.  **Documented your environment**: Future users can replicate your
+    setup
+4.  **Applied best practices**: Your analysis follows scientific
+    standards
+
+**Next Steps**:
+
+-   Save this completed script with your results with using the chunk
+    operations or manually
+-   Compare your runtime environment with others in your traininggroup
+-   Practice with your own datasets using this same approach
