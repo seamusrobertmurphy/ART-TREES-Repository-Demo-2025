@@ -4,18 +4,19 @@ subtitle: "Training exercise in version control and reproducible analyses"
 author: "Murphy, S"
 date: "2025-08-08"
 output:
-  html_document:
-    toc: yes
-    theme: united
+  github_document:
+    toc: true
+    toc_depth: 4
     df_print: kable
-    highlight: pygments
-    latex_engine: xelatex
+#    theme: united
+#    highlight: pygments
+#    latex_engine: xelatex
 #    keep_md: true
-    
+
 always_allow_html: TRUE
 editor_options: 
   markdown: 
-    wrap: 70
+    wrap: 100
 ---
 
 ```{r setup-1}
@@ -47,22 +48,33 @@ options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
 sf::sf_use_s2(use_s2 = FALSE)
 ```
 
+![](https://art.apx.com/images/ART.png){width="500"}
+
+[![LinkedIn
+Badge](https://img.shields.io/badge/Project-Profile-blue)](https://art.apx.com/mymodule/reg/TabDocuments.asp?r=111&ad=Prpt&act=update&type=PRO&aProj=pub&tablename=doc&id1=109)
+[![Pubs
+Badge](https://img.shields.io/badge/Project-Pubs-critical)](https://orcid.org/my-orcid?orcid=0000-0002-1792-0351)
+[![Twitter Badge](https://img.shields.io/badge/Project-Tweets-critical?color=blue)](https://x.com/)
+[![Program
+Badge](https://img.shields.io/badge/Project-Steward-critical)](https://www.ambiente.gob.ec/)
+[![Annexes
+Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](https://nextcloud.ambiente.gob.ec)
+
+----------------------------------------------------------------------------------------------------
+
 ### **1. Introduction: The Goal of This Exercise**
 
-This R Markdown file demonstrates **perfect reproducibility** in
-environmental data analysis, a fundamental principle for any credible
-scientific or audit process.
+This R Markdown file demonstrates **perfect reproducibility** in environmental data analysis, a
+fundamental principle for any credible scientific or audit process.
 
-**The Challenge**: An independent reviewer must be able to take your
-data and your code, run it in a documented environment, and get the
-exact same result you reported.
+**The Challenge**: An independent reviewer must be able to take your data and your code, run it in a
+documented environment, and get the exact same result you reported.
 
-This script performs a straightforward calculation of total carbon
-stock from forest inventory data using publicly available
-methodologies.
+This script performs a straightforward calculation of total carbon stock from forest inventory data
+using publicly available methodologies.
 
-**Your task**: Run this script and verify that you get the expected
-result of **1,550 tCO₂e**. This demonstrates that:
+**Your task**: Run this script and verify that you get the expected result of **1,550 tCO₂e**. This
+demonstrates that:
 
 -   Your computational environment is properly configured
 -   The analysis is transparent and reproducible\
@@ -71,17 +83,15 @@ result of **1,550 tCO₂e**. This demonstrates that:
 **Key Principles Demonstrated**:
 
 -   **Data Traceability**: Every calculation step is documented
--   **Reproducibility**: Results are identical across different users
-    and systems
+-   **Reproducibility**: Results are identical across different users and systems
 -   **Transparency**: Methods are open and verifiable
 
-----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ### **2. Loading Required Packages**
 
-This step loads the `dplyr` package for data manipulation. In
-practice, all package versions should be documented (see runtime log
-at the end of this script) to ensure computational reproducibility.
+This step loads the `dplyr` package for data manipulation. In practice, all package versions should
+be documented (see runtime log at the end of this script) to ensure computational reproducibility.
 
 ```{r, class.source = c("numCode", "r", "numberLines"), message=FALSE, warning=FALSE}
 # Load required packages for data manipulation
@@ -99,17 +109,15 @@ easypackages::packages(
 cat("All packages loaded successfully")
 ```
 
-----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ### **3. Creating the Dataset**
 
-We use a standardized dataset that represents typical forest inventory
-measurements. This approach ensures the exercise works consistently
-across different environments without requiring external file
-dependencies.
+We use a standardized dataset that represents typical forest inventory measurements. This approach
+ensures the exercise works consistently across different environments without requiring external
+file dependencies.
 
-**Data Source**: Simulated forest plot measurements following standard
-forestry protocols.
+**Data Source**: Simulated forest plot measurements following standard forestry protocols.
 
 ```{r, class.source = c("numCode", "r", "numberLines")}
 # Create standardized forest inventory dataset
@@ -138,12 +146,12 @@ carbon_data_flex
 cat("\nDataset contains", nrow(carbon_data), "measurement plots\n")
 ```
 
-----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ### **4. Data Quality Verification**
 
-Before performing calculations, we first verify data integrity, a
-critical step in any reproducible analysis.
+Before performing calculations, we first verify data integrity, a critical step in any reproducible
+analysis.
 
 ```{r data_verification, class.source = c("numCode", "r", "numberLines")}
 # Check for missing values
@@ -159,16 +167,15 @@ cat("\nCarbon stock summary statistics:\n")
 summary(carbon_data$carbon_stock_tCO2e)
 ```
 
-----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ### **5. Carbon Stock Calculation**
 
-This is the core analytical step. We calculate total carbon stock
-using a simple, transparent aggregation method that can be easily
-verified by independent reviewers.
+This is the core analytical step. We calculate total carbon stock using a simple, transparent
+aggregation method that can be easily verified by independent reviewers.
 
-**Methodology**: Sum all individual plot measurements to get total
-carbon stock across the study area.
+**Methodology**: Sum all individual plot measurements to get total carbon stock across the study
+area.
 
 ```{r calculation, class.source = c("numCode", "r", "numberLines")}
 # Calculate total carbon stock using simple aggregation
@@ -187,12 +194,11 @@ cat("- Mean carbon per plot:", calculation_summary$mean_carbon_per_plot, "tCO₂
 cat("- Total carbon stock:", total_carbon, "tCO₂e\n")
 ```
 
-----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ### **6. Result Verification**
 
-This section presents the final result in a clear format for
-verification purposes.
+This section presents the final result in a clear format for verification purposes.
 
 ```{r results, class.source = c("numCode", "r", "numberLines")}
 # Display final result prominently
@@ -215,13 +221,12 @@ if (total_carbon == expected_result) {
 }
 ```
 
-----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ### **7. Document Runtime Log**
 
-Documenting the computational environment is essential for
-reproducibility. This information allows others to recreate the exact
-same computational conditions.
+Documenting the computational environment is essential for reproducibility. This information allows
+others to recreate the exact same computational conditions.
 
 ```{r session_info, class.source = c("numCode", "r", "numberLines")}
 # Document the computational environment
@@ -234,24 +239,19 @@ writeLines(capture.output(devtools::session_info()),
            paste0("../06_QAQC/runtime_log_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".txt"))
 ```
 
-----------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 ### **8. Exercise Completion**
 
 **Congratulations!** If you see "SUCCESS" above, you have:
 
-1.  **Demonstrated reproducibility**: Your result matches the expected
-    value
-2.  **Verified data integrity**: The calculation process is
-    transparent
-3.  **Documented your environment**: Future users can replicate your
-    setup
-4.  **Applied best practices**: Your analysis follows scientific
-    standards
+1.  **Demonstrated reproducibility**: Your result matches the expected value
+2.  **Verified data integrity**: The calculation process is transparent
+3.  **Documented your environment**: Future users can replicate your setup
+4.  **Applied best practices**: Your analysis follows scientific standards
 
 **Next Steps**:
 
--   Save this completed script with your results with using the chunk
-    operations or manually
+-   Save this completed script with your results with using the chunk operations or manually
 -   Compare your runtime environment with others in your traininggroup
 -   Practice with your own datasets using this same approach
