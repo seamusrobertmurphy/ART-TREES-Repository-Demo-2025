@@ -15,7 +15,7 @@ editor_options:
     wrap: 80
 ---
 
-```{r setup-1}
+```{r setup, eval=T}
 #| warning: false
 #| message: false
 #| error: false
