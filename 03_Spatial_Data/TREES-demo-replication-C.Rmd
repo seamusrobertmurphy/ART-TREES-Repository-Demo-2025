@@ -88,10 +88,10 @@ sf::sf_extSoftVersion()
 knitr::opts_knit$set(root.dir = here::here())
 
 # AOI Jurisdictional Bdry 
-aoi_country = geodata::gadm(country="ECU", level=0, path="../03_Spatial_Data/AOI") |> sf::st_as_sf()
-aoi_states  = geodata::gadm(country="ECU", level=1, path="../03_Spatial_Data/AOI") |> sf::st_as_sf()
-st_write(aoi_country, "../03_Spatial_Data/AOI/aoi_country.shp", delete_dsn = T)
-st_write(aoi_states, "../03_Spatial_Data/AOI/aoi_states.shp", delete_dsn = T)
+aoi_country = geodata::gadm(country="ECU", level=0, path="./03_Spatial_Data/AOI") |> sf::st_as_sf()
+aoi_states  = geodata::gadm(country="ECU", level=1, path="./03_Spatial_Data/AOI") |> sf::st_as_sf()
+st_write(aoi_country, "./03_Spatial_Data/AOI/aoi_country.shp", delete_dsn = T)
+st_write(aoi_states, "./03_Spatial_Data/AOI/aoi_states.shp", delete_dsn = T)
 crs_master = sf::st_crs(aoi_country)
 
 # Visualize
@@ -151,20 +151,21 @@ villages = aoi_bbox |> osmdata::opq() |>
 places_merged = townnames$osm_points |> bind_rows(villages$osm_points) |>
   group_by(across(-geometry)) |> sf::st_cast("POINT") |>
   summarise(geometry = st_union(geometry), .groups = "drop")
-sf::st_write(places_merged, "../03_Spatial_Data/POP/places_merged.shp", delete_dsn=T) 
+sf::st_write(places_merged, "./03_Spatial_Data/POP/places_merged.shp", delete_dsn=T) 
 
 buildings_merged = buildings_hospital$osm_points |>
   bind_rows(buildings_residential$osm_points, buildings_workship$osm_points) |>
   group_by(across(-geometry)) |> sf::st_cast("POINT") |>
   summarise(geometry = st_union(geometry), .groups = "drop")
-sf::st_write(buildings_merged, "../03_Spatial_Data/POP/buildings_merged.shp", delete_dsn=T) 
+sf::st_write(buildings_merged, "./03_Spatial_Data/POP/buildings_merged.shp", delete_dsn=T) 
 
 # Visualize
 tmap::tm_shape(aoi_country) + tmap::tm_borders(col="purple", lwd=1) +
   tmap::tm_shape(aoi_states) + tmap::tm_borders(col="purple", lwd=.5) +
-  tmap::tm_shape(buildings_merged) + tmap::tm_symbols(size=0.35,lwd=0.5,fill="purple",col="white") +
-  tmap::tm_shape(places_merged) + tmap::tm_symbols(size=0.7,lwd=0.5,fill="blue",col="yellow") +
-  tmap::tm_add_legend(type="symbols", col="white", fill="purple", size=0.8, labels="Buildings (OSM)") +
+#  tmap::tm_shape(buildings_merged) + tmap::tm_symbols(size=0.15,lwd=0.5,fill="white",col="purple") +
+#  tmap::tm_add_legend(type="symbols", col="white", fill="purple", size=0.8, labels="Buildings") +
+  tmap::tm_shape(places_merged) + tmap::tm_symbols(size=0.2,lwd=0.5,fill="white",col="blue") +
+  tmap::tm_add_legend(type="symbols", col="white", fill="blue", size=0.8, labels="Towns & Villages") +
   tmap::tm_scalebar(position=c("RIGHT", "BOTTOM"), text.size = .5) +
   tmap::tm_compass(color.dark="gray60",text.color="gray60",position=c("RIGHT", "top")) +
   tmap::tm_graticules(lines=T,labels.rot=c(0,90),lwd=0.2) +

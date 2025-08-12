@@ -92,6 +92,8 @@ tmap::tm_shape(aoi_country) + tmap::tm_borders(col="purple", lwd=2) +
   tmap::tm_basemap("OpenStreetMap")
 ```
 
+![](MAPS/Map_RiskCovariateScopingA_202508.png)
+
 --------------------------------------------------------------------------------
 
 #### Built Environment {#built-environment}
@@ -337,7 +339,7 @@ tmap::tm_shape(aoi_country) + tmap::tm_borders(col="purple", lwd=1) +
   #tmap::tm_basemap("Esri.WorldImagery") 
 ```
 
-![](MAPS/Map_RiskCovariatesScoping_202508.png)<!-- -->
+![](MAPS/Map_RiskCovariateScopingB_202508.png)<!-- -->
 
 ``` r
   #tmap::tm_basemap("OpenTopoMap") 
