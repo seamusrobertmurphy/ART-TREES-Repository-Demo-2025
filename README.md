@@ -50,7 +50,7 @@ below.
     assertion must be included, with nothing significant missing.
 -   **Data Curation**: A logical folder structure, descriptive file names, and
     clear documentation allow auditors to quickly find what they need.
--   **Data Reproducibility**: Package management or version control implemented
+-   **Data Reproducibility**: Package management and version control implemented
     to ensure replication of computational environment and runtime indexing.
 
 --------------------------------------------------------------------------------
@@ -100,7 +100,7 @@ calculation and output the final result.
     the console.
 
 The script’s output will display a single, final calculated value in tCO₂e.
-Compare this result to the figure reported in Table 16 of the TMR. They should
+Compare this result to the figure saved in markdown text. They should
 match exactly.
 
 -   If the results match: You have successfully demonstrated data
@@ -118,8 +118,8 @@ match exactly.
 #### Step 3. Document Runtime Log
 
 To demonstrate **data integrity** and **reproducibility**, you must document the
-exact software environment used for your calculations. An **auditor will require
-this runtime log** to independently verify your results. This step involves
+exact software environment used for your calculations. This runtime log can 
+help auditors to independently and more quickly verify your results. This step involves
 generating a log of your R session’s dependencies and committing it to the
 repository.
 
