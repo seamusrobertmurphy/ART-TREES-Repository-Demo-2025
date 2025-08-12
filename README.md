@@ -59,7 +59,7 @@ below.
 
 #### Step 1. Clone the Repository
 
-*Before starting, please ensure Git, R, and RStudio are installed, and an
+*Before starting, please ensure Git and R are installed, and an
 internet connection is possible (see Appendix IV for installation guides).*
 
 Open your command-line tool (or GitHub Desktop) and clone this repository to
