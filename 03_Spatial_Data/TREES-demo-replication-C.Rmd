@@ -151,13 +151,13 @@ villages = aoi_bbox |> osmdata::opq() |>
 places_merged = townnames$osm_points |> bind_rows(villages$osm_points) |>
   group_by(across(-geometry)) |> sf::st_cast("POINT") |>
   summarise(geometry = st_union(geometry), .groups = "drop")
-sf::st_write(buildings_merged, "./03_Spatial_Data/POP/buildings_merged.shp", delete_dsn=T) 
+sf::st_write(places_merged, "../03_Spatial_Data/POP/places_merged.shp", delete_dsn=T) 
 
 buildings_merged = buildings_hospital$osm_points |>
   bind_rows(buildings_residential$osm_points, buildings_workship$osm_points) |>
   group_by(across(-geometry)) |> sf::st_cast("POINT") |>
   summarise(geometry = st_union(geometry), .groups = "drop")
-sf::st_write(buildings_merged, "./03_Spatial_Data/POP/buildings_merged.shp", delete_dsn=T) 
+sf::st_write(buildings_merged, "../03_Spatial_Data/POP/buildings_merged.shp", delete_dsn=T) 
 
 # Visualize
 tmap::tm_shape(aoi_country) + tmap::tm_borders(col="purple", lwd=1) +
