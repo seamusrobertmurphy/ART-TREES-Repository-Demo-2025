@@ -301,5 +301,5 @@ devtools::session_info()
 
 # Autosave log in 06_QCQC folder
 writeLines(capture.output(devtools::session_info()), 
-           paste0("../06_QAQC/runtime_log_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".txt"))
+           paste0("./06_QAQC/runtime_log_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".txt"))
 ```
