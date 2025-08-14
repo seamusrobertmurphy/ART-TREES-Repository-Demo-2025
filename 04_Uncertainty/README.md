@@ -49,6 +49,10 @@ $$
 UAdj_t = 0.524417 \times \frac{HW_{90\%t}}{1.645006}
 $$
 
+$$
+UAdj_t = 0.524417 \times \frac{HW_{90\%t}}{1.645006}
+$$
+
 ##### Table 2: Parameters used in Equation 11
 
 |                       |                                                                 |
