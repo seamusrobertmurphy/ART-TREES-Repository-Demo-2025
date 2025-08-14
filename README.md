@@ -14,7 +14,7 @@ Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](htt
 
 Winrock Intl 2025-08-10
 
--   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
+-   [The Practical Exercise: Mock Audit]
 
     -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
     -   [Step 2. Replicate the Script](#step-2-replicate-the-script1)
@@ -53,7 +53,7 @@ see **Repository Guidelines** section below.
 
 ----------------------------------------------------------------------------------------------------
 
-### The Practical Exercise: Mock Audit {#the-practical-exercise-mock-audit}
+### The Practical Exercise: Mock Audit
 
 #### Step 1. Clone the Repository
 
@@ -125,7 +125,7 @@ that precise moment in time.
 
 ----------------------------------------------------------------------------------------------------
 
-### Appendix I: Repository Guidelines {#appendix-i-repository-guidelines}
+### Appendix I: Repository Guidelines
 
 We provided a simplified layout in this github repository, as shown in the list of its trunk folders
 below. However, this architecture can become highly nested which may not suit everyone’s
@@ -215,7 +215,7 @@ documentation of workbook updates, always aiming to build trust in the auditor:
 
 ----------------------------------------------------------------------------------------------------
 
-### Appendix II: ISO Guidelines {#appendix-ii-iso-guidelines}
+### Appendix II: ISO Guidelines
 
 The data management principles of traceability, integrity, and reproducibility are key to GHG
 audits. These principles are supported by a range of ISO standards. This appendix provides an
@@ -268,7 +268,7 @@ Points, Curves, Surfaces, and Geometry Collections `sfc`.
 
 ----------------------------------------------------------------------------------------------------
 
-### Appendix III: Replication in `renv` {#appendix-iii-replication-in-renv}
+### Appendix III: Replication in `renv`
 
 `renv` profiles allow for managing different sets of package dependencies for various project
 contexts, such as separate environments for development, production, or demonstrations. To activate
@@ -332,7 +332,7 @@ renv::deactivate()
 
 ----------------------------------------------------------------------------------------------------
 
-### Appendix IV: Replication in `git` {#appendix-iv-replication-in-git}
+### Appendix IV: Replication in `git`
 
 ##### Step 1: Install Git
 
