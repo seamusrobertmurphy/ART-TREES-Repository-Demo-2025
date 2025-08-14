@@ -14,7 +14,7 @@ Badge](https://img.shields.io/badge/Submission-Annexes-critical?color=blue)](htt
 
 Winrock Intl 2025-08-10
 
--   [The Practical Exercise: Mock Audit] (#the-practical-exercise-mock-audit)
+-   [The Practical Exercise: Mock Audit](#the-practical-exercise-mock-audit)
 
     -   [Step 1. Clone the Repository](#step-1-clone-the-repository)
     -   [Step 2. Replicate the Script](#step-2-replicate-the-script1)
