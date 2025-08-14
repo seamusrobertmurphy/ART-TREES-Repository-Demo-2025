@@ -135,13 +135,21 @@ your project design, and provide additional layout examples from today’s slide
 ----------------------------------------------------------------------------------------------------
 
 -   `01_Program_Data/`
+
 -   `02_Carbon_Data/`
+
     -   `TREES-demo-replication-A.Rmd`
+
 -   `03_Spatial_Data/`
+
 -   `04_Uncertainty/`
+
     -   `TREES-demo-replication-B.Rmd`
+
 -   `05_Safeguards/`
+
 -   `06_QAQC/`
+
 -   `Archive`
 
 ----------------------------------------------------------------------------------------------------
