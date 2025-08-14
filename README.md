@@ -64,7 +64,7 @@ Open your command-line tool (or GitHub Desktop) and clone this repository to you
 This step is crucial for working with precise, version-controlled data.
 
 ``` r
-git clone https://github.com/seamusrobertmurphy/TREES-demo-repository.git`
+git clone https://github.com/seamusrobertmurphy/TREES-demo-repository.git
 ```
 
 ----------------------------------------------------------------------------------------------------
