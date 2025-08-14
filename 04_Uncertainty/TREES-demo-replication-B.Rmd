@@ -93,12 +93,12 @@ allometry database and a dummy dataset from the Smithsonian Institute `ForestGEO
 #| message: false
 #| error: false
 #| echo: true
-install.packages("allodb") # https://docs.ropensci.org/allodb/
+devtools::install_github("ropensci/allodb") # https://docs.ropensci.org/allodb/
+library("allodb")
 set.seed(333)
 data(scbi_stem1)
 dataset = scbi_stem1
 head(dataset) |> tibble::as_tibble()
-
 psych::describe(dataset)
 str(dataset)
 ```
@@ -297,7 +297,7 @@ others to recreate the exact same computational conditions.
 # Document the computational environment
 cat("Runtime Environment Information:\n")
 cat("================================\n")
-devtools::sessionInfo()
+devtools::session_info()
 
 # Autosave log in 06_QCQC folder
 writeLines(capture.output(devtools::session_info()), 
